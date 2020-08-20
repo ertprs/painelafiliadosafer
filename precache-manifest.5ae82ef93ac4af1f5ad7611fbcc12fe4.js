@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a4137adca1f0f7a83ad31007864c1fb2",
+    "revision": "30f3f73fbef37008890b1bceed90b65e",
     "url": "/painelafiliadosafer/index.html"
   },
   {
@@ -52,8 +52,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/painelafiliadosafer/static/js/15.e25b869d.chunk.js"
   },
   {
-    "revision": "293ca3ec5ce15e0cd53b",
-    "url": "/painelafiliadosafer/static/js/16.a40dacf8.chunk.js"
+    "revision": "506cca7a7023d2e1aa11",
+    "url": "/painelafiliadosafer/static/js/16.65f65ff2.chunk.js"
   },
   {
     "revision": "7d278b32106177119888",
@@ -124,7 +124,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/painelafiliadosafer/static/js/main.80b734e0.chunk.js"
   },
   {
-    "revision": "f5362fc40d021c67333f",
-    "url": "/painelafiliadosafer/static/js/runtime-main.57fd6321.js"
+    "revision": "2e6e259791e1f122613d",
+    "url": "/painelafiliadosafer/static/js/runtime-main.18daf59b.js"
   }
 ]);
