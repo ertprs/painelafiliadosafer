@@ -28,8 +28,8 @@ const TheSidebar = () => {
     >
       <CSidebarBrand className="d-md-down-none" to="/">
       
-        <img className="c-sidebar-brand-full" src={`/sistemalogo.png`} width="100px" style={{objectFit:"contain"}}/>
-        <img className="c-sidebar-brand-minimized" src={`/sistemalogo.png`} width="50px" style={{objectFit:"contain"}}/>
+        <img className="c-sidebar-brand-full" src={'avatars/sistemalogo.png'} width="100px" style={{objectFit:"contain"}}/>
+        <img className="c-sidebar-brand-minimized" src={'avatars/sistemalogo.png'} width="50px" style={{objectFit:"contain"}}/>
         
       </CSidebarBrand>
       <CSidebarNav>
