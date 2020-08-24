@@ -1,79 +1,81 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
-  CButton,
   CCard,
   CCardBody,
-  CCardFooter,
   CCol,
   CContainer,
   CForm,
-  CInput,
-  CInputGroup,
-  CInputGroupPrepend,
-  CInputGroupText,
-  CRow
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+  CRow,
+} from '@coreui/react';
+
+import HorizontalLabelPositionBelowStepper from '../../../components/HorizontalLabelPositionBelowStepper';
+import IdentificacaoDoBeneficiario from '../../../components/IdentificacaoDoBeneficiario';
+import LocalizacaoDoLote from '../../../components/LocalizacaoDoLote';
+import Moradias from '../../../components/Moradias';
+import IdentificacaoDaUnidadeFamiliar from '../../../components/IdentificacaoDaUnidadeFamiliar';
+import InfoGeraisUnidadeProducaoFamiliar from '../../../components/InfoGeraisUnidadeProducaoFamiliar';
+import EnderecoCorrespondencia from '../../../components/EnderecoCorrespondencia';
 
 const Register = () => {
+  const dispatch = useDispatch();
+
+  const register = useSelector(state => state.RegisterReducer);
+
+  const steps = [
+    'Id. do Beneficiário',
+    'Local do Lote',
+    'Moradias',
+    'Id. da Unid. Familiar',
+    'Info. Gerais da Unid. Familiar',
+    'Endereço'
+  ];
+
+  function getStepContent(stepIndex) {
+    switch (stepIndex) {
+      case 0:
+        return <IdentificacaoDoBeneficiario />;
+      case 1:
+        return <LocalizacaoDoLote />;
+      case 2:
+        return <Moradias />;
+      case 3:
+        return <IdentificacaoDaUnidadeFamiliar />;
+      case 4:
+        return <InfoGeraisUnidadeProducaoFamiliar />;
+      case 5:
+        return <EnderecoCorrespondencia />;
+      default:
+        return 'Unknown stepIndex';
+    }
+  }
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    console.log(register)
+  }
+
   return (
     <div className="c-app c-default-layout flex-row align-items-center">
       <CContainer>
         <CRow className="justify-content-center">
-          <CCol md="9" lg="7" xl="6">
-            <CCard className="mx-4">
-              <CCardBody className="p-4">
-                <CForm>
-                  <h1>Register</h1>
-                  <p className="text-muted">Create your account</p>
-                  <CInputGroup className="mb-3">
-                    <CInputGroupPrepend>
-                      <CInputGroupText>
-                        <CIcon name="cil-user" />
-                      </CInputGroupText>
-                    </CInputGroupPrepend>
-                    <CInput type="text" placeholder="Username" autoComplete="username" />
-                  </CInputGroup>
-                  <CInputGroup className="mb-3">
-                    <CInputGroupPrepend>
-                      <CInputGroupText>@</CInputGroupText>
-                    </CInputGroupPrepend>
-                    <CInput type="text" placeholder="Email" autoComplete="email" />
-                  </CInputGroup>
-                  <CInputGroup className="mb-3">
-                    <CInputGroupPrepend>
-                      <CInputGroupText>
-                        <CIcon name="cil-lock-locked" />
-                      </CInputGroupText>
-                    </CInputGroupPrepend>
-                    <CInput type="password" placeholder="Password" autoComplete="new-password" />
-                  </CInputGroup>
-                  <CInputGroup className="mb-4">
-                    <CInputGroupPrepend>
-                      <CInputGroupText>
-                        <CIcon name="cil-lock-locked" />
-                      </CInputGroupText>
-                    </CInputGroupPrepend>
-                    <CInput type="password" placeholder="Repeat password" autoComplete="new-password" />
-                  </CInputGroup>
-                  <CButton color="success" block>Create Account</CButton>
+          <CCol md="10" lg="10" xl="10">
+            <CCard className="mx-10">
+              <CCardBody className="p-5">
+                <h1 className="text-center">Registro de Afiliado</h1>
+                <CForm onSubmit={handleSubmitForm} className="row">
+                  <HorizontalLabelPositionBelowStepper
+                    steps={steps}
+                    getStepContent={getStepContent}
+                  />
                 </CForm>
               </CCardBody>
-              <CCardFooter className="p-4">
-                <CRow>
-                  <CCol xs="12" sm="6">
-                    <CButton className="btn-facebook mb-1" block><span>facebook</span></CButton>
-                  </CCol>
-                  <CCol xs="12" sm="6">
-                    <CButton className="btn-twitter mb-1" block><span>twitter</span></CButton>
-                  </CCol>
-                </CRow>
-              </CCardFooter>
             </CCard>
           </CCol>
         </CRow>
       </CContainer>
-    </div>
+    </div >
   )
 }
 
