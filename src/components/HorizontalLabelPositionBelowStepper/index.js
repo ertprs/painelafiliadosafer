@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -21,12 +22,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function HorizontalLabelPositionBelowStepper({ steps, getStepContent }) {
+function HorizontalLabelPositionBelowStepper({ steps, getStepContent, handleSubmitForm }) {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    handleSubmitForm(activeStep);
   };
 
   const handleBack = () => {
@@ -64,7 +67,7 @@ function HorizontalLabelPositionBelowStepper({ steps, getStepContent }) {
                   Voltar
               </Button>
                 {activeStep === steps.length - 1 ?
-                  <Button variant="contained" color="primary" type="submit">
+                  <Button variant="contained" color="primary" onClick={handleSubmitForm} type="submit">
                     Concluido
                   </Button>
                   :

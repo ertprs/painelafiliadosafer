@@ -23,10 +23,10 @@ export const deleteHouse = () => ({
   type: "DELETE_HOUSE"
 });
 
-export const setResidents = (residents, houseNumber) => ({
+export const setResidents = (resident, houseNumber) => ({
   type: "SET_RESIDENTS",
   payload: {
-    residents,
+    resident,
     houseNumber
   }
 })

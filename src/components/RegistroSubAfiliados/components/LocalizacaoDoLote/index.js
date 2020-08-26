@@ -12,36 +12,13 @@ import CIcon from '@coreui/icons-react';
 
 import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
 import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
-import { setPlotLocation } from '../../redux/actions/register';
 
-const LocalizacaoDoLote = () => {
+const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
 
-  const dispatch = useDispatch();
-
-  const [input, setInput] = useState({
-    operationalCore: "",
-    state: "",
-    county: "",
-    settlement: "",
-    lotNumber: "",
-    accessRoad: "",
-    coordinatesth: ""
-  })
 
   const handleChangeInput = event => {
     const { name, value } = event.target;
-    setInput({ ...input, [name]: value });
-
-    if (input.operationalCore.length > 0 &&
-      input.state.length > 0 &&
-      input.county.length > 0 &&
-      input.settlement.length > 0 &&
-      input.lotNumber.length > 0 &&
-      input.accessRoad.length > 0 &&
-      input.coordinatesth.length > 0
-    ) {
-      dispatch(setPlotLocation(input));
-    }
+    setInputPlotLocation({ ...inputPlotLocation, [name]: value });
   }
 
   return (
@@ -56,7 +33,7 @@ const LocalizacaoDoLote = () => {
           type="text"
           name="operationalCore"
           placeholder="Núcleo Operacional"
-          value={input.operationalCore}
+          value={inputPlotLocation.operationalCore}
           onChange={handleChangeInput}
           required
         />
@@ -67,7 +44,7 @@ const LocalizacaoDoLote = () => {
             <CIcon name="cil-location-pin" />
           </CInputGroupText>
         </CInputGroupPrepend>
-        <CSelect custom onChange={handleChangeInput} value={input.state} name="state" id="select">
+        <CSelect custom onChange={handleChangeInput} value={inputPlotLocation.state} name="state" id="select">
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
           <option value="AP">Amapá</option>
@@ -107,7 +84,7 @@ const LocalizacaoDoLote = () => {
           type="text"
           name="county"
           placeholder="Município"
-          value={input.county}
+          value={inputPlotLocation.county}
           onChange={handleChangeInput}
           required
         />
@@ -122,7 +99,7 @@ const LocalizacaoDoLote = () => {
           type="text"
           name="settlement"
           placeholder="Assentamento"
-          value={input.settlement}
+          value={inputPlotLocation.settlement}
           onChange={handleChangeInput}
           required
         />
@@ -135,7 +112,7 @@ const LocalizacaoDoLote = () => {
           type="text"
           name="lotNumber"
           placeholder="Número do Lote Incra"
-          value={input.lotNumber}
+          value={inputPlotLocation.lotNumber}
           onChange={handleChangeInput}
           required
         />
@@ -150,7 +127,7 @@ const LocalizacaoDoLote = () => {
           type="text"
           name="accessRoad"
           placeholder="Via de acesso ao imóvel"
-          value={input.accessRoad}
+          value={inputPlotLocation.accessRoad}
           onChange={handleChangeInput}
           required
         />
@@ -165,7 +142,7 @@ const LocalizacaoDoLote = () => {
           type="text"
           name="coordinatesth"
           placeholder="Coordenadas (Lat, Lng)"
-          value={input.coordinatesth}
+          value={inputPlotLocation.coordinatesth}
           onChange={handleChangeInput}
           required
         />

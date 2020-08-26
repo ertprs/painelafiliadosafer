@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState} from 'react'
 import { useDispatch } from 'react-redux';
 
 import {
@@ -9,7 +9,7 @@ import {
   CSelect
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react';
-import { setBeneficiaryIdentity } from '../../redux/actions/register';
+import { setBeneficiaryIdentity } from '../../../../redux/actions/register';
 
 const EnderecoCorrespondencia = () => {
 
@@ -32,18 +32,6 @@ const EnderecoCorrespondencia = () => {
   const handleChangeInput = event => {
     const { name, value } = event.target;
     setInput({ ...input, [name]: value })
-
-    if (input.name.length > 0 &&
-      input.email.length > 0 &&
-      input.cpf.length > 0 &&
-      input.collectionCode.length > 0 &&
-      input.settlement.length > 0 &&
-      input.placeOfBirth.length > 0 &&
-      input.rb.length > 0 &&
-      input.incraArea.length > 0
-    ) {
-      dispatch(setBeneficiaryIdentity(input));
-    }
   }
 
   return (
@@ -104,7 +92,7 @@ const EnderecoCorrespondencia = () => {
           required
         />
       </CInputGroup>
-            <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-location-pin" />

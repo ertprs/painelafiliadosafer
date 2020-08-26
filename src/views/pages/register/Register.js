@@ -9,14 +9,8 @@ import {
   CForm,
   CRow,
 } from '@coreui/react';
-
 import HorizontalLabelPositionBelowStepper from '../../../components/HorizontalLabelPositionBelowStepper';
-import IdentificacaoDoBeneficiario from '../../../components/IdentificacaoDoBeneficiario';
-import LocalizacaoDoLote from '../../../components/LocalizacaoDoLote';
-import Moradias from '../../../components/Moradias';
-import IdentificacaoDaUnidadeFamiliar from '../../../components/IdentificacaoDaUnidadeFamiliar';
-import InfoGeraisUnidadeProducaoFamiliar from '../../../components/InfoGeraisUnidadeProducaoFamiliar';
-import EnderecoCorrespondencia from '../../../components/EnderecoCorrespondencia';
+import RegistroSubAfiliados from '../../../components/RegistroSubAfiliados';
 
 const Register = () => {
   const dispatch = useDispatch();
@@ -35,24 +29,23 @@ const Register = () => {
   function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <IdentificacaoDoBeneficiario />;
+        return <div></div>;
       case 1:
-        return <LocalizacaoDoLote />;
+        return <div></div>;
       case 2:
-        return <Moradias />;
+        return <div></div>;
       case 3:
-        return <IdentificacaoDaUnidadeFamiliar />;
+        return <div></div>;
       case 4:
-        return <InfoGeraisUnidadeProducaoFamiliar />;
+        return <div></div>;
       case 5:
-        return <EnderecoCorrespondencia />;
+        return <div></div>;
       default:
         return 'Unknown stepIndex';
     }
   }
 
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
+  const handleSubmitForm = () => {
     console.log(register)
   }
 
@@ -64,11 +57,13 @@ const Register = () => {
             <CCard className="mx-10">
               <CCardBody className="p-5">
                 <h1 className="text-center">Registro de Afiliado</h1>
-                <CForm onSubmit={handleSubmitForm} className="row">
-                  <HorizontalLabelPositionBelowStepper
+                <CForm className="row">
+                  <RegistroSubAfiliados/>
+                  {/* <HorizontalLabelPositionBelowStepper
+                    handleSubmitForm={handleSubmitForm}
                     steps={steps}
                     getStepContent={getStepContent}
-                  />
+                  /> */}
                 </CForm>
               </CCardBody>
             </CCard>

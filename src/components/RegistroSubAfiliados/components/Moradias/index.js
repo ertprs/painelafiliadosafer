@@ -1,26 +1,34 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import {useDispatch} from 'react-redux'; 
+import { useDispatch } from 'react-redux';
 
 import Moradia from './components/Moradia';
 
 import Button from '@material-ui/core/Button';
-import {HomeOutlined} from '@material-ui/icons';
+import { HomeOutlined } from '@material-ui/icons';
 
 import styles from './styles';
-import { setHouses, deleteHouse } from '../../redux/actions/register';
+import { setHouses, deleteHouse } from '../../../../redux/actions/register';
 
 const Moradias = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setHouses([]));
-  }, [])
 
-  const [formHouse, setFormHouse] = useState([<Moradia houseNumber={1} />]);
+  const [formHouse, setFormHouse] = useState([
+    <Moradia
+      houseNumber={1}
+    />
+  ]);
 
   const addHouse = () => {
-    setFormHouse([...formHouse, <><hr /> <Moradia houseNumber={formHouse.length + 1} /></>]);
+    setFormHouse([...formHouse,
+    <>
+      <hr />
+      <Moradia
+        houseNumber={formHouse.length + 1}
+      />
+    </>
+    ]);
     dispatch(setHouses([]));
   }
 
@@ -42,12 +50,12 @@ const Moradias = () => {
         </Fragment>
       ))}
       <div style={styles.boxButtons}>
-        <Button variant="contained" style={styles.button} onClick={addHouse} color="primary">
-          <HomeOutlined style={styles.iconButton}/>
+        <Button variant="contained" style={styles.buttonRight} onClick={addHouse} color="primary">
+          <HomeOutlined style={styles.iconButton} />
           Adicionar
         </Button>
-        <Button variant="contained" style={styles.button} onClick={deleteFormHouse} color="secondary">
-          <HomeOutlined style={styles.iconButton}/>
+        <Button variant="contained" style={styles.buttonLeft} onClick={deleteFormHouse} color="secondary">
+          <HomeOutlined style={styles.iconButton} />
           Remover
         </Button>
       </div>
