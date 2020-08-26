@@ -39,12 +39,12 @@ import {
 
 import Button from "@material-ui/core/Button";
 
-import HorizontalLabelPositionBelowStepper from "../../../components/HorizontalLabelPositionBelowStepper";
-
 import styles from "./styles";
 
 const AffiliatePJ = () => {
   const dispatch = useDispatch();
+
+  const [checked, setChecked] = useState(false);
 
   const [inputEntity, setInputEntity] = useState({
     name: "",
@@ -67,7 +67,7 @@ const AffiliatePJ = () => {
     memberServices: "",
     whatEntityExpects: "",
     file: "",
-    agree: "",
+    agree: checked,
   });
 
   const [
@@ -93,6 +93,11 @@ const AffiliatePJ = () => {
       [name]: value,
     });
   };
+
+  const handleChecked = () => {
+    setChecked(!checked)
+    setInputEntity({...inputEntity, agree: checked});
+  }
 
   const addAgriculturalProduction = () => {
     setAgriculturalProduction([
@@ -570,12 +575,14 @@ const AffiliatePJ = () => {
                   </div>
                   <div className="w-75 mt-4 mx-auto">
                     <table className="table">
-                      <tr className="row">
-                        <th className="col-4">Produto</th>
-                        <th className="col-4">Quantidade</th>
-                        <th className="col-3">Nota</th>
-                        <th className="col-1"></th>
-                      </tr>
+                      <thead>
+                        <tr className="row">
+                          <th className="col-4">Produto</th>
+                          <th className="col-4">Quantidade</th>
+                          <th className="col-3">Nota</th>
+                          <th className="col-1"></th>
+                        </tr>
+                      </thead>
                       {agriculturalProduction.map((item, i) => (
                         <tr className="row" key={i}>
                           {item}
@@ -600,7 +607,8 @@ const AffiliatePJ = () => {
                     <CTextarea
                       rows="4"
                       name="entityObjective"
-                      onChange={inputEntity.entityObjective}
+                      value={inputEntity.entityObjective}
+                      onChange={handleChangeInput}
                       placeholder="Qual objetivo da Entidade, seus fins?"
                     ></CTextarea>
                   </CInputGroup>
@@ -702,22 +710,27 @@ const AffiliatePJ = () => {
                       ou alterar a verdade sobre fato juridicamente relevante.
                     </p>
                   </div>
-                  <CInputGroup className="mb-3 col-xl-12 col-sm-12 col-lg-12">
-                    <CInputGroupPrepend>
-                      <CInputGroupText>
-                        <CloudUploadOutlined style={styles.inputIcon} />
-                      </CInputGroupText>
-                    </CInputGroupPrepend>
+                  <CInputGroup className="ml-3 mb-3 col-xl-12 col-sm-12 col-lg-12">
                     <CInputCheckbox
                       type="checkbox"
                       name="agree"
-                      value={inputEntity.agree}
-                      onChange={handleChangeInputAgriculturalProduction}
+                      checked={checked}
+                      onChange={handleChecked}
                       required
-                    >
+                    />
+                    <label for="agree">
                       Concordo com os Termos e Condições
-                    </CInputCheckbox>
+                    </label>
                   </CInputGroup>
+                  <div style={styles.boxButton}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      type="submit"
+                    >
+                      Enviar informações
+                    </Button>
+                  </div>
                 </CForm>
               </CCardBody>
             </CCard>
