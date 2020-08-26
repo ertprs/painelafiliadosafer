@@ -67,7 +67,7 @@ const Login = () => {
                     <Link to="/sabermais">
                       <CButton color="primary" className="mt-3" active tabIndex={-1}>SAIBA MAIS!</CButton>
                     </Link>
-                    <Link to="/register">
+                    <Link to="/affiliate-registration">
                       <CButton color="primary" className="mt-3" active tabIndex={-1}>Afilia-se agora!</CButton>
                     </Link>
                   </div>
@@ -81,4 +81,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Login;

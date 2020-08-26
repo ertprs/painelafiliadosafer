@@ -29,7 +29,6 @@ import {
   CategoryOutlined
 } from '@material-ui/icons';
 import CIcon from '@coreui/icons-react';
-import { setBeneficiaryIdentity } from '../../redux/actions/register';
 
 const InfoGeraisUnidadeProducaoFamiliar = () => {
 
@@ -142,7 +141,7 @@ const InfoGeraisUnidadeProducaoFamiliar = () => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
+      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-4">
           <CInputGroupPrepend>
             <CInputGroupText>
               <AccessibleOutlined style={{ fontSize: "1.1rem" }} />

@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import React from 'react'
 
 import {
   CInput,
@@ -8,38 +7,14 @@ import {
   CInputGroupText,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react';
-import { setBeneficiaryIdentity } from '../../redux/actions/register';
+import { setBeneficiaryIdentity } from '../../../../redux/actions/register';
 
-const IdentificacaoDoBeneficiario = () => {
+const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBeneficiaryIdentity}) => {
 
-  const dispatch = useDispatch();
-
-  const [input, setInput] = useState({
-    name: "",
-    email: "",
-    cpf: "",
-    collectionCode: "",
-    settlement: "",
-    placeOfBirth: "",
-    rb: "",
-    incraArea: "",
-  })
 
   const handleChangeInput = event => {
     const { name, value } = event.target;
-    setInput({ ...input, [name]: value })
-
-    if (input.name.length > 0 &&
-      input.email.length > 0 &&
-      input.cpf.length > 0 &&
-      input.collectionCode.length > 0 &&
-      input.settlement.length > 0 &&
-      input.placeOfBirth.length > 0 &&
-      input.rb.length > 0 &&
-      input.incraArea.length > 0
-    ) {
-      dispatch(setBeneficiaryIdentity(input));
-    }
+    setInputBeneficiaryIdentity({ ...inputBeneficiaryIdentity, [name]: value });
   }
 
   return (
@@ -54,7 +29,7 @@ const IdentificacaoDoBeneficiario = () => {
           type="text"
           name="name"
           placeholder="Nome completo"
-          value={input.name}
+          value={inputBeneficiaryIdentity.name}
           onChange={handleChangeInput}
           required
         />
@@ -67,7 +42,7 @@ const IdentificacaoDoBeneficiario = () => {
           type="email"
           name="email"
           placeholder="Email"
-          value={input.email}
+          value={inputBeneficiaryIdentity.email}
           onChange={handleChangeInput}
           required
         />
@@ -82,7 +57,7 @@ const IdentificacaoDoBeneficiario = () => {
           type="text"
           name="cpf"
           pattern="[0-9]{11}"
-          value={input.cpf}
+          value={inputBeneficiaryIdentity.cpf}
           placeholder="CPF"
           onChange={handleChangeInput}
           title="CPF deve conter mais de 11 números."
@@ -97,7 +72,7 @@ const IdentificacaoDoBeneficiario = () => {
           type="text"
           name="collectionCode"
           placeholder="Código de Coleta"
-          value={input.collectionCode}
+          value={inputBeneficiaryIdentity.collectionCode}
           onChange={handleChangeInput}
           required
         />
@@ -110,7 +85,7 @@ const IdentificacaoDoBeneficiario = () => {
           type="text"
           name="settlement"
           placeholder="Código de Assentamento"
-          value={input.settlement}
+          value={inputBeneficiaryIdentity.settlement}
           onChange={handleChangeInput}
           required
         />
@@ -125,7 +100,7 @@ const IdentificacaoDoBeneficiario = () => {
           type="text"
           name="placeOfBirth"
           placeholder="Naturalidade"
-          value={input.placeOfBirth}
+          value={inputBeneficiaryIdentity.placeOfBirth}
           onChange={handleChangeInput}
           required
         />
@@ -140,12 +115,12 @@ const IdentificacaoDoBeneficiario = () => {
           type="text"
           name="rb"
           placeholder="Status na RB"
-          value={input.rb}
+          value={inputBeneficiaryIdentity.rb}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-map" />
@@ -155,7 +130,7 @@ const IdentificacaoDoBeneficiario = () => {
           type="text"
           name="incraArea"
           placeholder="Ocupa área destinada pelo Incra"
-          value={input.incraArea}
+          value={inputBeneficiaryIdentity.incraArea}
           onChange={handleChangeInput}
           required
         />

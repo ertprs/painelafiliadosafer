@@ -1,8 +1,7 @@
 const initialState = {
   beneficiaryIdentity: {},
   plotLocation: {},
-  houses: [],
-  residents: [{}]
+  houses: [[]],
 }
 
 const RegisterReducer = (state = initialState, action) => {
@@ -13,13 +12,12 @@ const RegisterReducer = (state = initialState, action) => {
       return { ...state, plotLocation: action.payload.plotLocation };
     case 'SET_HOUSES':
       state.houses.push(action.payload.houses);
+      break;
     case 'DELETE_HOUSE':
       state.houses.pop();
+      break;
     case 'SET_RESIDENTS':
-      state.residents.push({
-        houseNumber: state.residents.length - 1,
-        residents: action.payload.residents
-      })
+      state.houses[action.payload.houseNumber - 1].push(action.payload.resident);
     default:
       return state;
   }

@@ -8,9 +8,9 @@ import {
   CInputGroupText,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react';
-import { setBeneficiaryIdentity } from '../../redux/actions/register';
 
 import { AccessTime, Public } from '@material-ui/icons';
+import { setBeneficiaryIdentity } from '../../../../redux/actions/register';
 
 const IdentificacaoDaUnidadeFamiliar = () => {
 
@@ -139,7 +139,7 @@ const IdentificacaoDaUnidadeFamiliar = () => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-7">
+      <CInputGroup className="mb-3 col-xl-8 col-sm-12 col-lg-8">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-user" />
