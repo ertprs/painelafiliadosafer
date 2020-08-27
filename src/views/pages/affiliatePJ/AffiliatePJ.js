@@ -44,8 +44,6 @@ import styles from "./styles";
 const AffiliatePJ = () => {
   const dispatch = useDispatch();
 
-  const [checked, setChecked] = useState(false);
-
   const [inputEntity, setInputEntity] = useState({
     name: "",
     address: "",
@@ -67,7 +65,7 @@ const AffiliatePJ = () => {
     memberServices: "",
     whatEntityExpects: "",
     file: "",
-    agree: checked,
+    agree: false,
   });
 
   const [
@@ -95,8 +93,7 @@ const AffiliatePJ = () => {
   };
 
   const handleChecked = () => {
-    setChecked(!checked)
-    setInputEntity({...inputEntity, agree: checked});
+    setInputEntity({...inputEntity, agree: !inputEntity.agree});
   }
 
   const addAgriculturalProduction = () => {
@@ -107,7 +104,7 @@ const AffiliatePJ = () => {
           {inputAgriculturalProduction.agriculturalProduction}
         </td>
         <td className="col-4">{inputAgriculturalProduction.howMuchProduce}</td>
-        <td className="col-3">{inputAgriculturalProduction.issueInvoice}</td>
+        <td className="col-2">{inputAgriculturalProduction.issueInvoice}</td>
       </>,
     ]);
   };
@@ -117,6 +114,10 @@ const AffiliatePJ = () => {
       agriculturalProduction.filter((item, i) => i !== id)
     );
   };
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+  }
 
   return (
     <div className="c-app c-default-layout flex-row align-items-center">
@@ -128,7 +129,7 @@ const AffiliatePJ = () => {
                 <h1 className="text-center mb-5">
                   Formulário de Afiliação de Pessoa Jurídica
                 </h1>
-                <CForm className="row">
+                <CForm onSubmit={handleSubmitForm} className="row">
                   <CInputGroup className="mb-3 col-xl-12 col-sm-12 col-lg-12">
                     <CInputGroupPrepend>
                       <CInputGroupText>
@@ -680,7 +681,7 @@ const AffiliatePJ = () => {
                       required
                     />
                   </CInputGroup>
-                  <div className="ml-3 w-100">
+                  <div className="ml-3 mr-3 w-100">
                     <p>
                       Eu, DECLARO, para fins de direito, sob as penas da lei,
                       que as informações acima prestadas e documentos que
@@ -714,12 +715,12 @@ const AffiliatePJ = () => {
                     <CInputCheckbox
                       type="checkbox"
                       name="agree"
-                      checked={checked}
+                      checked={inputEntity.agree}
                       onChange={handleChecked}
                       required
                     />
-                    <label for="agree">
-                      Concordo com os Termos e Condições
+                    <label htmlFor="agree">
+                      <strong>Concordo com os Termos e Condições</strong>
                     </label>
                   </CInputGroup>
                   <div style={styles.boxButton}>
