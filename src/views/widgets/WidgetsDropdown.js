@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+
 import {
   CWidgetDropdown,
   CRow,
@@ -7,10 +8,10 @@ import {
   CDropdownMenu,
   CDropdownItem,
   CDropdownToggle
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-import ChartLineSimple from '../charts/ChartLineSimple'
-import ChartBarSimple from '../charts/ChartBarSimple'
+} from '@coreui/react';
+import CIcon from '@coreui/icons-react';
+import ChartLineSimple from '../charts/ChartLineSimple';
+import ChartBarSimple from '../charts/ChartBarSimple';
 
 const WidgetsDropdown = () => {
   // render
