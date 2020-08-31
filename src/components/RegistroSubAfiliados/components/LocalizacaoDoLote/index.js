@@ -1,25 +1,55 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import {
   CInput,
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,
-  CSelect
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react';
+  CSelect,
+  CLabel,
+} from "@coreui/react";
+import CIcon from "@coreui/icons-react";
 
-import DriveEtaOutlinedIcon from '@material-ui/icons/DriveEtaOutlined';
-import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
+import DriveEtaOutlinedIcon from "@material-ui/icons/DriveEtaOutlined";
+import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
+import { CloudUploadOutlined } from "@material-ui/icons";
+import GoogleMaps from "../../../GoogleMaps";
+
+import {
+  setCurrentLatpointAction,
+  setCurrentLonpointAction,
+} from "../../../../redux/actions/googlemaps";
 
 const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
+  const dispatch = useDispatch();
 
+  const lat = useSelector((state) => state.GoogleMapsReducer.lat);
+  const lng = useSelector((state) => state.GoogleMapsReducer.lng);
 
-  const handleChangeInput = event => {
+  const [file, setFile] = useState();
+
+  const handleChangeInput = (event) => {
     const { name, value } = event.target;
     setInputPlotLocation({ ...inputPlotLocation, [name]: value });
-  }
+  };
+
+  const setCoordinatesth = () => {
+    setInputPlotLocation({
+      ...inputPlotLocation,
+      coordinatesth: `${lat}, ${lng}`,
+    });
+  };
+
+  useEffect(() => {
+    if (lat !== 0 && lng !== 0) {
+      setCoordinatesth();
+    }
+  }, [lat, lng]);
+
+  const handleChangeInputFile = (event) => {
+    setFile(event.target.value);
+  };
 
   return (
     <div className="row">
@@ -44,7 +74,13 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
             <CIcon name="cil-location-pin" />
           </CInputGroupText>
         </CInputGroupPrepend>
-        <CSelect custom onChange={handleChangeInput} value={inputPlotLocation.state} name="state" id="select">
+        <CSelect
+          custom
+          onChange={handleChangeInput}
+          value={inputPlotLocation.state}
+          name="state"
+          id="select"
+        >
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
           <option value="AP">Amapá</option>
@@ -132,7 +168,7 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>
             <ExploreOutlinedIcon style={{ fontSize: "1.1rem" }} />
@@ -147,8 +183,31 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
           required
         />
       </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-8 col-sm-12 col-lg-8">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <CloudUploadOutlined style={{ fontSize: "1.1rem" }} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CLabel className="btn bg-light ml-1 mb-0">
+          {file ? `Arquivo Selecionado: ${file}` : "Selecione o documento de geometria do lote"}
+          <CInput
+            type="file"
+            style={{ display: "none" }}
+            name="batchGeometry"
+            value={file}
+            onChange={handleChangeInputFile}
+            required
+          />
+        </CLabel>
+      </CInputGroup>
+      <div className="mb-3 col-xl-12 col-sm-12 col-lg-12">
+        <GoogleMaps
+          coordinatesth={inputPlotLocation.coordinatesth.split(",")}
+        />
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default LocalizacaoDoLote;

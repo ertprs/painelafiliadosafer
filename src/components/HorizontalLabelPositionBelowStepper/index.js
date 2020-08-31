@@ -13,6 +13,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
+  stepper: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
   backButton: {
     marginRight: theme.spacing(1),
   },
@@ -42,7 +46,7 @@ function HorizontalLabelPositionBelowStepper({ steps, getStepContent, handleSubm
 
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep} alternativeLabel>
+      <Stepper className={classes.stepper} activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
