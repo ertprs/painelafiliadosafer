@@ -27,9 +27,18 @@ import {
 
 import CIcon from "@coreui/icons-react";
 
+import {
+  SendOutlined,
+  WarningOutlined,
+  CancelOutlined,
+  CheckCircleOutlineOutlined,
+  AddCircleOutlineOutlined,
+} from "@material-ui/icons";
+
 import { Link } from "react-router-dom";
 
 import OrcamentosData from "./OrcamentosData";
+import ModalFileSubmit from "../../../components/ModalFileSubmit";
 
 const getBadge = (status) => {
   switch (status) {
@@ -60,27 +69,26 @@ const fieldsComentarios = ["comentario", "feitopor", "feitoem"];
 const Orcamentos = () => {
   const [large, setLarge] = useState(false);
   const [orcamento, setOrcamento] = useState([]);
+  const [search, setSearch] = useState("");
+  const [modalFileOpen, setModalFileOpen] = useState(false);
+  const [file, setFile] = useState();
 
-  const [progress, setProgress] = useState({
-    sent: 0,
-    expired: 0,
-    declined: 0,
-    accepted: 0,
-  });
+  const handleChangeInputSearch = (event) => {
+    setSearch(event.target.value);
+  };
 
-  useEffect(() => {
-    OrcamentosData.forEach((item) => {
-      if (item.status === "Enviado") {
-        setProgress({ ...progress, sent: progress.sent + 1 });
-      } else if (item.status === "Expirado") {
-        setProgress({ ...progress, sent: progress.expired + 1 });
-      } else if (item.status === "Declinado") {
-        setProgress({ ...progress, sent: progress.declined + 1 });
-      } else if (item.status === "Aceito") {
-        setProgress({ ...progress, sent: progress.accepted + 1 });
-      }
-    });
-  }, []);
+  const handleChangeInputFile = (event) => {
+    setFile(event.target.value);
+  };
+
+  const sent = OrcamentosData.filter((item) => item.status === "Enviado")
+    .length;
+  const expired = OrcamentosData.filter((item) => item.status === "Expirado")
+    .length;
+  const declined = OrcamentosData.filter((item) => item.status === "Declinado")
+    .length;
+  const accept = OrcamentosData.filter((item) => item.status === "Aceito")
+    .length;
 
   return (
     <>
@@ -88,42 +96,73 @@ const Orcamentos = () => {
         <CCardBody>
           <CRow className="justify-content-center">
             <div className="col-sm-8 col-md-4  col-lg-4 col-xl-2">
-              <p>
-                Enviado
-              </p>
+              <div className="d-flex justify-content-between">
+                <p className="d-inline">
+                  Enviado <SendOutlined style={{ fontSize: "0.8rem" }} />{" "}
+                </p>
+                <p className="d-inline">
+                  {sent}/{OrcamentosData.length}
+                </p>
+              </div>
               <CProgress
                 animated={true}
-                value={progress.sent}
+                value={sent}
+                max={OrcamentosData.length}
                 showValue
                 className="mb-1 bg-light"
                 color="primary"
               />
             </div>
             <div className="col-sm-8 col-md-4  col-lg-4 col-xl-2">
-              <p>Expirado</p>
+              <div className="d-flex justify-content-between">
+                <p className="d-inline">
+                  Expirado <WarningOutlined style={{ fontSize: "0.8rem" }} />
+                </p>
+                <p className="d-inline">
+                  {expired}/{OrcamentosData.length}
+                </p>
+              </div>
               <CProgress
                 animated={true}
-                value={progress.expired}
+                value={expired}
+                max={OrcamentosData.length}
                 showValue
                 className="mb-1 bg-light"
                 color="warning"
               />
             </div>
             <div className="col-sm-8 col-md-4  col-lg-4 col-xl-2">
-              <p>Declinado</p>
+              <div className="d-flex justify-content-between">
+                <p className="d-inline">
+                  Declinado <CancelOutlined style={{ fontSize: "0.8rem" }} />
+                </p>
+                <p className="d-inline">
+                  {declined}/{OrcamentosData.length}
+                </p>
+              </div>
               <CProgress
                 animated={true}
-                value={progress.declined}
+                value={declined}
+                max={OrcamentosData.length}
                 showValue
                 className="mb-1 bg-light"
                 color="danger"
               />
             </div>
             <div className="col-sm-8 col-md-4  col-lg-4 col-xl-2">
-              <p>Aceito</p>
+              <div className="d-flex justify-content-between">
+                <p className="d-inline">
+                  Aceito{" "}
+                  <CheckCircleOutlineOutlined style={{ fontSize: "0.8rem" }} />
+                </p>
+                <p className="d-inline">
+                  {accept}/{OrcamentosData.length}
+                </p>
+              </div>
               <CProgress
                 animated={true}
-                value={progress.accepted}
+                value={accept}
+                max={OrcamentosData.length}
                 showValue
                 className="mb-1 bg-light"
                 color="success"
@@ -149,9 +188,11 @@ const Orcamentos = () => {
               </div>
               <div className="mr-3 ml-3">
                 <CFormGroup row>
-                  <CInputGroup>
+                  <CInputGroup className="align-items-center">
                     <CInput
                       id="input1-group2"
+                      value={search}
+                      onChange={handleChangeInputSearch}
                       name="input1-group2"
                       placeholder="Nome do Orçamento"
                     />
@@ -161,7 +202,27 @@ const Orcamentos = () => {
                         type="button"
                         color="primary"
                       >
-                        Procurar <CIcon name="cil-magnifying-glass" />
+                        Procurar {""}
+                        <CIcon name="cil-magnifying-glass" />
+                      </CButton>
+                    </CInputGroupPrepend>
+                  </CInputGroup>
+                </CFormGroup>
+              </div>
+              <div className="mr-3 ml-3">
+                <CFormGroup row>
+                  <CInputGroup className="align-items-center">
+                    <CInputGroupPrepend>
+                      <CButton
+                        className="align-items-center"
+                        type="button"
+                        color="primary"
+                        onClick={() => setModalFileOpen(!modalFileOpen)}
+                      >
+                        <AddCircleOutlineOutlined
+                          style={{ fontSize: "1.1rem" }}
+                        />{" "}
+                        Adicionar Orçamento
                       </CButton>
                     </CInputGroupPrepend>
                   </CInputGroup>
@@ -272,6 +333,13 @@ const Orcamentos = () => {
             </CButton>
           </CModalFooter>
         </CModal>
+        <ModalFileSubmit
+          title="Adicionar Orçamento"
+          modalFileOpen={modalFileOpen}
+          file={file}
+          setModalFileOpen={setModalFileOpen}
+          handleChangeInputFile={handleChangeInputFile}
+        />
       </CRow>
     </>
   );

@@ -20,7 +20,7 @@ import EnderecoCorrespondencia from './components/EnderecoCorrespondencia';
 
 import { setBeneficiaryIdentity, setPlotLocation, setResidents } from '../../redux/actions/register';
 
-const RegistroSubAfiliados = () => {
+const RegistroSubAfiliados = ({title}) => {
   const dispatch = useDispatch();
 
   const [inputBeneficiaryIdentity, setInputBeneficiaryIdentity] = useState({
@@ -113,7 +113,6 @@ const RegistroSubAfiliados = () => {
   }
 
   const handleSubmitForm = (stepIndex) => {
-    console.log(stepIndex)
     switch (stepIndex) {
       case 0:
         dispatch(setBeneficiaryIdentity(inputBeneficiaryIdentity));
@@ -141,9 +140,9 @@ const RegistroSubAfiliados = () => {
         <CRow className="justify-content-center">
           <CCol>
             <CCard>
-              <CCardBody className="p-5">
-                <h1 className="text-center">Registro de Membros</h1>
-                <CForm className="row">
+              <CCardBody className="p-sm-2 p-lg-5 p-lx-5">
+                <h1 className="text-center">{title}</h1>
+                <CForm>
                   <HorizontalLabelPositionBelowStepper
                     handleSubmitForm={handleSubmitForm}
                     steps={steps}

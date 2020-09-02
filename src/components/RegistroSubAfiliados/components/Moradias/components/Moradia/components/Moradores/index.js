@@ -468,7 +468,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             required
           />
         </CInputGroup>
-        <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+        <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
           <CInputGroupPrepend>
             <CInputGroupText>
               <Healing style={{ fontSize: "1.1rem" }} />
@@ -483,7 +483,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             required
           />
         </CInputGroup>
-        <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+        <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
           <CInputGroupPrepend>
             <CInputGroupText>
               <PaymentOutlined style={{ fontSize: "1.1rem" }} />
