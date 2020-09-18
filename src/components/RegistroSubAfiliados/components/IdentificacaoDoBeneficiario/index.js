@@ -7,10 +7,8 @@ import {
   CInputGroupText,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react';
-import { setBeneficiaryIdentity } from '../../../../redux/actions/register';
 
 const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBeneficiaryIdentity}) => {
-
 
   const handleChangeInput = event => {
     const { name, value } = event.target;
@@ -28,6 +26,7 @@ const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBenefici
         <CInput
           type="text"
           name="name"
+          title="Nome completo"
           placeholder="Nome completo"
           value={inputBeneficiaryIdentity.name}
           onChange={handleChangeInput}
@@ -41,6 +40,7 @@ const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBenefici
         <CInput
           type="email"
           name="email"
+          title="Email"
           placeholder="Email"
           value={inputBeneficiaryIdentity.email}
           onChange={handleChangeInput}
@@ -71,6 +71,7 @@ const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBenefici
         <CInput
           type="text"
           name="collectionCode"
+          title="Código de Coleta"
           placeholder="Código de Coleta"
           value={inputBeneficiaryIdentity.collectionCode}
           onChange={handleChangeInput}
@@ -84,6 +85,7 @@ const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBenefici
         <CInput
           type="text"
           name="settlement"
+          title="Código de Assentamento"
           placeholder="Código de Assentamento"
           value={inputBeneficiaryIdentity.settlement}
           onChange={handleChangeInput}
@@ -99,6 +101,7 @@ const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBenefici
         <CInput
           type="text"
           name="placeOfBirth"
+          title="Naturalidade"
           placeholder="Naturalidade"
           value={inputBeneficiaryIdentity.placeOfBirth}
           onChange={handleChangeInput}
@@ -114,13 +117,14 @@ const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBenefici
         <CInput
           type="text"
           name="rb"
+          title="Status na RB"
           placeholder="Status na RB"
           value={inputBeneficiaryIdentity.rb}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-map" />
@@ -129,6 +133,7 @@ const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBenefici
         <CInput
           type="text"
           name="incraArea"
+          title="Ocupa área destinada pelo Incra"
           placeholder="Ocupa área destinada pelo Incra"
           value={inputBeneficiaryIdentity.incraArea}
           onChange={handleChangeInput}

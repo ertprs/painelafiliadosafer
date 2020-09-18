@@ -5,14 +5,8 @@ import {
   CCard,
   CCardHeader,
   CCardBody,
-  CCardGroup,
   CCol,
   CContainer,
-  CForm,
-  CInput,
-  CInputGroup,
-  CInputGroupPrepend,
-  CInputGroupText,
   CRow,
   CCardFooter,
   CModal,
@@ -20,7 +14,6 @@ import {
   CModalBody,
   CModalFooter,
 } from "@coreui/react";
-import CIcon from "@coreui/icons-react";
 
 import logo from "../../../assets/logo/logo-registration.png";
 
@@ -42,6 +35,7 @@ const AffiliateRegistration = () => {
                   src={logo}
                   width="80%"
                   style={{ objectFit: "contain", marginBottom: "20px" }}
+                  alt="Logo da CONAFER"
                 />
                 <h3>É TEMPO DE CRESCER!</h3>
               </CCardHeader>

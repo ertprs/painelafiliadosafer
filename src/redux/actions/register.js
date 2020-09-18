@@ -30,3 +30,17 @@ export const setResidents = (resident, houseNumber) => ({
     houseNumber
   }
 })
+
+export const setFamilyUnitIdentification = (familyUnitIdentification) => ({
+  type: "SET_FAMILY_UNIT_IDENTIFICATION",
+  payload: {
+    familyUnitIdentification
+  }
+})
+
+export const setGeneralFamilyUnitInfo = (generalFamilyUnitInfo) => ({
+  type: "SET_GENERAL_FAMILY_UNIT_INFO",
+  payload: {
+    generalFamilyUnitInfo
+  }
+})

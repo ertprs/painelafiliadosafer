@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import {
   CInput,
@@ -16,13 +16,7 @@ import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 import { CloudUploadOutlined } from "@material-ui/icons";
 import GoogleMaps from "../../../GoogleMaps";
 
-import {
-  setCurrentLatpointAction,
-  setCurrentLonpointAction,
-} from "../../../../redux/actions/googlemaps";
-
 const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
-  const dispatch = useDispatch();
 
   const lat = useSelector((state) => state.GoogleMapsReducer.lat);
   const lng = useSelector((state) => state.GoogleMapsReducer.lng);
@@ -34,18 +28,14 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
     setInputPlotLocation({ ...inputPlotLocation, [name]: value });
   };
 
-  const setCoordinatesth = () => {
-    setInputPlotLocation({
-      ...inputPlotLocation,
-      coordinatesth: `${lat}, ${lng}`,
-    });
-  };
-
   useEffect(() => {
     if (lat !== 0 && lng !== 0) {
-      setCoordinatesth();
+      setInputPlotLocation({
+        ...inputPlotLocation,
+        coordinatesth: `${lat}, ${lng}`,
+      });
     }
-  }, [lat, lng]);
+  }, [lat, lng, setInputPlotLocation, inputPlotLocation]);
 
   const handleChangeInputFile = (event) => {
     setFile(event.target.value);

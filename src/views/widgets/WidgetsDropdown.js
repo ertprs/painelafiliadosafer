@@ -4,10 +4,6 @@ import {
   CWidgetDropdown,
   CRow,
   CCol,
-  CDropdown,
-  CDropdownMenu,
-  CDropdownItem,
-  CDropdownToggle
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
 import ChartLineSimple from '../charts/ChartLineSimple';

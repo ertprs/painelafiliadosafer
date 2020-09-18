@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   CBadge,
   CCard,
@@ -37,8 +37,6 @@ import {
 
 import ModalFileSubmit from "../../../components/ModalFileSubmit";
 
-import { Link } from "react-router-dom";
-
 import PropostasData from "./PropostasData";
 
 const getBadge = (status) => {
@@ -65,7 +63,6 @@ const fields = [
   "status",
 ];
 
-const fieldsComentarios = ["comentario", "feitopor", "feitoem"];
 
 const Propostas = () => {
   const [large, setLarge] = useState(false);
@@ -291,7 +288,7 @@ const Propostas = () => {
               orcamento.comentatio.map((comentario) => (
                 <CAlert
                   color={
-                    comentario.comentarioPai == null ? "secondary" : "success"
+                    comentario.comentarioPai === null ? "secondary" : "success"
                   }
                 >
                   {comentario.comentarioPai != null && (
@@ -314,7 +311,7 @@ const Propostas = () => {
               ))}
           </CModalBody>
           <CModalFooter>
-            {orcamento && orcamento.status == "Pendente" && (
+            {orcamento && orcamento.status === "Pendente" && (
               <CButton color="primary" onClick={() => setLarge(!large)}>
                 Assinar
               </CButton>

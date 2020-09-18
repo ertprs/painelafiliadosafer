@@ -1,26 +1,27 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import FormContext from "./context";
+
+import { CCard, CCardBody, CCol, CContainer, CForm, CRow } from "@coreui/react";
+
+import HorizontalLabelPositionBelowStepper from "../HorizontalLabelPositionBelowStepper";
+import IdentificacaoDoBeneficiario from "./components/IdentificacaoDoBeneficiario";
+import LocalizacaoDoLote from "./components/LocalizacaoDoLote";
+import Moradias from "./components/Moradias";
+import IdentificacaoDaUnidadeFamiliar from "./components/IdentificacaoDaUnidadeFamiliar";
+import InfoGeraisUnidadeProducaoFamiliar from "./components/InfoGeraisUnidadeProducaoFamiliar";
+import EnderecoCorrespondencia from "./components/EnderecoCorrespondencia";
 
 import {
-  CCard,
-  CCardBody,
-  CCol,
-  CContainer,
-  CForm,
-  CRow,
-} from '@coreui/react';
+  setBeneficiaryIdentity,
+  setFamilyUnitIdentification,
+  setGeneralFamilyUnitInfo,
+  setPlotLocation,
+  setResidents,
+} from "../../redux/actions/register";
 
-import HorizontalLabelPositionBelowStepper from '../HorizontalLabelPositionBelowStepper';
-import IdentificacaoDoBeneficiario from './components/IdentificacaoDoBeneficiario';
-import LocalizacaoDoLote from './components/LocalizacaoDoLote';
-import Moradias from './components/Moradias';
-import IdentificacaoDaUnidadeFamiliar from './components/IdentificacaoDaUnidadeFamiliar';
-import InfoGeraisUnidadeProducaoFamiliar from './components/InfoGeraisUnidadeProducaoFamiliar';
-import EnderecoCorrespondencia from './components/EnderecoCorrespondencia';
-
-import { setBeneficiaryIdentity, setPlotLocation, setResidents } from '../../redux/actions/register';
-
-const RegistroSubAfiliados = ({title}) => {
+const RegistroSubAfiliados = ({ title }) => {
   const dispatch = useDispatch();
 
   const [inputBeneficiaryIdentity, setInputBeneficiaryIdentity] = useState({
@@ -32,7 +33,7 @@ const RegistroSubAfiliados = ({title}) => {
     placeOfBirth: "",
     rb: "",
     incraArea: "",
-  })
+  });
 
   const [inputPlotLocation, setInputPlotLocation] = useState({
     operationalCore: "",
@@ -41,8 +42,8 @@ const RegistroSubAfiliados = ({title}) => {
     settlement: "",
     lotNumber: "",
     accessRoad: "",
-    coordinatesth: ""
-  })
+    coordinatesth: "",
+  });
 
   const [inputResidents, setInputResidents] = useState({
     resident: "",
@@ -71,44 +72,92 @@ const RegistroSubAfiliados = ({title}) => {
     previousDiseases: "",
     typeOfTreatment: "",
     formOfAccessToTreatment: "",
-  })
+  });
 
-  const register = useSelector(state => state.RegisterReducer);
+  const [inputFamilyUnitId, setInputFamilyUnitId] = useState({
+    settlementCode: "",
+    status: "",
+    cpf: "",
+    rg: "",
+    nis: "",
+    civilStatus: "",
+    motherName: "",
+    spouseName: "",
+    spouseCPF: "",
+    naturalness: "",
+    nationality: "",
+  });
+
+  const [inputGeneralFamilyUnitInfo, setInputGeneralFamilyUnitInfo] = useState({
+    operationalCore: "",
+    state: "",
+    county: "",
+    yearsResidingInTheRegion: "",
+    alwaysResidedInTheCountryside: "",
+    landPlotBoundaries: "",
+    knowHheLimitsOfTheLandPlot: "",
+    contract: "",
+    contractValidity: "",
+  });
+
+  const [resident, setResident] = useState();
 
   const steps = [
-    'Id. do Beneficiário',
-    'Local do Lote',
-    'Moradias',
-    'Id. da Unid. Familiar',
-    'Info. Gerais da Unid. Familiar',
-    'Endereço'
+    "Id. do Beneficiário",
+    "Local do Lote",
+    "Moradias",
+    "Id. da Unid. Familiar",
+    "Info. Gerais da Unid. Familiar",
+    "Endereço",
   ];
+
+  let house;
+
+  const setHouseNumber = (houseNumber) => {
+    house = houseNumber;
+  };
 
   function getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <IdentificacaoDoBeneficiario
-          inputBeneficiaryIdentity={inputBeneficiaryIdentity}
-          setInputBeneficiaryIdentity={setInputBeneficiaryIdentity}
-        />;
+        return (
+          <IdentificacaoDoBeneficiario
+            inputBeneficiaryIdentity={inputBeneficiaryIdentity}
+            setInputBeneficiaryIdentity={setInputBeneficiaryIdentity}
+          />
+        );
       case 1:
-        return <LocalizacaoDoLote
-          inputPlotLocation={inputPlotLocation}
-          setInputPlotLocation={setInputPlotLocation}
-        />;
+        return (
+          <LocalizacaoDoLote
+            inputPlotLocation={inputPlotLocation}
+            setInputPlotLocation={setInputPlotLocation}
+          />
+        );
       case 2:
-        return <Moradias 
-          inputResidents={inputResidents}
-          setInputResidents={setInputResidents}
-        />;
+        return (
+          <Moradias
+            inputResidents={inputResidents}
+            setInputResidents={setInputResidents}
+          />
+        );
       case 3:
-        return <IdentificacaoDaUnidadeFamiliar />;
+        return (
+          <IdentificacaoDaUnidadeFamiliar
+            inputFamilyUnitId={inputFamilyUnitId}
+            setInputFamilyUnitId={setInputFamilyUnitId}
+          />
+        );
       case 4:
-        return <InfoGeraisUnidadeProducaoFamiliar />;
+        return (
+          <InfoGeraisUnidadeProducaoFamiliar
+            inputGeneralFamilyUnitInfo={inputGeneralFamilyUnitInfo}
+            setInputGeneralFamilyUnitInfo={setInputGeneralFamilyUnitInfo}
+          />
+        );
       case 5:
         return <EnderecoCorrespondencia />;
       default:
-        return 'Unknown stepIndex';
+        return "Unknown stepIndex";
     }
   }
 
@@ -121,41 +170,46 @@ const RegistroSubAfiliados = ({title}) => {
         dispatch(setPlotLocation(inputPlotLocation));
         break;
       case 2:
+        dispatch(setResidents(resident, house));
         break;
       case 3:
-        dispatch();
+        dispatch(setFamilyUnitIdentification(inputFamilyUnitId));
         break;
       case 4:
-        dispatch();
+        dispatch(setGeneralFamilyUnitInfo(inputGeneralFamilyUnitInfo));
         break;
       case 5:
         dispatch();
         break;
+      default:
+        return;
     }
-  }
+  };
 
   return (
-    <div className="c-app c-default-layout flex-row align-items-center">
-      <CContainer>
-        <CRow className="justify-content-center">
-          <CCol>
-            <CCard>
-              <CCardBody className="p-sm-2 p-lg-5 p-lx-5">
-                <h1 className="text-center">{title}</h1>
-                <CForm>
-                  <HorizontalLabelPositionBelowStepper
-                    handleSubmitForm={handleSubmitForm}
-                    steps={steps}
-                    getStepContent={getStepContent}
-                  />
-                </CForm>
-              </CCardBody>
-            </CCard>
-          </CCol>
-        </CRow>
-      </CContainer>
-    </div >
-  )
-}
+    <FormContext.Provider value={{ setResident, setHouseNumber }}>
+      <div className="c-app c-default-layout flex-row align-items-center">
+        <CContainer>
+          <CRow className="justify-content-center">
+            <CCol>
+              <CCard>
+                <CCardBody className="p-sm-2 p-lg-5 p-lx-5">
+                  <h1 className="text-center">{title}</h1>
+                  <CForm>
+                    <HorizontalLabelPositionBelowStepper
+                      handleSubmitForm={handleSubmitForm}
+                      steps={steps}
+                      getStepContent={getStepContent}
+                    />
+                  </CForm>
+                </CCardBody>
+              </CCard>
+            </CCol>
+          </CRow>
+        </CContainer>
+      </div>
+    </FormContext.Provider>
+  );
+};
 
 export default RegistroSubAfiliados;

@@ -1,7 +1,4 @@
 import React, { useState} from 'react'
-import { useDispatch } from 'react-redux';
-
-import PropTypes from 'prop-types';
 
 import {
   CInput,
@@ -11,11 +8,8 @@ import {
   CSelect
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react';
-import { setBeneficiaryIdentity } from '../../../../redux/actions/register';
 
 const EnderecoCorrespondencia = () => {
-
-  const dispatch = useDispatch();
 
   const [input, setInput] = useState({
     address: "",

@@ -3,38 +3,18 @@ import React from "react";
 import styles from "./styles";
 
 import {
-  CCard,
-  CCardBody,
-  CCol,
-  CContainer,
-  CForm,
-  CRow,
   CInput,
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,
   CSelect,
-  CTextarea,
-  CInputCheckbox,
 } from "@coreui/react";
 
 import {
   Event,
   ContactPhoneOutlined,
-  WebOutlined,
-  GroupAddOutlined,
   CreditCardOutlined,
-  ContactsOutlined,
   GroupOutlined,
-  HomeWorkOutlined,
-  LocalFlorist,
-  AllInboxOutlined,
-  ReceiptOutlined,
-  DeleteForeverOutlined,
-  TrackChangesOutlined,
-  BusinessCenterOutlined,
-  LiveHelpOutlined,
-  CloudUploadOutlined,
   WcOutlined,
   AccountBalanceOutlined,
   PeopleOutline,

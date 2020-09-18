@@ -59,7 +59,7 @@ const Login = () => {
               </CCard>
               <CCard className="text-white bg-primary py-5 d-md-down-none" style={{ width: '44%' }}>
                 <CCardBody className="text-center">
-                  <img src={'avatars/sistemalogo.png'} width="50%" style={{objectFit:"contain"}}/>
+                  <img src={'avatars/sistemalogo.png'} width="50%" style={{objectFit:"contain"}} alt="Logo da CONAFER"/>
                   <div>
                     
                     <h2>Afiliar-se</h2>

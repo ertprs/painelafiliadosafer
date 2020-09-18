@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import {
   CCard,
@@ -42,7 +41,6 @@ import Button from "@material-ui/core/Button";
 import styles from "./styles";
 
 const AffiliatePJ = () => {
-  const dispatch = useDispatch();
 
   const [inputEntity, setInputEntity] = useState({
     name: "",

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
@@ -27,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function HorizontalLabelPositionBelowStepper({ steps, getStepContent, handleSubmitForm }) {
-  const dispatch = useDispatch();
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
 
