@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import {
   CCard,
@@ -8,12 +7,7 @@ import {
   CContainer,
   CForm,
   CRow,
-  CInput,
   CInputGroup,
-  CInputGroupPrepend,
-  CInputGroupText,
-  CSelect,
-  CTextarea,
   CInputCheckbox,
 } from "@coreui/react";
 
@@ -24,7 +18,6 @@ import styles from "./styles";
 import EnderecoCorrespondencia from "../../../components/RegistroSubAfiliados/components/EnderecoCorrespondencia";
 
 const AffiliatePF = () => {
-  const dispatch = useDispatch();
 
   const [input, setInput] = useState({
     name: "",

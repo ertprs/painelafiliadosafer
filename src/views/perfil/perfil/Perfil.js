@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {
-  CBadge,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
-  CDataTable,
   CRow,
   CCardTitle,
   CButton,
@@ -24,21 +22,8 @@ import {
 
 import {
   Event,
-  ContactPhoneOutlined,
-  WebOutlined,
-  GroupAddOutlined,
   CreditCardOutlined,
-  ContactsOutlined,
   GroupOutlined,
-  HomeWorkOutlined,
-  LocalFlorist,
-  AllInboxOutlined,
-  ReceiptOutlined,
-  DeleteForeverOutlined,
-  TrackChangesOutlined,
-  BusinessCenterOutlined,
-  LiveHelpOutlined,
-  CloudUploadOutlined,
   WcOutlined,
   AccountBalanceOutlined,
   PeopleOutline,
@@ -53,22 +38,6 @@ import PerfilData from "./PerfilData";
 import styles from "./styles";
 
 import FormularioCadastroAfiliadoPf from "../../../components/FormularioCadastroAfiliadoPF";
-
-const getBadge = (status) => {
-  switch (status) {
-    case "Active":
-      return "success";
-    case "Inactive":
-      return "secondary";
-    case "Pending":
-      return "warning";
-    case "Banned":
-      return "danger";
-    default:
-      return "primary";
-  }
-};
-const fields = ["name", "registered", "role", "status"];
 
 const Perfil = () => {
   const [openEditProfile, setOpenEditProfile] = useState(false);
@@ -108,10 +77,6 @@ const Perfil = () => {
     setInput({ ...input, [name]: value });
   };
 
-  const handleSelectFiles = (event) => {
-    setInput({ ...input, photo: event.target.files });
-  }
-
   const toggle = () => {
     setOpenEditProfile(!openEditProfile);
   };
@@ -133,7 +98,7 @@ const Perfil = () => {
             </CCardHeader>
             <CCardBody>
               <CRow className="justify-content-center">
-                <img src={PerfilData.photo} style={styles.profile} />
+                <img src={PerfilData.photo} style={styles.profile} alt="" />
               </CRow>
               <CRow className="mb-3">
                 <CCol className="col-12">

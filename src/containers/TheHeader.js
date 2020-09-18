@@ -22,7 +22,6 @@ import {
   TheHeaderDropdownNotif,
   TheHeaderDropdownTasks
 }  from './index'
-import { Link } from 'react-router-dom'
 
 const TheHeader = () => {
   const dispatch = useDispatch()

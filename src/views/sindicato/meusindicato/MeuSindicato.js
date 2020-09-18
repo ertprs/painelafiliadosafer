@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
-  CBadge,
   CCard,
   CCardBody,
   CButtonGroup,
@@ -8,12 +7,8 @@ import {
   CCardHeader,
   CCol,
   CRow,
-  CCollapse,
-  CFade,
-  CSwitch,
-  CLink
 } from  '@coreui/react'
-import { GoogleMap, useLoadScript,InfoWindow, Marker,  } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker,  } from '@react-google-maps/api';
 import CIcon from '@coreui/icons-react'
 
 const membros = [
@@ -26,20 +21,14 @@ const containerStyle = {
   width: '100%',
   height: '400px'
 };
- 
-const center = { lat: -22.7214205, lng: -49.314304 }
 
 const MeuSindicato = () => {
-  const [collapsed, setCollapsed] = React.useState(true)
-  const [showCard, setShowCard] = React.useState(true)
-  const handleApiLoaded = (map, maps) => {
-    // use map and maps objects
-  };
-  const [map, setMap] = React.useState(null)
-  const { isLoaded, loadError } = useLoadScript({
+
+  const [, setMap] = React.useState(null)
+  const { isLoaded, } = useLoadScript({
     googleMapsApiKey: "AIzaSyDwNWt6P3SzQwf4qlUenPgLpD0JPI6XCZc"
   });
-  const { selected, selectedsearchmarker, searchmarker } = useState(null)
+
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
     map.fitBounds(bounds);
@@ -78,7 +67,7 @@ const MeuSindicato = () => {
             </CCardHeader>
             <CCardBody style={{display:"flex",flexDirection:"row"}}>
               <div>
-                <img src={`/assis.png`} width="200px" style={{borderRadius:180,objectFit:"cover"}}/>
+                <img src={`/assis.png`} width="200px" style={{borderRadius:180,objectFit:"cover"}} alt=""/>
               </div>
               <div>
                 <div style={{display:"flex",flexDirection:"row"}}>

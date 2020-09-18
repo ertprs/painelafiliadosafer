@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   CBadge,
   CCard,
@@ -35,8 +35,6 @@ import {
   AddCircleOutlineOutlined,
 } from "@material-ui/icons";
 
-import { Link } from "react-router-dom";
-
 import OrcamentosData from "./OrcamentosData";
 import ModalFileSubmit from "../../../components/ModalFileSubmit";
 
@@ -63,8 +61,6 @@ const fields = [
   "referencias",
   "status",
 ];
-
-const fieldsComentarios = ["comentario", "feitopor", "feitoem"];
 
 const Orcamentos = () => {
   const [large, setLarge] = useState(false);
@@ -291,7 +287,7 @@ const Orcamentos = () => {
               orcamento.comentatio.map((comentario) => (
                 <CAlert
                   color={
-                    comentario.comentarioPai == null ? "secondary" : "success"
+                    comentario.comentarioPai === null ? "secondary" : "success"
                   }
                 >
                   {comentario.comentarioPai != null && (
@@ -314,7 +310,7 @@ const Orcamentos = () => {
               ))}
           </CModalBody>
           <CModalFooter>
-            {orcamento && orcamento.status == "Pendente" && (
+            {orcamento && orcamento.status === "Pendente" && (
               <CButton color="primary" onClick={() => setLarge(!large)}>
                 Assinar
               </CButton>

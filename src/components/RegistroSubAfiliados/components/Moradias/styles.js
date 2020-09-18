@@ -4,13 +4,13 @@ const styles = {
     justifyContent: 'center',
     margin: '20px 0px',
   },
-  buttonRight: {
+  buttonLeft: {
     width: '250px', 
     height: '50px',
     fontSize: '16px',
     marginRight: '10px',
   },
-  buttonLeft: {
+  buttonRight: {
     width: '250px',
     height: '50px',
     fontSize: '16px',

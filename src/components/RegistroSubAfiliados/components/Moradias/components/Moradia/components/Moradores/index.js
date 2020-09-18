@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
+import FormContext from "../../../../../../context";
 
 import {
   CInput,
@@ -32,6 +33,8 @@ import {
 
 const Moradores = ({setInputResident, residentNumber }) => {
 
+  const { setResident } = useContext(FormContext);
+
   const [inputResidents, setInputResidents] = useState({
     resident: "",
     kinship: "",
@@ -61,16 +64,21 @@ const Moradores = ({setInputResident, residentNumber }) => {
     formOfAccessToTreatment: "",
   })
 
+
   const handleChangeInput = event => {
     const { name, value } = event.target;
     setInputResidents({ ...inputResidents, [name]: value })
 
-    setInputResident(inputResidents)
+    setInputResident(inputResidents);
+
+    setResident(inputResidents);
+   
   }
 
   return (
     <>
       <h4>Morador {residentNumber}</h4>
+      <hr/>
       <div className="row">
         <CInputGroup className="mb-3 col-xl-8 col-sm-12 col-lg-7">
           <CInputGroupPrepend>
@@ -81,6 +89,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
           <CInput
             type="text"
             name="resident"
+            title="Residente"
             placeholder="Residente"
             value={inputResidents.resident}
             onChange={handleChangeInput}
@@ -96,6 +105,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
           <CInput
             type="text"
             name="kinship"
+            title="Parentesco"
             placeholder="Parentesco"
             value={inputResidents.kinship}
             onChange={handleChangeInput}
@@ -111,13 +121,14 @@ const Moradores = ({setInputResident, residentNumber }) => {
           <CInput
             type="text"
             name="sex"
+            title="Sexo"
             placeholder="Sexo"
             value={inputResidents.sex}
             onChange={handleChangeInput}
             required
           />
         </CInputGroup>
-        <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
           <CInputGroupPrepend>
             <CInputGroupText>
               <Event style={{ fontSize: "1.1rem" }} />
@@ -126,13 +137,18 @@ const Moradores = ({setInputResident, residentNumber }) => {
           <CInput
             type="text"
             name="bornDate"
+            title="Data de Nascimento"
             placeholder="Data de nascimento"
             value={inputResidents.bornDate}
             onChange={handleChangeInput}
+            onFocus={(e) => (e.currentTarget.type = "date")}
+            onBlur={(e) => {
+              !inputResidents.bornDate && (e.currentTarget.type = "text")
+            }}
             required
           />
         </CInputGroup>
-        <CInputGroup className="mb-3 col-xl-12 col-sm-12 col-lg-12">
+        <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
           <CInputGroupPrepend>
             <CInputGroupText>
               <SchoolOutlined style={{ fontSize: "1.1rem" }} />
@@ -141,6 +157,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
           <CInput
             type="text"
             name="education"
+            title="Escolaridade"
             placeholder="Escolaridade"
             value={inputResidents.education}
             onChange={handleChangeInput}
@@ -156,6 +173,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
           <CInput
             type="text"
             name="mainSourceOfIncome"
+            title="Principal fonte de renda"
             placeholder="Principal fonte de renda"
             value={inputResidents.mainSourceOfIncome}
             onChange={handleChangeInput}
@@ -172,6 +190,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             custom
             onChange={handleChangeInput}
             value={inputResidents.generatesIncomeForFamily}
+            title="Gera renda para a família"
             name="generatesIncomeForFamily"
             id="select"
           >
@@ -188,6 +207,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
           </CInputGroupPrepend>
           <CInput
             type="text"
+            title="Tempo de trabalho no lote"
             name="workingTimeonTheLandPlot"
             placeholder="Tempo de trabalho no lote"
             value={inputResidents.workingTimeonTheLandPlot}
@@ -206,6 +226,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             onChange={handleChangeInput}
             value={inputResidents.issueTheInvoice}
             name="issueTheInvoice"
+            title="Emitir NF"
             id="select"
           >
             <option value={undefined} hidden>Emitir NF</option>
@@ -223,6 +244,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             custom
             onChange={handleChangeInput}
             value={inputResidents.exBeneficiary}
+            title="Ex-Beneficiário"
             name="exBeneficiary"
             id="select"
           >
@@ -240,6 +262,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
           <CInput
             type="text"
             name="activity"
+            title="Atividade"
             placeholder="Atividade"
             value={inputResidents.activity}
             onChange={handleChangeInput}
@@ -255,6 +278,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
           <CInput
             type="text"
             name="demotivatingActivity"
+            title="Atividade Desmotivador"
             placeholder="Atividade Desmotivador"
             value={inputResidents.demotivatingActivity}
             onChange={handleChangeInput}
@@ -279,7 +303,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             <option value={false}>Não</option>
           </CSelect>
         </CInputGroup>
-        <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
           <CInputGroupPrepend>
             <CInputGroupText>
               <AttachMoneyOutlined style={{ fontSize: "1.1rem" }} />
@@ -289,6 +313,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             custom
             onChange={handleChangeInput}
             value={inputResidents.paidWorkOffTheLandPlot}
+            title="Trabalho remunerado fora do lote"
             name="paidWorkOffTheLandPlot"
             id="select"
           >
@@ -297,7 +322,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             <option value={false}>Não</option>
           </CSelect>
         </CInputGroup>
-        <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
           <CInputGroupPrepend>
             <CInputGroupText>
               <DateRangeOutlined style={{ fontSize: "1.1rem" }} />
@@ -306,6 +331,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
           <CInput
             type="text"
             name="initialAgeOffTheLandPlot"
+            title="Trab. fora do lote idade incial"
             placeholder="Trab. fora do lote idade incial"
             value={inputResidents.initialAgeOffTheLandPlot}
             onChange={handleChangeInput}
@@ -322,6 +348,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             custom
             onChange={handleChangeInput}
             value={inputResidents.handicapped}
+            title="Deficiência"
             name="handicapped"
             id="select"
             required
@@ -342,6 +369,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
               <CInput
                 type="text"
                 name="typesOfDisabilities"
+                title="Deficiências"
                 placeholder="Deficiências"
                 value={inputResidents.typesOfDisabilities}
                 onChange={handleChangeInput}
@@ -357,6 +385,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
               <CSelect
                 custom
                 onChange={handleChangeInput}
+                title="Transtorno Mental"
                 value={inputResidents.mentalDisorder}
                 name="mentalDisorder"
                 id="select"
@@ -375,6 +404,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
               <CSelect
                 custom
                 onChange={handleChangeInput}
+                title="Precisa de Cuidados"
                 value={inputResidents.needsCare}
                 name="needsCare"
                 id="select"
@@ -396,6 +426,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
                 value={inputResidents.haveCaregiver}
                 name="haveCaregiver"
                 id="select"
+                title="Tem cuidador"
               >
                 <option value={undefined} hidden>Tem cuidador</option>
                 <option value={true}>Sim</option>
@@ -414,6 +445,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
                 value={inputResidents.organizationCare}
                 name="organizationCare"
                 id="select"
+                title="Organização Cuidados"
               >
                 <option value={undefined} hidden>Organização Cuidados</option>
                 <option value={true}>Sim</option>
@@ -430,6 +462,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
                 type="text"
                 name="whoCares"
                 placeholder="Quem cuida"
+                title="Quem cuida"
                 value={inputResidents.whoCares}
                 onChange={handleChangeInput}
                 required

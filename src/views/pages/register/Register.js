@@ -1,7 +1,6 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 
-import { CCol, CContainer, CForm, CRow } from "@coreui/react";
+import { CContainer } from "@coreui/react";
 
 import RegistroSubAfiliados from "../../../components/RegistroSubAfiliados";
 

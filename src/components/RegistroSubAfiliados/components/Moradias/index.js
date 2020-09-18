@@ -1,66 +1,82 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, Fragment } from "react";
+import { useDispatch } from "react-redux";
 
-import Moradia from './components/Moradia';
+import Moradia from "./components/Moradia";
 
-import Button from '@material-ui/core/Button';
-import { HomeOutlined } from '@material-ui/icons';
+import Button from "@material-ui/core/Button";
+import { HomeOutlined } from "@material-ui/icons";
 
-import styles from './styles';
-import { setHouses, deleteHouse } from '../../../../redux/actions/register';
+import styles from "./styles";
+import { setHouses, deleteHouse, setResidents } from "../../../../redux/actions/register";
 
 const Moradias = () => {
-
   const dispatch = useDispatch();
+  
+
+  let resident;
+  let house;
+
+  const setResident = (res) => {
+    resident = res;
+  }
+
+  const setHouse = (res) => {
+    house = res;
+  }
 
 
   const [formHouse, setFormHouse] = useState([
-    <Moradia
-      houseNumber={1}
-    />
+    <Moradia setResident={setResident} setHouse={setHouse} houseNumber={1} />,
   ]);
-
+  
   const addHouse = () => {
-    setFormHouse([...formHouse,
-    <>
-      <hr />
-      <Moradia
-        houseNumber={formHouse.length + 1}
-      />
-    </>
+    if (resident) {
+      dispatch(setResidents(resident, house));
+    }
+    setFormHouse([
+      ...formHouse,
+      <>
+        <hr />
+        <Moradia setResident={setResident} setHouse={setHouse} houseNumber={formHouse.length + 1} />
+      </>,
     ]);
     dispatch(setHouses([]));
-  }
+  };
 
   const deleteFormHouse = () => {
-    setFormHouse(formHouse.filter((house, i, arr) => {
-      if (i < arr.length - 1) {
-        return house;
-      }
-    }))
+    setFormHouse(formHouse.filter((house, i, arr) => i < arr.length - 1));
 
-    dispatch(deleteHouse())
-  }
+    dispatch(deleteHouse());
+  };
 
   return (
     <>
       {formHouse.map((form, i) => (
-        <Fragment key={i}>
-          {form}
-        </Fragment>
+        <Fragment key={i}>{form}</Fragment>
       ))}
       <div style={styles.boxButtons}>
-        <Button variant="contained" style={styles.buttonRight} onClick={addHouse} color="primary">
+        <Button
+          variant="contained"
+          style={styles.buttonLeft}
+          onClick={addHouse}
+          color="primary"
+        >
           <HomeOutlined style={styles.iconButton} />
           Adicionar
         </Button>
-        <Button variant="contained" style={styles.buttonLeft} onClick={deleteFormHouse} color="secondary">
+        <Button
+          variant="contained"
+          style={styles.buttonRight}
+          onClick={deleteFormHouse}
+          color="secondary"
+          disabled={formHouse.length === 1}
+        >
           <HomeOutlined style={styles.iconButton} />
           Remover
         </Button>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Moradias;

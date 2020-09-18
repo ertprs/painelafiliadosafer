@@ -15,14 +15,12 @@ import {
   CModalFooter,
   CCollapse,
   CFormGroup,
-  CLabel,
 } from "@coreui/react";
 
-import usersData from "../../users/UsersData";
+
 import {
   GoogleMap,
   useLoadScript,
-  InfoWindow,
   Marker,
 } from "@react-google-maps/api";
 import RegistroSubAfiliados from "../../../components/RegistroSubAfiliados";
@@ -268,11 +266,11 @@ const Membros = () => {
   const [form, setForm] = useState(false);
   const [selectedmembro, setselectedmembro] = useState(null);
   const [accordion, setAccordion] = useState(0);
-  const [map, setMap] = React.useState(null);
-  const { isLoaded, loadError } = useLoadScript({
+  const [, setMap] = React.useState(null);
+  const { isLoaded, } = useLoadScript({
     googleMapsApiKey: "AIzaSyDwNWt6P3SzQwf4qlUenPgLpD0JPI6XCZc",
   });
-  const { selected, selectedsearchmarker, searchmarker } = useState(null);
+ 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
     map.fitBounds(bounds);

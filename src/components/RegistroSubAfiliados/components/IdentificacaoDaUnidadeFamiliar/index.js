@@ -1,80 +1,52 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import React from "react";
 
 import {
   CInput,
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react';
+} from "@coreui/react";
+import CIcon from "@coreui/icons-react";
 
-import { AccessTime, Public } from '@material-ui/icons';
-import { setBeneficiaryIdentity } from '../../../../redux/actions/register';
+import { AccessTime, GavelOutlined, RoomOutlined } from "@material-ui/icons";
 
-const IdentificacaoDaUnidadeFamiliar = () => {
+import styles from "./styles";
 
-  const dispatch = useDispatch();
-
-  const [input, setInput] = useState({
-    settlementCode: "",
-    status: "",
-    cpf: "",
-    rg: "",
-    nis: "",
-    civilStatus: "",
-    motherName: "",
-    spouseName: "",
-    spouseCPF: "",
-    naturalness: "",
-    nationality: "",
-  })
-
-  const handleChangeInput = event => {
+const IdentificacaoDaUnidadeFamiliar = ({
+  inputFamilyUnitId,
+  setInputFamilyUnitId,
+}) => {
+  const handleChangeInput = (event) => {
     const { name, value } = event.target;
-    setInput({ ...input, [name]: value })
-
-    if (input.name.length > 0 &&
-      input.status.length > 0 &&
-      input.cpf.length > 0 &&
-      input.rg.length > 0 &&
-      input.settlement.length > 0 &&
-      input.placeOfBirth.length > 0 &&
-      input.rb.length > 0 &&
-      input.incraArea.length > 0
-    ) {
-      dispatch(setBeneficiaryIdentity(input));
-    }
-  }
+    setInputFamilyUnitId({ ...inputFamilyUnitId, [name]: value });
+  };
 
   return (
     <div className="row">
-      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-7">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
-          <CInputGroupText>
-            ¹²³
-          </CInputGroupText>
+          <CInputGroupText>¹²³</CInputGroupText>
         </CInputGroupPrepend>
         <CInput
           type="text"
           name="settlementCode"
           placeholder="Código do Assentamento"
-          value={input.settlementCode}
+          value={inputFamilyUnitId.settlementCode}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>
-            <AccessTime style={{ fontSize: "1.1rem" }} />
+            <AccessTime style={styles.icon} />
           </CInputGroupText>
         </CInputGroupPrepend>
         <CInput
           type="status"
           name="status"
           placeholder="Status"
-          value={input.status}
+          value={inputFamilyUnitId.status}
           onChange={handleChangeInput}
           required
         />
@@ -89,7 +61,7 @@ const IdentificacaoDaUnidadeFamiliar = () => {
           type="text"
           name="cpf"
           pattern="[0-9]{11}"
-          value={input.cpf}
+          value={inputFamilyUnitId.cpf}
           placeholder="CPF"
           onChange={handleChangeInput}
           title="CPF deve conter mais de 11 números."
@@ -106,7 +78,7 @@ const IdentificacaoDaUnidadeFamiliar = () => {
           type="text"
           name="rg"
           placeholder="RG"
-          value={input.rg}
+          value={inputFamilyUnitId.rg}
           onChange={handleChangeInput}
           required
         />
@@ -121,20 +93,22 @@ const IdentificacaoDaUnidadeFamiliar = () => {
           type="text"
           name="nis"
           placeholder="NIS"
-          value={input.nis}
+          value={inputFamilyUnitId.nis}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
-          <CInputGroupText>¹²³</CInputGroupText>
+          <CInputGroupText>
+            <GavelOutlined style={styles.icon} />
+          </CInputGroupText>
         </CInputGroupPrepend>
         <CInput
           type="text"
           name="civilStatus"
           placeholder="Estado Civil"
-          value={input.civilStatus}
+          value={inputFamilyUnitId.civilStatus}
           onChange={handleChangeInput}
           required
         />
@@ -149,12 +123,12 @@ const IdentificacaoDaUnidadeFamiliar = () => {
           type="text"
           name="placeOfBirth"
           placeholder="Nome da Mãe"
-          value={input.motherName}
+          value={inputFamilyUnitId.motherName}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-8 col-sm-12 col-lg-8">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-user" />
@@ -163,13 +137,13 @@ const IdentificacaoDaUnidadeFamiliar = () => {
         <CInput
           type="text"
           name="spouseName"
-          placeholder="Nome do cônjuge"
-          value={input.spouseName}
+          placeholder="Nome do Cônjuge"
+          value={inputFamilyUnitId.spouseName}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-credit-card" />
@@ -178,44 +152,44 @@ const IdentificacaoDaUnidadeFamiliar = () => {
         <CInput
           type="text"
           name="spouseCPF"
-          placeholder="CPF do cônjuge"
-          value={input.spouseCPF}
+          placeholder="CPF do Cônjuge"
+          value={inputFamilyUnitId.spouseCPF}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>
-            <CIcon name="cil-map" />
+            <RoomOutlined style={styles.icon} />
           </CInputGroupText>
         </CInputGroupPrepend>
         <CInput
           type="text"
           name="naturalness"
           placeholder="Naturalidade"
-          value={input.naturalness}
+          value={inputFamilyUnitId.naturalness}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
         <CInputGroupPrepend>
           <CInputGroupText>
-            <CIcon name="cil-map" />
+            <RoomOutlined style={styles.icon} />
           </CInputGroupText>
         </CInputGroupPrepend>
         <CInput
           type="text"
           name="nationality"
           placeholder="Nacionalidade"
-          value={input.nationality}
+          value={inputFamilyUnitId.nationality}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
     </div>
-  )
-}
+  );
+};
 
 export default IdentificacaoDaUnidadeFamiliar;
