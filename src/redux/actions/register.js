@@ -44,3 +44,17 @@ export const setGeneralFamilyUnitInfo = (generalFamilyUnitInfo) => ({
     generalFamilyUnitInfo
   }
 })
+
+export const setDiagnosisOfAgriculturalSystems = (diagnosisOfAgriculturalSystems) => ({
+  type: "SET_DIAGNOSIS_OF_AGRICULTURAL_SYSTEMS",
+  payload: {
+    diagnosisOfAgriculturalSystems
+  }
+});
+
+export const setProduction = (production) => ({
+  type: "SET_PRODUCTION",
+  payload: {
+    production
+  }
+})

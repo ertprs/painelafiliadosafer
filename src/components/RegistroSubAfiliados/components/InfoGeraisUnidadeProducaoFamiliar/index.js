@@ -8,7 +8,7 @@ import {
   CSelect,
 } from "@coreui/react";
 
-import { DateRangeOutlined, AccessibleOutlined } from "@material-ui/icons";
+import { DateRangeOutlined, HomeOutlined, FlagOutlined, EventOutlined, AssignmentOutlined } from "@material-ui/icons";
 import CIcon from "@coreui/icons-react";
 
 import styles from "./styles";
@@ -27,7 +27,7 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
 
   return (
     <div className="row">
-      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-7">
+      <CInputGroup className="mb-3 col-xl-8 col-sm-12 col-lg-8">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-location-pin" />
@@ -36,6 +36,7 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
         <CInput
           type="text"
           name="operationalCore"
+          title="Núcleo Operacional da ATER (Município)"
           placeholder="Núcleo Operacional da ATER (Município)"
           value={inputGeneralFamilyUnitInfo.operationalCore}
           onChange={handleChangeInput}
@@ -52,6 +53,7 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           custom
           onChange={handleChangeInput}
           value={inputGeneralFamilyUnitInfo.state}
+          title="Estado de Origem de Responsável Pelo Lote"
           name="state"
           id="select"
         >
@@ -84,7 +86,7 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           <option value="TO">Tocantins</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-location-pin" />
@@ -94,6 +96,7 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           type="text"
           name="county"
           value={inputGeneralFamilyUnitInfo.county}
+          title="Muncípio de origem do responsável pelo lote"
           placeholder="Muncípio de origem do responsável pelo lote"
           onChange={handleChangeInput}
           required
@@ -106,24 +109,44 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           </CInputGroupText>
         </CInputGroupPrepend>
         <CInput
-          type="text"
+          type="number"
           name="yearsResidingInTheRegion"
+          title="Anos que reside na região"
           placeholder="Anos que reside na região"
           value={inputGeneralFamilyUnitInfo.yearsResidingInTheRegion}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
         <CInputGroupPrepend>
           <CInputGroupText>
-            <AccessibleOutlined style={styles.icon} />
+            <EventOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="contractValidity"
+          title="Validade da Concessão"
+          placeholder="Validade da Concessão"
+          value={inputGeneralFamilyUnitInfo.contractValidity}
+          onChange={handleChangeInput}
+          onFocus={(e) => (e.currentTarget.type = "date")}
+          onBlur={(e) => (e.currentTarget.type = "text")}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <HomeOutlined style={styles.icon} />
           </CInputGroupText>
         </CInputGroupPrepend>
         <CSelect
           custom
           onChange={handleChangeInput}
           value={inputGeneralFamilyUnitInfo.alwaysResidedInTheCountryside}
+          title="Sempre residiu no meio rural?"
           name="alwaysResidedInTheCountryside"
           id="select"
           required
@@ -135,16 +158,17 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
-            <AccessibleOutlined style={styles.icon} />
+            <FlagOutlined style={styles.icon} />
           </CInputGroupText>
         </CInputGroupPrepend>
         <CSelect
           custom
           onChange={handleChangeInput}
           value={inputGeneralFamilyUnitInfo.knowHheLimitsOfTheLandPlot}
+          title="O beneficiário conhece o limite do lote?"
           name="knowHheLimitsOfTheLandPlot"
           id="select"
           required
@@ -156,16 +180,17 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
-            <AccessibleOutlined style={styles.icon} />
+            <FlagOutlined style={styles.icon} />
           </CInputGroupText>
         </CInputGroupPrepend>
         <CSelect
           custom
           onChange={handleChangeInput}
           value={inputGeneralFamilyUnitInfo.landPlotBoundaries}
+          title="O lote tem marco que identifica os limites do lote?"
           name="landPlotBoundaries"
           id="select"
           required
@@ -177,16 +202,17 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
-            <AccessibleOutlined style={styles.icon} />
+            <AssignmentOutlined style={styles.icon} />
           </CInputGroupText>
         </CInputGroupPrepend>
         <CSelect
           custom
           onChange={handleChangeInput}
           value={inputGeneralFamilyUnitInfo.contract}
+          title="O beneficiário tem o contrato/termo de concessão de uso?"
           name="contract"
           id="select"
           required
@@ -197,64 +223,6 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           <option value={true}>Sim</option>
           <option value={false}>Não</option>
         </CSelect>
-      </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-5">
-        <CInputGroupPrepend>
-          <CInputGroupText>¹²³</CInputGroupText>
-        </CInputGroupPrepend>
-        <CInput
-          type="text"
-          name="contractValidity"
-          placeholder="Validade da Concessão"
-          value={inputGeneralFamilyUnitInfo.contractValidity}
-          onChange={handleChangeInput}
-          required
-        />
-      </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
-        <CInputGroupPrepend>
-          <CInputGroupText>
-            <CIcon name="cil-location-pin" />
-          </CInputGroupText>
-        </CInputGroupPrepend>
-        <CInput
-          type="text"
-          name="placeOfBirth"
-          placeholder="Naturalidade"
-          value={inputGeneralFamilyUnitInfo.placeOfBirth}
-          onChange={handleChangeInput}
-          required
-        />
-      </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
-        <CInputGroupPrepend>
-          <CInputGroupText>
-            <CIcon name="cil-check" />
-          </CInputGroupText>
-        </CInputGroupPrepend>
-        <CInput
-          type="text"
-          name="rb"
-          placeholder="Status na RB"
-          value={inputGeneralFamilyUnitInfo.rb}
-          onChange={handleChangeInput}
-          required
-        />
-      </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
-        <CInputGroupPrepend>
-          <CInputGroupText>
-            <CIcon name="cil-map" />
-          </CInputGroupText>
-        </CInputGroupPrepend>
-        <CInput
-          type="text"
-          name="incraArea"
-          placeholder="Ocupa área destinada pelo Incra"
-          value={inputGeneralFamilyUnitInfo.incraArea}
-          onChange={handleChangeInput}
-          required
-        />
       </CInputGroup>
     </div>
   );
