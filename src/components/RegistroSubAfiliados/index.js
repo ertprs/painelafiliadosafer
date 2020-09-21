@@ -15,11 +15,15 @@ import EnderecoCorrespondencia from "./components/EnderecoCorrespondencia";
 
 import {
   setBeneficiaryIdentity,
+  setDiagnosisOfAgriculturalSystems,
   setFamilyUnitIdentification,
   setGeneralFamilyUnitInfo,
   setPlotLocation,
+  setProduction,
   setResidents,
 } from "../../redux/actions/register";
+import DiagnosticoDeSistemasAgrarios from "./components/DiagnosticoDeSistemasAgrarios";
+import Producao from "./components/Producao";
 
 const RegistroSubAfiliados = ({ title }) => {
   const dispatch = useDispatch();
@@ -102,6 +106,71 @@ const RegistroSubAfiliados = ({ title }) => {
 
   const [resident, setResident] = useState();
 
+  const [inputAddress, setInputAddress] = useState({
+    address: "",
+    number: "",
+    complement: "",
+    neighborhood: "",
+    cep: "",
+    state: "",
+    zone: "",
+    email: "",
+    tel1: "",
+    tel2: "",
+    county: "",
+  });
+
+  const [
+    inputDiagnosisOfAgriculturalSystems,
+    setInputDiagnosisOfAgriculturalSystems,
+  ] = useState({
+    extraIncome: "",
+    assistance: undefined,
+    publicHousingpolicy: undefined,
+    financing: undefined,
+    ruralCommunicationMedium: undefined,
+    ruralCommunicationType: "",
+    garbageDestination: "",
+    sanitation: "",
+    schoolTransport: "",
+    hireEmployees: undefined,
+    howManyPermanentEmployees: "",
+    receivedTechnicalAssistance: undefined,
+    rememberTheLastFire: undefined,
+    yearOfTheBurn: "",
+    accessToWater: undefined,
+    electricity: undefined,
+    NetworkType: undefined,
+    availableEnergyMeetsProduction: undefined,
+    complementsEnergySupply: undefined,
+    itAlsoUses: "",
+    wantToGetComplementary: "",
+    waterTreatment: "",
+    accessToWaterAllYear: undefined,
+    naturalWater: undefined,
+    protectedByRiparianForest: undefined,
+    distanceFromTheCatchment: "",
+    alterationWatercourse: undefined,
+    rainwaterHarvesting: undefined,
+    howRainwaterIsUsed: "",
+  });
+
+  const [inputProduction, setInputProduction] = useState({
+    headquarters: "",
+    nativeForest: "",
+    forest: "",
+    fallow: "",
+    nativePasture: "",
+    plantedPasture: "",
+    partnershipInThirdPartyArea: "",
+    total: "",
+    homeGarden: "",
+    productionSystems: "",
+    typeOfPlanting: "",
+    handling: "",
+    amountOfCulture: "",
+  })
+
   const steps = [
     "Id. do Beneficiário",
     "Local do Lote",
@@ -109,6 +178,8 @@ const RegistroSubAfiliados = ({ title }) => {
     "Id. da Unid. Familiar",
     "Info. Gerais da Unid. Familiar",
     "Endereço",
+    "Diagnóstico de Sis. Agrários",
+    "Produção"
   ];
 
   let house;
@@ -155,7 +226,23 @@ const RegistroSubAfiliados = ({ title }) => {
           />
         );
       case 5:
-        return <EnderecoCorrespondencia />;
+        return (
+          <EnderecoCorrespondencia
+            inputAddress={inputAddress}
+            setInputAddress={setInputAddress}
+          />
+        );
+      case 6:
+        return (
+          <DiagnosticoDeSistemasAgrarios
+            inputDiagnosisOfAgriculturalSystems={
+              inputDiagnosisOfAgriculturalSystems
+            }
+            setInputDiagnosisOfAgriculturalSystems={setInputDiagnosisOfAgriculturalSystems}
+          />
+        );
+      case 7:
+      return <Producao inputProduction={inputProduction} setInputProduction={setInputProduction} />
       default:
         return "Unknown stepIndex";
     }
@@ -179,7 +266,10 @@ const RegistroSubAfiliados = ({ title }) => {
         dispatch(setGeneralFamilyUnitInfo(inputGeneralFamilyUnitInfo));
         break;
       case 5:
-        dispatch();
+        dispatch(setDiagnosisOfAgriculturalSystems(inputDiagnosisOfAgriculturalSystems));
+        break;
+      case 6:
+        dispatch(setProduction(inputProduction));
         break;
       default:
         return;

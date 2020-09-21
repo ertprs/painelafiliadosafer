@@ -477,6 +477,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
               <CInput
                 type="text"
                 name="deficientActivity"
+                title="Atividade"
                 placeholder="Atividade"
                 value={inputResidents.deficientActivity}
                 onChange={handleChangeInput}
@@ -495,6 +496,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
           <CInput
             type="text"
             name="previousDiseases"
+            title="Doenças que tem ou teve nos últimos 2 anos"
             placeholder="Doenças que tem ou teve nos últimos 2 anos"
             value={inputResidents.previousDiseases}
             onChange={handleChangeInput}
@@ -510,6 +512,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
           <CInput
             type="text"
             name="typeOfTreatment"
+            title="Tipo de tratamento"
             placeholder="Tipo de tratamento"
             value={inputResidents.typeOfTreatment}
             onChange={handleChangeInput}
@@ -524,6 +527,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
           </CInputGroupPrepend>
           <CInput
             type="text"
+            title="Forma de acesso para tratamento"
             name="formOfAccessToTreatment"
             placeholder="Forma de acesso para tratamento"
             value={inputResidents.formOfAccessToTreatment}

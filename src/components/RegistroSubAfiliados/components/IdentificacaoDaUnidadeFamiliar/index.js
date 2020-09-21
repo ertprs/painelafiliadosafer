@@ -30,6 +30,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
         <CInput
           type="text"
           name="settlementCode"
+          title="Código do Assentamento"
           placeholder="Código do Assentamento"
           value={inputFamilyUnitId.settlementCode}
           onChange={handleChangeInput}
@@ -45,6 +46,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
         <CInput
           type="status"
           name="status"
+          title="Status"
           placeholder="Status"
           value={inputFamilyUnitId.status}
           onChange={handleChangeInput}
@@ -77,6 +79,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
         <CInput
           type="text"
           name="rg"
+          title="RG"
           placeholder="RG"
           value={inputFamilyUnitId.rg}
           onChange={handleChangeInput}
@@ -92,6 +95,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
         <CInput
           type="text"
           name="nis"
+          title="NIS"
           placeholder="NIS"
           value={inputFamilyUnitId.nis}
           onChange={handleChangeInput}
@@ -107,13 +111,14 @@ const IdentificacaoDaUnidadeFamiliar = ({
         <CInput
           type="text"
           name="civilStatus"
+          title="Estado Civil"
           placeholder="Estado Civil"
           value={inputFamilyUnitId.civilStatus}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-8 col-sm-12 col-lg-8">
+      <CInputGroup className="mb-3 col-xl-12 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-user" />
@@ -122,13 +127,14 @@ const IdentificacaoDaUnidadeFamiliar = ({
         <CInput
           type="text"
           name="placeOfBirth"
+          title="Nome da Mãe"
           placeholder="Nome da Mãe"
           value={inputFamilyUnitId.motherName}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-8 col-sm-12 col-lg-8">
+      <CInputGroup className="mb-3 col-xl-12 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-user" />
@@ -137,6 +143,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
         <CInput
           type="text"
           name="spouseName"
+          title="Nome do Cônjuge"
           placeholder="Nome do Cônjuge"
           value={inputFamilyUnitId.spouseName}
           onChange={handleChangeInput}
@@ -152,6 +159,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
         <CInput
           type="text"
           name="spouseCPF"
+          title="CPF do Cônjuge"
           placeholder="CPF do Cônjuge"
           value={inputFamilyUnitId.spouseCPF}
           onChange={handleChangeInput}
@@ -167,13 +175,14 @@ const IdentificacaoDaUnidadeFamiliar = ({
         <CInput
           type="text"
           name="naturalness"
+          title="Naturalidade"
           placeholder="Naturalidade"
           value={inputFamilyUnitId.naturalness}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>
             <RoomOutlined style={styles.icon} />
@@ -182,6 +191,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
         <CInput
           type="text"
           name="nationality"
+          title="Nacionalidade"
           placeholder="Nacionalidade"
           value={inputFamilyUnitId.nationality}
           onChange={handleChangeInput}

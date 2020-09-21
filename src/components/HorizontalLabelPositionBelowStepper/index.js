@@ -70,7 +70,7 @@ function HorizontalLabelPositionBelowStepper({ steps, getStepContent, handleSubm
               </Button>
                 {activeStep === steps.length - 1 ?
                   <Button variant="contained" color="primary" onClick={handleSubmitForm} type="submit">
-                    Concluido
+                    Concluído
                   </Button>
                   :
                   <Button variant="contained" color="primary" onClick={handleNext}>
