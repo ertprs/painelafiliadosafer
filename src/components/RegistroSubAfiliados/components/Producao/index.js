@@ -7,19 +7,44 @@ import {
   CInputGroupText,
   CSelect,
 } from "@coreui/react";
+
 import CIcon from "@coreui/icons-react";
+
+import { FaFish } from "react-icons/fa";
+import {
+  GiBoatFishing,
+  GiFishingNet,
+  GiFishSmoking,
+  GiRattlesnake,
+  GiSpearfishing,
+} from "react-icons/gi";
+
+import { ImSortNumbericDesc } from "react-icons/im";
 
 import styles from "./styles";
 import {
   AccountTreeOutlined,
+  AttachMoneyOutlined,
   BlurLinearOutlined,
   BlurOffOutlined,
   BlurOnOutlined,
+  BugReportOutlined,
+  CommuteOutlined,
+  DeleteOutlineOutlined,
+  DirectionsBoatOutlined,
+  GrainOutlined,
   HomeWorkOutlined,
+  InsertChartOutlinedTwoTone,
+  LocalDrinkOutlined,
+  LocalShippingOutlined,
   NatureOutlined,
   PanToolOutlined,
+  ReportProblemOutlined,
   SpaOutlined,
+  StorefrontOutlined,
   SupervisedUserCircleOutlined,
+  ThumbUpAltOutlined,
+  WavesOutlined,
 } from "@material-ui/icons";
 
 const Producao = ({ inputProduction, setInputProduction }) => {
@@ -346,6 +371,572 @@ const Producao = ({ inputProduction, setInputProduction }) => {
         <h3>Cultura de Cana-de-açúcar</h3>
         <hr />
       </div>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <InsertChartOutlinedTwoTone style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="annualProduction"
+          title="Produção Anual"
+          placeholder="Produção Anual"
+          value={inputProduction.annualProduction}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-8 col-sm-12 col-lg-8">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <AttachMoneyOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="selfConsumption"
+          title="Preço Por Kg do Autoconsumo (Se Fosse Comprar no Mercado Local)"
+          placeholder="Preço Por Kg do Autoconsumo (Se Fosse Comprar no Mercado Local)"
+          value={inputProduction.selfConsumption}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <InsertChartOutlinedTwoTone style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="annualProduction"
+          title="Quantidade Comercializada Anual"
+          placeholder="Quantidade Comercializada Anual"
+          value={inputProduction.annualProduction}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <AttachMoneyOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="kgPrice"
+          title="Por Quanto Vende o Kg"
+          placeholder="Por Quanto Vende o Kg"
+          value={inputProduction.kgPrice}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <SpaOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="seedOriginSeedling"
+          title="Semente/Muda Origem"
+          placeholder="Semente/Muda Origem"
+          value={inputProduction.seedOriginSeedling}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <SpaOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CSelect
+          custom
+          onChange={handleChangeInput}
+          value={inputProduction.creoleSeed}
+          title="Semente Crioula"
+          name="creoleSeed"
+          id="select"
+          required
+        >
+          <option value={undefined} hidden>
+            Semente Crioula
+          </option>
+          <option value={true}>Sim</option>
+          <option value={false}>Não</option>
+        </CSelect>
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <BugReportOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CSelect
+          custom
+          onChange={handleChangeInput}
+          value={inputProduction.creoleSeed}
+          title="Tem problemas com ataques de pragas e doenças?"
+          name="creoleSeed"
+          id="select"
+          required
+        >
+          <option value={undefined} hidden>
+            Tem problemas com ataques de pragas e doenças?
+          </option>
+          <option value={true}>Sim</option>
+          <option value={false}>Não</option>
+        </CSelect>
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <CIcon name="cil-map" />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="irrigations"
+          title="Área Irrigada"
+          placeholder="Área Irrigada"
+          value={inputProduction.irrigations}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <DeleteOutlineOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CSelect
+          custom
+          onChange={handleChangeInput}
+          value={inputProduction.wasteGeneration}
+          title="A Produção Gera Resíduo?"
+          name="wasteGeneration"
+          id="select"
+          required
+        >
+          <option value={undefined} hidden>
+            A Produção Gera Resíduo?
+          </option>
+          <option value={true}>Sim</option>
+          <option value={false}>Não</option>
+        </CSelect>
+      </CInputGroup>
+      <div className="col-12">
+        <h3>Produção Animal</h3>
+        <hr />
+      </div>
+      <div className="col-12">
+        <h4>Piscicultura</h4>
+        <hr />
+      </div>
+      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <WavesOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="piscicultureType"
+          title="Tipo"
+          placeholder="Tipo"
+          value={inputProduction.piscicultureType}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <FaFish style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="piscicultureHandling"
+          title="Manejo"
+          placeholder="Manejo"
+          value={inputProduction.piscicultureHandling}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <GiFishingNet style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="pisciculturePeeling"
+          title="Sistema de Despesca"
+          placeholder="Sistema de Despesca"
+          value={inputProduction.pisciculturePeeling}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <GrainOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="piscicultureFoodComplementation"
+          title="Complementação Alimentar"
+          placeholder="Complementação Alimentar"
+          value={inputProduction.piscicultureFoodComplementation}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <AttachMoneyOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="piscicultureFoodComplementationCost"
+          title="Comp. Alim. - Custo Total Anual"
+          placeholder="Comp. Alim. - Custo Total Anual"
+          value={inputProduction.piscicultureFoodComplementationCost}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <GiFishSmoking style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="piscicultureFinality"
+          title="Finalidade"
+          placeholder="Finalidade"
+          value={inputProduction.piscicultureFinality}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <GiBoatFishing style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CSelect
+          custom
+          onChange={handleChangeInput}
+          value={inputProduction.piscicultureFishPay}
+          title="Existe Pesque-Pague"
+          name="piscicultureFishPay"
+          id="select"
+          required
+        >
+          <option value={undefined} hidden>
+            Existe Pesque-Pague
+          </option>
+          <option value={true}>Sim</option>
+          <option value={false}>Não</option>
+        </CSelect>
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <LocalDrinkOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="piscicultureReservoir"
+          title="Tamanho do Reservatório (m²)"
+          placeholder="Tamanho do Reservatório (m²)"
+          value={inputProduction.piscicultureReservoir}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <div className="col-12">
+        <h4>Piscicultura - Destino Anual da Produção</h4>
+        <hr />
+      </div>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <GiSpearfishing style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="piscicultureProduction"
+          title="Produção de Carne (Kg/ano)"
+          placeholder="Produção de Carne (Kg/ano)"
+          value={inputProduction.piscicultureProduction}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <AttachMoneyOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="pisciculturePriceKg"
+          title="Preço de Compra do Kg no Mercado Local - Total Autoconsumo"
+          placeholder="Preço de Compra do Kg no Mercado Local - Total Autoconsumo"
+          value={inputProduction.pisciculturePriceKg}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <InsertChartOutlinedTwoTone style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="piscicultureCommercializedProduction"
+          title="Produção Comercializada (Kg/ano)"
+          placeholder="Produção Comercializada (Kg/ano)"
+          value={inputProduction.piscicultureCommercializedProduction}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <AttachMoneyOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="piscicultureMarketedPrice"
+          title="Preço Médio Por Kg Obitido na Comercialização"
+          placeholder="Preço Médio Por Kg Obitido na Comercialização"
+          value={inputProduction.piscicultureMarketedPrice}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-12 col-sm-12 col-lg-12">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <StorefrontOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="pisciculturemarketingChannels"
+          title="Principais Canais de Comercialização"
+          placeholder="Principais Canais de Comercialização"
+          value={inputProduction.pisciculturemarketingChannels}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <div className="col-12">
+        <h3>Custo de Transporte da Produção</h3>
+        <hr />
+      </div>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <CommuteOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="mainModeTransport"
+          title="Principal Meio de Transporte da Produção do Lote"
+          placeholder="Principal Meio de Transporte da Produção do Lote"
+          value={inputProduction.mainModeTransport}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <DirectionsBoatOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="ownWaterwayTransport"
+          title="Custo do Transporte Próprio Hidroviário"
+          placeholder="Custo do Transporte Próprio Hidroviário"
+          value={inputProduction.ownWaterwayTransport}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <LocalShippingOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="roadCharteredTransport"
+          title="Custo do Transporte Fretado Rodoviário"
+          placeholder="Custo do Transporte Fretado Rodoviário"
+          value={inputProduction.roadCharteredTransport}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <DirectionsBoatOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="waterwayCharteredTransport"
+          title="Custo do Transporte Fretado Hidroviário"
+          placeholder="Custo do Transporte Fretado Hidroviário"
+          value={inputProduction.waterwayCharteredTransport}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <div className="col-12">
+        <h3>Animais Silvestres</h3>
+        <hr />
+      </div>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <GiRattlesnake style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="waterwayCharteredTransport"
+          title="Animais Silvestres Já Foram Avistados no Lote ou Assentamento"
+          placeholder="Animais Silvestres Já Foram Avistados no Lote ou Assentamento"
+          value={inputProduction.waterwayCharteredTransport}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <ReportProblemOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CSelect
+          custom
+          onChange={handleChangeInput}
+          value={inputProduction.problemsWithWildAnimals}
+          title="Animais Silvestres Causam Problemas?"
+          name="problemsWithWildAnimals"
+          id="select"
+          required
+        >
+          <option value={undefined} hidden>
+            Animais Silvestres Causam Problemas?
+          </option>
+          <option value={true}>Sim</option>
+          <option value={false}>Não</option>
+        </CSelect>
+      </CInputGroup>
+      <div className="col-12">
+        <h3>Principais Benfeitorias (galpão, estufa, secador, silos, etc)</h3>
+        <hr />
+      </div>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <ThumbUpAltOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="improvement"
+          title="Benfeitoria"
+          placeholder="Benfeitoria"
+          value={inputProduction.improvement}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <ThumbUpAltOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="otherImprovement"
+          title="Outra Benfeitoria"
+          placeholder="Outra Benfeitoria"
+          value={inputProduction.otherImprovement}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <ThumbUpAltOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="typeImprovement"
+          title="Tipo"
+          placeholder="Tipo"
+          value={inputProduction.typeImprovement}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <ImSortNumbericDesc style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="dimensionImprovement"
+          title="Dimensão (m² ou m)"
+          placeholder="Dimensão (m² ou m)"
+          value={inputProduction.dimensionImprovement}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
     </div>
   );
 };
