@@ -24,6 +24,9 @@ import {
 } from "../../redux/actions/register";
 import DiagnosticoDeSistemasAgrarios from "./components/DiagnosticoDeSistemasAgrarios";
 import Producao from "./components/Producao";
+import Documentacao from "./components/Documentacao";
+import InfoDoImovel from "./components/InfoDoImovel";
+import QualidadeAmbiental from "./components/QualidadeAmbiental";
 
 const RegistroSubAfiliados = ({ title }) => {
   const dispatch = useDispatch();
@@ -196,11 +199,58 @@ const RegistroSubAfiliados = ({ title }) => {
     pisciculturemarketingChannels: "",
     wildAnimals: "",
     problemsWithWildAnimals: "",
-    improvement: "",
-    otherImprovement: "",
-    typeImprovement: "",
-    dimensionImprovement: "",
-  })
+    improvements: [],
+    bulls: "",
+    equine: "",
+    muares: "",
+  });
+
+  const [inputDocumentation, setInputDocumentation] = useState({
+    documentsArea: "",
+    propertyName: "",
+    georeferencing: undefined,
+    ownership: "",
+    domainTitle: undefined,
+    ccu: undefined,
+    ccdru: undefined,
+    regularization: undefined,
+    sncr: "",
+    certification: "",
+  });
+
+  const [inputPropertyInformation, setInputPropertyInformation] = useState({
+    pra: undefined,
+    deficitNativeVegetation: undefined,
+    compensationDeficitArea: "",
+    tac: undefined,
+    infractions: undefined,
+    regularizeDeficit: "",
+    remainingAreaNativeVegetation: undefined,
+    surplusArea: "",
+    rppn: undefined,
+    crf: undefined,
+    legislationDate: "",
+
+  });
+
+  const [inputEnvironmentalQuality, setInputEnvironmentQuality] = useState({
+    environmentalQuality: "",
+    water: undefined,
+    climate: undefined,
+    soil: undefined,
+    vegetation: undefined,
+    activityToImproveEnvironmentalQuality: undefined,
+    specifyActivity: undefined,
+    interferesWithTheEnvironment: undefined,
+    inWhatWay: undefined,
+    experienceTraining: "",
+    typeOrganization: "",
+    activitiesInterest: "",
+    positiveSide: "",
+    negativeSide: "",
+    restriction: "",
+    expectationFuture: "",
+  });
 
   const steps = [
     "Id. do Beneficiário",
@@ -210,7 +260,10 @@ const RegistroSubAfiliados = ({ title }) => {
     "Info. Gerais da Unid. Familiar",
     "Endereço",
     "Diagnóstico de Sis. Agrários",
-    "Produção"
+    "Produção",
+    "Documentação",
+    "Info. do Imóvel",
+    "Qual. Ambiental",
   ];
 
   let house;
@@ -269,11 +322,39 @@ const RegistroSubAfiliados = ({ title }) => {
             inputDiagnosisOfAgriculturalSystems={
               inputDiagnosisOfAgriculturalSystems
             }
-            setInputDiagnosisOfAgriculturalSystems={setInputDiagnosisOfAgriculturalSystems}
+            setInputDiagnosisOfAgriculturalSystems={
+              setInputDiagnosisOfAgriculturalSystems
+            }
           />
         );
       case 7:
-      return <Producao inputProduction={inputProduction} setInputProduction={setInputProduction} />
+        return (
+          <Producao
+            inputProduction={inputProduction}
+            setInputProduction={setInputProduction}
+          />
+        );
+      case 8:
+        return (
+          <Documentacao
+            inputDocumentation={inputDocumentation}
+            setInputDocumentation={setInputDocumentation}
+          />
+        );
+      case 9:
+        return (
+          <InfoDoImovel
+            inputPropertyInformation={inputPropertyInformation}
+            setInputPropertyInformation={setInputPropertyInformation}
+          />
+        );
+      case 10:
+        return (
+          <QualidadeAmbiental
+            inputEnvironmentalQuality={inputEnvironmentalQuality}
+            setInputEnvironmentQuality={setInputEnvironmentQuality}
+          />
+        );
       default:
         return "Unknown stepIndex";
     }
@@ -297,7 +378,9 @@ const RegistroSubAfiliados = ({ title }) => {
         dispatch(setGeneralFamilyUnitInfo(inputGeneralFamilyUnitInfo));
         break;
       case 5:
-        dispatch(setDiagnosisOfAgriculturalSystems(inputDiagnosisOfAgriculturalSystems));
+        dispatch(
+          setDiagnosisOfAgriculturalSystems(inputDiagnosisOfAgriculturalSystems)
+        );
         break;
       case 6:
         dispatch(setProduction(inputProduction));

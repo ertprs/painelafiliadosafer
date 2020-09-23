@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
+  CButton,
+  CDataTable,
   CInput,
   CInputGroup,
   CInputGroupPrepend,
@@ -10,18 +12,19 @@ import {
 
 import CIcon from "@coreui/icons-react";
 
-import { FaFish } from "react-icons/fa";
+import { FaFish, FaStickerMule } from "react-icons/fa";
 import {
   GiBoatFishing,
+  GiBull,
   GiFishingNet,
   GiFishSmoking,
+  GiHorseHead,
   GiRattlesnake,
   GiSpearfishing,
 } from "react-icons/gi";
 
-import { ImSortNumbericDesc } from "react-icons/im";
-
 import styles from "./styles";
+
 import {
   AccountTreeOutlined,
   AttachMoneyOutlined,
@@ -30,8 +33,10 @@ import {
   BlurOnOutlined,
   BugReportOutlined,
   CommuteOutlined,
+  DeleteForeverOutlined,
   DeleteOutlineOutlined,
   DirectionsBoatOutlined,
+  EventOutlined,
   GrainOutlined,
   HomeWorkOutlined,
   InsertChartOutlinedTwoTone,
@@ -48,9 +53,38 @@ import {
 } from "@material-ui/icons";
 
 const Producao = ({ inputProduction, setInputProduction }) => {
+  const [inputImprovements, setInputImprovements] = useState({
+    improvement: "",
+    otherImprovement: "",
+    typeImprovement: "",
+    dimensionImprovement: "",
+    improvementAge: "",
+  });
+
   const handleChangeInput = (event) => {
     const { name, value } = event.target;
     setInputProduction({ ...inputProduction, [name]: value });
+  };
+
+  const handleChangeInputImprovements = (event) => {
+    const { name, value } = event.target;
+    setInputImprovements({ ...inputImprovements, [name]: value });
+  };
+
+  const addImprovement = () => {
+    setInputProduction({
+      ...inputProduction,
+      improvements: [...inputProduction.improvements, inputImprovements],
+    });
+  };
+
+  const deleteImprovement = (index) => {
+    setInputProduction({
+      ...inputProduction,
+      improvements: inputProduction.improvements.filter(
+        (item, i) => i !== index
+      ),
+    });
   };
 
   return (
@@ -884,8 +918,8 @@ const Producao = ({ inputProduction, setInputProduction }) => {
           name="improvement"
           title="Benfeitoria"
           placeholder="Benfeitoria"
-          value={inputProduction.improvement}
-          onChange={handleChangeInput}
+          value={inputImprovements.improvement}
+          onChange={handleChangeInputImprovements}
           required
         />
       </CInputGroup>
@@ -900,8 +934,8 @@ const Producao = ({ inputProduction, setInputProduction }) => {
           name="otherImprovement"
           title="Outra Benfeitoria"
           placeholder="Outra Benfeitoria"
-          value={inputProduction.otherImprovement}
-          onChange={handleChangeInput}
+          value={inputImprovements.otherImprovement}
+          onChange={handleChangeInputImprovements}
           required
         />
       </CInputGroup>
@@ -916,24 +950,121 @@ const Producao = ({ inputProduction, setInputProduction }) => {
           name="typeImprovement"
           title="Tipo"
           placeholder="Tipo"
-          value={inputProduction.typeImprovement}
-          onChange={handleChangeInput}
+          value={inputImprovements.typeImprovement}
+          onChange={handleChangeInputImprovements}
           required
         />
       </CInputGroup>
       <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
-          <CInputGroupText>
-            <ImSortNumbericDesc style={styles.icon} />
-          </CInputGroupText>
+          <CInputGroupText>m²</CInputGroupText>
         </CInputGroupPrepend>
         <CInput
           type="text"
           name="dimensionImprovement"
           title="Dimensão (m² ou m)"
           placeholder="Dimensão (m² ou m)"
-          value={inputProduction.dimensionImprovement}
-          onChange={handleChangeInput}
+          value={inputImprovements.dimensionImprovement}
+          onChange={handleChangeInputImprovements}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <EventOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="text"
+          name="improvementAge"
+          title="Faixa de Idade da Benfeitoria"
+          placeholder="Faixa de Idade da Benfeitoria"
+          value={inputImprovements.improvementAge}
+          onChange={handleChangeInputImprovements}
+          required
+        />
+      </CInputGroup>
+      <div className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CButton onClick={addImprovement} color="primary">
+          Adicionar
+        </CButton>
+      </div>
+      <div className="mt-3 col-xl-12 col-sm-12 col-lg-12">
+        <CDataTable
+          items={inputProduction.improvements}
+          noItemsViewSlot="Sem items"
+          fields={[
+            { key: "improvement", label: "Benfeitoria" },
+            { key: "typeImprovement", label: "Tipo" },
+            { key: "dimensionImprovement", label: "Dimensão (m² ou m)" },
+            { key: "improvementAge", label: "Faixa de Idade da Benfeitoria" },
+            { key: "delete", label: "" },
+          ]}
+          hover
+          striped
+          bordered
+          size="sm"
+          itemsPerPage={10}
+          pagination
+          scopedSlots={{
+            delete: (item, index) => (
+              <CButton onClick={() => deleteImprovement(index)}>
+                <DeleteForeverOutlined>Delete</DeleteForeverOutlined>
+              </CButton>
+            ),
+          }}
+        />
+      </div>
+      <div className="col-12">
+        <h3>Animais de Serviço (Apenas os Utilizados para Serviço/Trabalho)</h3>
+        <hr />
+      </div>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <GiBull style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="number"
+          name="bulls"
+          title="Bois"
+          placeholder="Bois"
+          value={inputImprovements.bulls}
+          onChange={handleChangeInputImprovements}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <GiHorseHead style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="number"
+          name="equine"
+          title="Equinos"
+          placeholder="Equinos"
+          value={inputImprovements.equine}
+          onChange={handleChangeInputImprovements}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <FaStickerMule style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="number"
+          name="muares"
+          title="Muares"
+          placeholder="Muares"
+          value={inputImprovements.muares}
+          onChange={handleChangeInputImprovements}
           required
         />
       </CInputGroup>
