@@ -17,7 +17,6 @@ import { CloudUploadOutlined } from "@material-ui/icons";
 import GoogleMaps from "../../../GoogleMaps";
 
 const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
-
   const lat = useSelector((state) => state.GoogleMapsReducer.lat);
   const lng = useSelector((state) => state.GoogleMapsReducer.lng);
 
@@ -29,11 +28,11 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
   };
 
   useEffect(() => {
-    if (lat !== 0 && lng !== 0) {
+    if (lat !== 0 && lng !== 0 && `${lat}, ${lng}` !== inputPlotLocation.coordinatesth) {
       setInputPlotLocation({
         ...inputPlotLocation,
         coordinatesth: `${lat}, ${lng}`,
-      });
+      })
     }
   }, [lat, lng, setInputPlotLocation, inputPlotLocation]);
 
@@ -180,7 +179,9 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
           </CInputGroupText>
         </CInputGroupPrepend>
         <CLabel className="btn bg-light ml-1 mb-0">
-          {file ? `Arquivo Selecionado: ${file}` : "Selecione o documento de geometria do lote"}
+          {file
+            ? `Arquivo Selecionado: ${file}`
+            : "Selecione o documento de geometria do lote"}
           <CInput
             type="file"
             style={{ display: "none" }}

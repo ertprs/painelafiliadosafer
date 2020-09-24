@@ -315,6 +315,26 @@ function QualidadeAmbiental({
           onChange={handleChangeInput}
         />
       </CInputGroup>
+      <p className="mb-3 col-xl-8 col-sm-12 col-lg-8">
+        Tem interesse em estabelecer turismo rural em sua propriedade?
+      </p>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CSelect
+          custom
+          onChange={handleChangeInput}
+          value={inputEnvironmentalQuality.ruralTourism}
+          title="Tem interesse em estabelecer turismo rural em sua propriedade?"
+          name="ruralTourism"
+          id="select"
+          required
+        >
+          <option value={undefined} hidden>
+            Escolha uma opção
+          </option>
+          <option value={false}>Não</option>
+          <option value={true}>Sim</option>
+        </CSelect>
+      </CInputGroup>
     </div>
   );
 }

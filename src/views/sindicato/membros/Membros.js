@@ -17,13 +17,9 @@ import {
   CFormGroup,
 } from "@coreui/react";
 
-
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-} from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import RegistroSubAfiliados from "../../../components/RegistroSubAfiliados";
+import { Container } from "@material-ui/core";
 
 const getBadge = (status) => {
   switch (status) {
@@ -267,10 +263,10 @@ const Membros = () => {
   const [selectedmembro, setselectedmembro] = useState(null);
   const [accordion, setAccordion] = useState(0);
   const [, setMap] = React.useState(null);
-  const { isLoaded, } = useLoadScript({
+  const { isLoaded } = useLoadScript({
     googleMapsApiKey: "AIzaSyDwNWt6P3SzQwf4qlUenPgLpD0JPI6XCZc",
   });
- 
+
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
     map.fitBounds(bounds);
@@ -665,7 +661,9 @@ const Membros = () => {
       </CRow>
 
       <CModal show={form} onClose={() => setForm(!form)} size="xl">
-        <RegistroSubAfiliados title="Registro de Novos Membros" />
+        <Container>
+          <RegistroSubAfiliados title="Registro de Novos Membros" />
+        </Container>
       </CModal>
     </>
   );

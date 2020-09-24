@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import FormContext from "./context";
 
-import { CCard, CCardBody, CCol, CContainer, CForm, CRow } from "@coreui/react";
+import { CCard, CCardBody, CForm, CRow } from "@coreui/react";
 
 import HorizontalLabelPositionBelowStepper from "../HorizontalLabelPositionBelowStepper";
 import IdentificacaoDoBeneficiario from "./components/IdentificacaoDoBeneficiario";
@@ -27,6 +27,8 @@ import Producao from "./components/Producao";
 import Documentacao from "./components/Documentacao";
 import InfoDoImovel from "./components/InfoDoImovel";
 import QualidadeAmbiental from "./components/QualidadeAmbiental";
+import VisitaTecnica from "./components/VisitaTecnica";
+import FotosGeometria from "./components/FotosGeometria";
 
 const RegistroSubAfiliados = ({ title }) => {
   const dispatch = useDispatch();
@@ -230,7 +232,6 @@ const RegistroSubAfiliados = ({ title }) => {
     rppn: undefined,
     crf: undefined,
     legislationDate: "",
-
   });
 
   const [inputEnvironmentalQuality, setInputEnvironmentQuality] = useState({
@@ -250,6 +251,22 @@ const RegistroSubAfiliados = ({ title }) => {
     negativeSide: "",
     restriction: "",
     expectationFuture: "",
+    ruralTourism: undefined,
+  });
+
+  const [inputTechnicalVisit, setInputTechnicalVisit] = useState({
+    informant: "",
+    participants: "",
+  });
+
+  const [inputPhotosAndGeometry, setInputPhotosAndGeometry] = useState({
+    domainTitleFront: undefined,
+    domainTitleBack: undefined,
+    frontSettlement: undefined,
+    backSettlement: undefined,
+    georeferencing: undefined,
+    rg: "",
+    birthCertificate: [],
   });
 
   const steps = [
@@ -264,6 +281,8 @@ const RegistroSubAfiliados = ({ title }) => {
     "Documentação",
     "Info. do Imóvel",
     "Qual. Ambiental",
+    "Visita Técnica",
+    "Fotos e Geometria",
   ];
 
   let house;
@@ -355,6 +374,20 @@ const RegistroSubAfiliados = ({ title }) => {
             setInputEnvironmentQuality={setInputEnvironmentQuality}
           />
         );
+      case 11:
+        return (
+          <VisitaTecnica
+            inputTechnicalVisit={inputTechnicalVisit}
+            setInputTechnicalVisit={setInputTechnicalVisit}
+          />
+        );
+      case 12:
+        return (
+          <FotosGeometria
+            inputPhotosAndGeometry={inputPhotosAndGeometry}
+            setInputPhotosAndGeometry={setInputPhotosAndGeometry}
+          />
+        );
       default:
         return "Unknown stepIndex";
     }
@@ -392,26 +425,20 @@ const RegistroSubAfiliados = ({ title }) => {
 
   return (
     <FormContext.Provider value={{ setResident, setHouseNumber }}>
-      <div className="c-app c-default-layout flex-row align-items-center">
-        <CContainer>
-          <CRow className="justify-content-center">
-            <CCol>
-              <CCard>
-                <CCardBody className="p-sm-2 p-lg-5 p-lx-5">
-                  <h1 className="text-center">{title}</h1>
-                  <CForm>
-                    <HorizontalLabelPositionBelowStepper
-                      handleSubmitForm={handleSubmitForm}
-                      steps={steps}
-                      getStepContent={getStepContent}
-                    />
-                  </CForm>
-                </CCardBody>
-              </CCard>
-            </CCol>
-          </CRow>
-        </CContainer>
-      </div>
+      <CRow>
+        <CCard>
+          <CCardBody className="p-sm-2 p-lg-5 p-lx-5">
+            <h1 className="text-center">{title}</h1>
+            <CForm>
+              <HorizontalLabelPositionBelowStepper
+                handleSubmitForm={handleSubmitForm}
+                steps={steps}
+                getStepContent={getStepContent}
+              />
+            </CForm>
+          </CCardBody>
+        </CCard>
+      </CRow>
     </FormContext.Provider>
   );
 };
