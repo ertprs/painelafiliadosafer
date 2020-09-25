@@ -265,8 +265,14 @@ const RegistroSubAfiliados = ({ title }) => {
     frontSettlement: undefined,
     backSettlement: undefined,
     georeferencing: undefined,
-    rg: "",
-    birthCertificate: [],
+    rgFront: "",
+    rgBack: "",
+    rg2Front: "",
+    rg2Back: "",
+    birthCertificate: [""],
+    cpf: [""],
+    economicActivities: [""],
+    improvement: [""]
   });
 
   const steps = [
