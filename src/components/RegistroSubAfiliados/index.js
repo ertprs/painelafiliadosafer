@@ -265,8 +265,14 @@ const RegistroSubAfiliados = ({ title }) => {
     frontSettlement: undefined,
     backSettlement: undefined,
     georeferencing: undefined,
-    rg: "",
-    birthCertificate: [],
+    rgFront: "",
+    rgBack: "",
+    rg2Front: "",
+    rg2Back: "",
+    birthCertificate: [""],
+    cpf: [""],
+    economicActivities: [""],
+    improvement: [""]
   });
 
   const steps = [
@@ -396,6 +402,7 @@ const RegistroSubAfiliados = ({ title }) => {
   const handleSubmitForm = (stepIndex) => {
     switch (stepIndex) {
       case 0:
+        console.log()
         dispatch(setBeneficiaryIdentity(inputBeneficiaryIdentity));
         break;
       case 1:
