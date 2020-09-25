@@ -83,7 +83,7 @@ function HorizontalLabelPositionBelowStepper({
                   variant="contained"
                   color="primary"
                   onClick={handleSubmitForm}
-                  type="submit"
+                  
                 >
                   Concluído
                 </Button>

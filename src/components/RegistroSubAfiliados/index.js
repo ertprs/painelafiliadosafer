@@ -402,6 +402,7 @@ const RegistroSubAfiliados = ({ title }) => {
   const handleSubmitForm = (stepIndex) => {
     switch (stepIndex) {
       case 0:
+        console.log()
         dispatch(setBeneficiaryIdentity(inputBeneficiaryIdentity));
         break;
       case 1:
