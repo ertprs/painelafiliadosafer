@@ -13,13 +13,21 @@ const TheLayout = React.lazy(() => import("./containers/TheLayout"));
 
 // Pages
 const Login = React.lazy(() => import("./views/pages/login/Login"));
+
 const Register = React.lazy(() => import("./views/pages/register/Register"));
+
+const SimplifiedRegistration = React.lazy(() =>
+  import("./views/pages/simplifiedRegistration/SimplifiedRegistration")
+);
+
 const AffiliateRegistration = React.lazy(() =>
   import("./views/pages/affiliateRegistration/AffiliateRegistration")
 );
+
 const AffiliatePJ = React.lazy(() =>
   import("./views/pages/affiliatePJ/AffiliatePJ")
 );
+
 const AffiliatePF = React.lazy(() =>
   import("./views/pages/affiliatePF/AffiliatePF")
 );
@@ -44,6 +52,12 @@ class App extends Component {
               path="/register"
               name="Register Page"
               render={(props) => <Register {...props} />}
+            />
+                        <Route
+              exact
+              path="/simplified-registration"
+              name="Simplified Registration"
+              render={(props) => <SimplifiedRegistration {...props} />}
             />
             <Route
               exact

@@ -18,12 +18,12 @@ import CIcon from '@coreui/icons-react'
 
 const Login = () => {
   return (
-    <div className="c-app c-default-layout flex-row align-items-center">
+    <div className="c-app c-default-layout align-items-center">
       <CContainer>
         <CRow className="justify-content-center">
-          <CCol md="8">
-            <CCardGroup>
-              <CCard className="p-4">
+          <CCol sm="12" md="12" lg="8" xl="8">
+            <CCardGroup className="d-flex flex-wrap">
+              <CCard className="p-4 w-100">
                 <CCardBody>
                   <CForm>
                     <h1>Painel Afiliado</h1>
@@ -57,17 +57,16 @@ const Login = () => {
                   </CForm>
                 </CCardBody>
               </CCard>
-              <CCard className="text-white bg-primary py-5 d-md-down-none" style={{ width: '44%' }}>
+              <CCard className="text-white bg-primary py-5 w-100">
                 <CCardBody className="text-center">
                   <img src={'avatars/sistemalogo.png'} width="50%" style={{objectFit:"contain"}} alt="Logo da CONAFER"/>
                   <div>
-                    
                     <h2>Afiliar-se</h2>
                     <p>Quer se afiliar a CONAFER?</p>
                     <Link to="/sabermais">
                       <CButton color="primary" className="mt-3" active tabIndex={-1}>SAIBA MAIS!</CButton>
                     </Link>
-                    <Link to="/affiliate-registration">
+                    <Link to="/simplified-registration">
                       <CButton color="primary" className="mt-3" active tabIndex={-1}>Afilia-se agora!</CButton>
                     </Link>
                   </div>

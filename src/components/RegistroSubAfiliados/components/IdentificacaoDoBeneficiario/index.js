@@ -1,19 +1,20 @@
-import React from 'react'
-
+import CIcon from "@coreui/icons-react";
 import {
   CInput,
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react';
+} from "@coreui/react";
+import React from "react";
 
-const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBeneficiaryIdentity}) => {
-
-  const handleChangeInput = event => {
+const IdentificacaoDoBeneficiario = ({
+  inputBeneficiaryIdentity,
+  setInputBeneficiaryIdentity,
+}) => {
+  const handleChangeInput = (event) => {
     const { name, value } = event.target;
     setInputBeneficiaryIdentity({ ...inputBeneficiaryIdentity, [name]: value });
-  }
+  };
 
   return (
     <div className="row">
@@ -78,7 +79,7 @@ const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBenefici
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>¹²³</CInputGroupText>
         </CInputGroupPrepend>
@@ -141,7 +142,7 @@ const IdentificacaoDoBeneficiario = ({inputBeneficiaryIdentity, setInputBenefici
         />
       </CInputGroup>
     </div>
-  )
-}
+  );
+};
 
 export default IdentificacaoDoBeneficiario;

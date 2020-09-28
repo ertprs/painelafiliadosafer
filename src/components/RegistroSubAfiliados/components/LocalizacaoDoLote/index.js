@@ -142,7 +142,7 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>
             <DriveEtaOutlinedIcon style={{ fontSize: "1.1rem" }} />
@@ -186,9 +186,7 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
             type="file"
             style={{ display: "none" }}
             name="batchGeometry"
-            value={file}
             onChange={handleChangeInputFile}
-            required
           />
         </CLabel>
       </CInputGroup>
