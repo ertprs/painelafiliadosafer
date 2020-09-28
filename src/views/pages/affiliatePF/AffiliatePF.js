@@ -15,7 +15,7 @@ import {
 import Button from "@material-ui/core/Button";
 
 import styles from "./styles";
-import EnderecoCorrespondencia from "../../../components/RegistroSubAfiliados/components/EnderecoCorrespondencia";
+import FormularioCadastroAfiliadoPf from "../../../components/FormularioCadastroAfiliadoPF";
 
 const AffiliatePF = () => {
 
@@ -65,10 +65,10 @@ const AffiliatePF = () => {
             <CCard>
               <CCardBody className="p-sm-3 p-lg-5 xl-5">
                 <h1 className="text-center mb-5">
-                  Formulário de Afiliação de Pessoa Jurídica
+                  Formulário de Afiliação de Pessoa Física
                 </h1>
                 <CForm onSubmit={handleSubmitForm} className="row">
-                  <EnderecoCorrespondencia
+                  <FormularioCadastroAfiliadoPf
                     input={input}
                     handleChangeInput={handleChangeInput}
                   />

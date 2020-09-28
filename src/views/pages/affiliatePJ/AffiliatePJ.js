@@ -15,6 +15,7 @@ import {
   CTextarea,
   CInputCheckbox,
 } from "@coreui/react";
+
 import CIcon from "@coreui/icons-react";
 
 import {
@@ -620,7 +621,8 @@ const AffiliatePJ = () => {
                     <CTextarea
                       rows="4"
                       name="memberServices"
-                      onChange={inputEntity.memberServices}
+                      value={inputEntity.memberServices}
+                      onChange={handleChangeInput}
                       placeholder="Que serviços e treinamentos a Entidade realiza para seus associados?"
                     ></CTextarea>
                   </CInputGroup>
@@ -633,7 +635,8 @@ const AffiliatePJ = () => {
                     <CTextarea
                       rows="4"
                       name="whatEntityExpects"
-                      onChange={inputEntity.whatEntityExpects}
+                      value={inputEntity.whatEntityExpects}
+                      onChange={handleChangeInput}
                       placeholder="O que a Entidade espera da CONAFER?"
                     ></CTextarea>
                   </CInputGroup>

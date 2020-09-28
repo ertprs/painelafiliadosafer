@@ -33,6 +33,15 @@ import FotosGeometria from "./components/FotosGeometria";
 const RegistroSubAfiliados = ({ title }) => {
   const dispatch = useDispatch();
 
+  const [stepIndex, setStepIndex] = useState();
+
+  const [activeStep, setActiveStep] = React.useState(0);
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setStepIndex(activeStep);
+  };
+
   const [inputBeneficiaryIdentity, setInputBeneficiaryIdentity] = useState({
     name: "",
     email: "",
@@ -272,7 +281,7 @@ const RegistroSubAfiliados = ({ title }) => {
     birthCertificate: [""],
     cpf: [""],
     economicActivities: [""],
-    improvement: [""]
+    improvement: [""],
   });
 
   const steps = [
@@ -399,10 +408,13 @@ const RegistroSubAfiliados = ({ title }) => {
     }
   }
 
-  const handleSubmitForm = (stepIndex) => {
+  const handleSubmitForm = (event) => {
+    event.preventDefault();
+
+    handleNext();
+
     switch (stepIndex) {
       case 0:
-        console.log()
         dispatch(setBeneficiaryIdentity(inputBeneficiaryIdentity));
         break;
       case 1:
@@ -436,10 +448,12 @@ const RegistroSubAfiliados = ({ title }) => {
         <CCard>
           <CCardBody className="p-sm-2 p-lg-5 p-lx-5">
             <h1 className="text-center">{title}</h1>
-            <CForm>
+            <CForm onSubmit={handleSubmitForm}>
               <HorizontalLabelPositionBelowStepper
-                handleSubmitForm={handleSubmitForm}
+                setStepIndex={setStepIndex}
                 steps={steps}
+                activeStep={activeStep}
+                setActiveStep={setActiveStep}
                 getStepContent={getStepContent}
               />
             </CForm>

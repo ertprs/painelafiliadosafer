@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   stepper: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap",
   },
   backButton: {
     marginRight: theme.spacing(1),
@@ -27,16 +27,11 @@ const useStyles = makeStyles((theme) => ({
 
 function HorizontalLabelPositionBelowStepper({
   steps,
-  getStepContent,
-  handleSubmitForm,
+  activeStep,
+  setActiveStep,
+  getStepContent
 }) {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    handleSubmitForm(activeStep);
-  };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -47,60 +42,51 @@ function HorizontalLabelPositionBelowStepper({
   };
 
   return (
-    <div className={classes.root}>
-      <Stepper
-        activeStep={activeStep}
-        className={classes.stepper}
-        alternativeLabel
-      >
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-      <div>
-        {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>
-              All steps completed
-            </Typography>
-            <Button onClick={handleReset}>Resetar</Button>
-          </div>
-        ) : (
-          <div>
-            {getStepContent(activeStep)}
+      <div className={classes.root}>
+        <Stepper
+          activeStep={activeStep}
+          className={classes.stepper}
+          alternativeLabel
+        >
+          {steps.map((label) => (
+            <Step key={label}>
+              <StepLabel>{label}</StepLabel>
+            </Step>
+          ))}
+        </Stepper>
+        <div>
+          {activeStep === steps.length ? (
             <div>
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={classes.backButton}
-              >
-                Voltar
-              </Button>
-              {activeStep === steps.length - 1 ? (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleSubmitForm}
-                  
-                >
-                  Concluído
-                </Button>
-              ) : (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                >
-                  Próximo
-                </Button>
-              )}
+              <Typography className={classes.instructions}>
+                All steps completed
+              </Typography>
+              <Button onClick={handleReset}>Resetar</Button>
             </div>
-          </div>
-        )}
+          ) : (
+            <div>
+              {getStepContent(activeStep)}
+              <div>
+                <Button
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  className={classes.backButton}
+                >
+                  Voltar
+                </Button>
+                {activeStep === steps.length - 1 ? (
+                  <Button variant="contained" color="primary">
+                    Concluído
+                  </Button>
+                ) : (
+                  <Button variant="contained" color="primary" type="submit">
+                    Próximo
+                  </Button>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
   );
 }
 
