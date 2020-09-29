@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {
   CCard,
   CCardBody,
@@ -7,156 +9,129 @@ import {
   CCardHeader,
   CCol,
   CRow,
-} from  '@coreui/react'
-import { GoogleMap, useLoadScript, Marker,  } from '@react-google-maps/api';
-import CIcon from '@coreui/icons-react'
+} from "@coreui/react";
 
-const membros = [
-  {producao:{nucleooperacional:"CODEAGRO",limite:"Sim",marco:"Sim",legalizado:"Sim"},lote: {cep:"00000-00",estado:"SP",municipio:"Agudos",assentamento:"MN1191111 - CA NOME ASSENTAMENTO",loteincra:"13",viaacesso:"Rua de terra",coordenadas: {lat: -22.500326,lng:-48.9864157},moradias:[{moradia:1,residentes:5,comodos:3,construcao:"Alvenaria",riscoambiental:"Não"}],endereco:"H287+Q7 Agudos, São Paulo"},responsavel: {nome:"Safira",nascimento:"21/11/1984",escolaridade:"Ens. Fund. Completo",fonterenda:"Agricultor/a",cpf:"000.000.000-00",naturalidade:"Bauru - São Paulo",incra:"Sim",coleta:"2911"}},
-  {producao:{nucleooperacional:"CODEAGRO",limite:"Sim",marco:"Sim",legalizado:"Sim"},lote: {cep:"00000-00",estado:"SP",municipio:"Agudos",assentamento:"MN1191111 - CA NOME ASSENTAMENTO",loteincra:"13",viaacesso:"Rua de terra",coordenadas: {lat: -22.486249,lng:-49.0093427},moradias:[{moradia:1,residentes:5,comodos:3,construcao:"Alvenaria",riscoambiental:"Não"}],endereco:"H287+Q7 Agudos, São Paulo"},responsavel: {nome:"Safira",nascimento:"21/11/1984",escolaridade:"Ens. Fund. Completo",fonterenda:"Agricultor/a",cpf:"000.000.000-00",naturalidade:"Bauru - São Paulo",incra:"Sim",coleta:"2911"}},
-  {producao:{nucleooperacional:"CODEAGRO",limite:"Sim",marco:"Sim",legalizado:"Sim"},lote: {cep:"00000-00",estado:"SP",municipio:"Agudos",assentamento:"MN1191111 - CA NOME ASSENTAMENTO",loteincra:"13",viaacesso:"Rua de terra",coordenadas: {lat: -22.4885637,lng:-48.9833706},moradias:[{moradia:1,residentes:5,comodos:3,construcao:"Alvenaria",riscoambiental:"Não"}],endereco:"H287+Q7 Agudos, São Paulo"},responsavel: {nome:"Safira",nascimento:"21/11/1984",escolaridade:"Ens. Fund. Completo",fonterenda:"Agricultor/a",cpf:"000.000.000-00",naturalidade:"Bauru - São Paulo",incra:"Sim",coleta:"2911"}},
-  {producao:{nucleooperacional:"CODEAGRO",limite:"Sim",marco:"Sim",legalizado:"Sim"},lote: {cep:"00000-00",estado:"SP",municipio:"Agudos",assentamento:"MN1191111 - CA NOME ASSENTAMENTO",loteincra:"13",viaacesso:"Rua de terra",coordenadas: {lat: -22.4435024,lng:-49.0013815},moradias:[{moradia:1,residentes:5,comodos:3,construcao:"Alvenaria",riscoambiental:"Não"}],endereco:"H287+Q7 Agudos, São Paulo"},responsavel: {nome:"Safira",nascimento:"21/11/1984",escolaridade:"Ens. Fund. Completo",fonterenda:"Agricultor/a",cpf:"000.000.000-00",naturalidade:"Bauru - São Paulo",incra:"Sim",coleta:"2911"}},
-]
-const containerStyle = {
-  width: '100%',
-  height: '400px'
-};
+import {
+  AccountBalanceOutlined,
+  AlternateEmailOutlined,
+  PhoneOutlined,
+  EventOutlined,
+  MarkunreadMailboxOutlined,
+  RoomOutlined,
+} from "@material-ui/icons";
+
+import styles from "../../../constants/styles";
+
+import ModalFormSindicato from "../../../components/ModalFormSindicato";
 
 const MeuSindicato = () => {
+  const history = useHistory();
 
-  const [, setMap] = React.useState(null)
-  const { isLoaded, } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDwNWt6P3SzQwf4qlUenPgLpD0JPI6XCZc"
-  });
+  const meuSindicatoData = useSelector(
+    (state) => state.SyndicateReducer.syndicate
+  );
 
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
- 
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
-  if (!isLoaded) {
-    return <div
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        alignContent: "center"
-      }}
-    >
-      <p style={{ color: "white" }}>Carregando...</p></div>
-  };
+  const [input, setInput] = useState(meuSindicatoData);
+
+  const [show, setShow] = useState(false);
 
   return (
     <>
       <CRow>
         <CCol xs="12" sm="12" md="12">
           <CCard>
-            <CCardHeader style={{display:"flex",flexDirection:"row",justifyContent:"space-between"}}>
+            <CCardHeader
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
               <h3>SAFER ASSIS</h3>
               <CButtonGroup>
-                <CButton color="secondary">EDITAR</CButton>
-                <CButton color="secondary">COMPARTILHAR</CButton>
-                <CButton color="secondary">MEMBROS</CButton>
+                <CButton
+                  color="primary"
+                  onClick={() => setShow(!show)}
+                  className="mr-2"
+                >
+                  EDITAR
+                </CButton>
+
+                <CButton
+                  color="secondary"
+                  onClick={() => history.push("/dashboard/sindicato/membros")}
+                >
+                  MEMBROS
+                </CButton>
               </CButtonGroup>
             </CCardHeader>
-            <CCardBody style={{display:"flex",flexDirection:"row"}}>
+            <CCardBody style={{ display: "flex", flexDirection: "row" }}>
               <div>
-                <img src={`/assis.png`} width="200px" style={{borderRadius:180,objectFit:"cover"}} alt=""/>
+                <img
+                  src={`/assis.png`}
+                  width="200px"
+                  style={{ borderRadius: 180, objectFit: "cover" }}
+                  alt=""
+                />
               </div>
               <div>
-                <div style={{display:"flex",flexDirection:"row"}}>
-                  <CIcon
-                    className="c-sidebar-brand-minimized"
-                    name="cil-pencil"
-                    height={20}
-                  />
-                  <p style={{fontWeight:"bold",marginLeft:12}}>Sindicato da Agricultura Familiar e Empreendedores Rurais de Assis- Sp Safer</p>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <AccountBalanceOutlined style={styles.icon} />
+                  <p style={{ fontWeight: "bold", marginLeft: 12 }}>
+                    {meuSindicatoData.sindicato}
+                  </p>
                 </div>
-                <div style={{display:"flex",flexDirection:"row"}}>
-                  <CIcon
-                    className="c-sidebar-brand-minimized"
-                    name="cil-mail"
-                    height={20}
-                  />
-                  <p style={{marginLeft:12}}>escritoriofernandes@ig.com.br</p>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <AlternateEmailOutlined style={styles.icon} />
+                  <p style={{ marginLeft: 12 }}>{meuSindicatoData.email}</p>
                 </div>
-                <div style={{display:"flex",flexDirection:"row"}}>
-                  <CIcon
-                    className="c-sidebar-brand-minimized"
-                    name="cil-phone"
-                    height={20}
-                  />
-                  <p style={{marginLeft:12}}>(18) 3322-2211</p>
+                <div style={{ display: "flex", flexDirection: "row" }}>
+                  <PhoneOutlined style={styles.icon} />
+                  <p className="ml-2">{meuSindicatoData.tel}</p>
                 </div>
-                <div style={{display:"flex",flexDirection:"row"}}>
-                  <CIcon
-                    className="c-sidebar-brand-minimized"
-                    name="cil-locale"
-                    height={20}
-                  />
-                  <p style={{marginLeft:12}}>Domélia, Agudos, SP, Brasil (319,85 km) 17123-000 Domélia, SP</p>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignContent: "center",
+                  }}
+                >
+                  <RoomOutlined style={styles.icon} />
+                  <p className="ml-2">{meuSindicatoData.address}</p>
                 </div>
-                <small>CNPJ 19.992.572/0001-22</small>
-                <br></br>
-                <small>Aberto em 26/12/2013</small>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignContent: "center",
+                  }}
+                >
+                  <MarkunreadMailboxOutlined style={styles.icon} />
+                  <p className="ml-2">CNPJ: {meuSindicatoData.cnpj}</p>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignContent: "center",
+                  }}
+                >
+                  <EventOutlined style={styles.icon} />
+                  <p className="ml-2">Aberto: {meuSindicatoData.open}</p>
+                </div>
               </div>
             </CCardBody>
-            <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={{
-                lat: -15.721387,
-                lng: -48.0774459,
-              }}
-            zoom={8}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-          >
-            <>
-            <Marker
-            key={"kk"}
-            position={{lat:-22.4678011,lng:-48.9824264}}
-            onClick={() => {
-             
-            }}
-            draggable
-            icon={{
-              url: `/58889219bc2fc2ef3a1860aa.png`,
-              origin: new window.google.maps.Point(0, 0),
-              anchor: new window.google.maps.Point(15, 15),
-              scaledSize: new window.google.maps.Size(26, 35),
-            }}
-          />
-            {membros.map((marker) => (
-              <Marker
-                key={"kk"}
-                position={marker.lote.coordenadas}
-                onClick={() => {
-                
-                }}
-                draggable
-                icon={{
-                  url: `/bluepin.png`,
-                  origin: new window.google.maps.Point(0, 0),
-                  anchor: new window.google.maps.Point(15, 15),
-                  scaledSize: new window.google.maps.Size(26, 35),
-                }}
-              />
-            ))}
-            </>
-          </GoogleMap>
-      
           </CCard>
         </CCol>
-        
-          </CRow>
+      </CRow>
+      <ModalFormSindicato
+        show={show}
+        setShow={setShow}
+        input={input}
+        setInput={setInput}
+      />
     </>
-  )
-}
+  );
+};
 
-export default MeuSindicato
+export default MeuSindicato;

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   CButton,
   CCard,
@@ -12,9 +12,9 @@ import {
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,
-  CRow
-} from '@coreui/react'
-import CIcon from '@coreui/icons-react'
+  CRow,
+} from "@coreui/react";
+import CIcon from "@coreui/icons-react";
 
 const Login = () => {
   return (
@@ -34,7 +34,11 @@ const Login = () => {
                           <CIcon name="cil-user" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="text" placeholder="Email" autoComplete="username" />
+                      <CInput
+                        type="text"
+                        placeholder="Email"
+                        autoComplete="username"
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupPrepend>
@@ -42,16 +46,26 @@ const Login = () => {
                           <CIcon name="cil-lock-locked" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="password" placeholder="Senha" autoComplete="current-password" />
+                      <CInput
+                        type="password"
+                        placeholder="Senha"
+                        autoComplete="current-password"
+                      />
                     </CInputGroup>
                     <CRow>
                       <CCol xs="6">
                         <Link to="/dashboard">
-                          <CButton color="primary" className="px-4">Entrar</CButton>
+                          <CButton color="primary" className="px-4">
+                            Entrar
+                          </CButton>
                         </Link>
                       </CCol>
                       <CCol xs="6" className="text-right">
-                        <CButton color="link" className="px-0">Esqueceu sua senha?</CButton>
+                        <Link to="/remember-password">
+                          <CButton color="link" className="px-0">
+                            Esqueceu sua senha?
+                          </CButton>
+                        </Link>
                       </CCol>
                     </CRow>
                   </CForm>
@@ -59,15 +73,34 @@ const Login = () => {
               </CCard>
               <CCard className="text-white bg-primary py-5 w-100">
                 <CCardBody className="text-center">
-                  <img src={'avatars/sistemalogo.png'} width="50%" style={{objectFit:"contain"}} alt="Logo da CONAFER"/>
+                  <img
+                    src={"avatars/sistemalogo.png"}
+                    width="50%"
+                    style={{ objectFit: "contain" }}
+                    alt="Logo da CONAFER"
+                  />
                   <div>
                     <h2>Afiliar-se</h2>
                     <p>Quer se afiliar a CONAFER?</p>
                     <Link to="/sabermais">
-                      <CButton color="primary" className="mt-3" active tabIndex={-1}>SAIBA MAIS!</CButton>
+                      <CButton
+                        color="primary"
+                        className="mt-3"
+                        active
+                        tabIndex={-1}
+                      >
+                        SAIBA MAIS!
+                      </CButton>
                     </Link>
                     <Link to="/simplified-registration">
-                      <CButton color="primary" className="mt-3" active tabIndex={-1}>Afilia-se agora!</CButton>
+                      <CButton
+                        color="primary"
+                        className="mt-3"
+                        active
+                        tabIndex={-1}
+                      >
+                        Afilia-se agora!
+                      </CButton>
                     </Link>
                   </div>
                 </CCardBody>
@@ -77,7 +110,7 @@ const Login = () => {
         </CRow>
       </CContainer>
     </div>
-  )
-}
+  );
+};
 
 export default Login;
