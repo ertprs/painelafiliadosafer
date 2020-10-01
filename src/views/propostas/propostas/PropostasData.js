@@ -1,7 +1,7 @@
-const orcamentosData = [
+const PropostasData = [
   {
     id: 0,
-    orcamento: "#01",
+    proposta: "#01",
     data: "20/01/2020",
     dataDeExpiracao: "20/01/2020",
     valor: "R$ 200,00",
@@ -28,7 +28,7 @@ const orcamentosData = [
   },
   {
     id: 0,
-    orcamento: "#02",
+    proposta: "#02",
     data: "20/01/2020",
     dataDeExpiracao: "20/01/2020",
     valor: "R$ 200,00",
@@ -55,7 +55,7 @@ const orcamentosData = [
   },
   {
     id: 0,
-    orcamento: "#02",
+    proposta: "#02",
     data: "01/02/2020",
     dataDeExpiracao: "20/01/2020",
     valor: "R$ 300,50",
@@ -82,7 +82,7 @@ const orcamentosData = [
   },
   {
     id: 0,
-    orcamento: "#03",
+    proposta: "#03",
     data: "20/01/2020",
     dataDeExpiracao: "20/01/2020",
     valor: "R$ 200,00",
@@ -109,7 +109,7 @@ const orcamentosData = [
   },
   {
     id: 0,
-    orcamento: "#04",
+    proposta: "#04",
     data: "20/01/2020",
     dataDeExpiracao: "20/01/2020",
     valor: "R$ 200,00",
@@ -136,4 +136,4 @@ const orcamentosData = [
   }
 ];
 
-export default orcamentosData;
+export default PropostasData;

@@ -96,7 +96,7 @@ const RememberPassword = () => {
                     }}
                     closeButton
                   >
-                    Cadastro realizado com sucesso!
+                    Foi enviado uma nova senha para o seu e-mail
                   </CAlert>
                   <CAlert
                     color="danger"
@@ -108,7 +108,7 @@ const RememberPassword = () => {
                     }}
                     closeButton
                   >
-                    Ocorreu um erro em seu cadastro!
+                    Ocorreu um erro ao tentar recuperar senha
                   </CAlert>
                 </CCardFooter>
               </CCard>

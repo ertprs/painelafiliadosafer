@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { mask, unMask } from "remask";
+
 import {
   CCard,
   CCardBody,
@@ -42,7 +44,6 @@ import Button from "@material-ui/core/Button";
 import styles from "./styles";
 
 const AffiliatePJ = () => {
-
   const [inputEntity, setInputEntity] = useState({
     name: "",
     address: "",
@@ -79,8 +80,16 @@ const AffiliatePJ = () => {
   const [agriculturalProduction, setAgriculturalProduction] = useState([]);
 
   const handleChangeInput = (event) => {
-    const { name, value } = event.target;
-    setInputEntity({ ...inputEntity, [name]: value });
+    const { name, value, type } = event.target;
+
+    if (type === "tel") {
+      setInputEntity({
+        ...inputEntity,
+        [name]: mask(unMask(value), ["(99) 99999-9999"]),
+      });
+    } else {
+      setInputEntity({ ...inputEntity, [name]: value });
+    }
   };
 
   const handleChangeInputAgriculturalProduction = (event) => {
@@ -92,8 +101,8 @@ const AffiliatePJ = () => {
   };
 
   const handleChecked = () => {
-    setInputEntity({...inputEntity, agree: !inputEntity.agree});
-  }
+    setInputEntity({ ...inputEntity, agree: !inputEntity.agree });
+  };
 
   const addAgriculturalProduction = () => {
     setAgriculturalProduction([
@@ -116,7 +125,7 @@ const AffiliatePJ = () => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-  }
+  };
 
   return (
     <div className="c-app c-default-layout flex-row align-items-center">
@@ -266,7 +275,7 @@ const AffiliatePJ = () => {
                       </CInputGroupText>
                     </CInputGroupPrepend>
                     <CInput
-                      type="text"
+                      type="tel"
                       name="contactPhone"
                       placeholder="Telefone de Contato"
                       value={inputEntity.contactPhone}
@@ -725,11 +734,7 @@ const AffiliatePJ = () => {
                     </label>
                   </CInputGroup>
                   <div style={styles.boxButton}>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      type="submit"
-                    >
+                    <Button variant="contained" color="primary" type="submit">
                       Enviar informações
                     </Button>
                   </div>

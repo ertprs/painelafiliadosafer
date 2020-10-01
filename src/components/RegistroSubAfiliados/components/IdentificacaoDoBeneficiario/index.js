@@ -1,16 +1,41 @@
+import React from "react";
+import { conformToMask } from "react-text-mask";
+
 import CIcon from "@coreui/icons-react";
+
 import {
   CInput,
   CInputGroup,
   CInputGroupPrepend,
   CInputGroupText,
 } from "@coreui/react";
-import React from "react";
 
 const IdentificacaoDoBeneficiario = ({
   inputBeneficiaryIdentity,
   setInputBeneficiaryIdentity,
 }) => {
+  
+  const mask = [
+    /[1-9]/,
+    /\d/,
+    /\d/,
+    ".",
+    /\d/,
+    /\d/,
+    /\d/,
+    ".",
+    /\d/,
+    /\d/,
+    /\d/,
+    "-",
+    /\d/,
+    /\d/,
+  ];
+
+  const conformedCPF = conformToMask(inputBeneficiaryIdentity.cpf, mask, {
+    guide: false,
+  });
+
   const handleChangeInput = (event) => {
     const { name, value } = event.target;
     setInputBeneficiaryIdentity({ ...inputBeneficiaryIdentity, [name]: value });
@@ -57,8 +82,7 @@ const IdentificacaoDoBeneficiario = ({
         <CInput
           type="text"
           name="cpf"
-          pattern="[0-9]{11}"
-          value={inputBeneficiaryIdentity.cpf}
+          value={conformedCPF.conformedValue}
           placeholder="CPF"
           onChange={handleChangeInput}
           title="CPF deve conter mais de 11 números."

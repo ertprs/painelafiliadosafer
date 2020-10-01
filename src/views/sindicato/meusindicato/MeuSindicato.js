@@ -23,6 +23,8 @@ import {
 import styles from "../../../constants/styles";
 
 import ModalFormSindicato from "../../../components/ModalFormSindicato";
+import GoogleMaps from "../../../components/GoogleMaps";
+import GoogleMapsCoordinates from "../../../components/GoogleMapsCoordinates";
 
 const MeuSindicato = () => {
   const history = useHistory();
@@ -32,11 +34,15 @@ const MeuSindicato = () => {
   );
 
   const [input, setInput] = useState(meuSindicatoData);
-
   const [show, setShow] = useState(false);
+  const [coordinatesth, setCoordinatesth] = useState([]);
 
   return (
     <>
+      <GoogleMapsCoordinates
+        input={input}
+        setCoordinatesth={setCoordinatesth}
+      />
       <CRow>
         <CCol xs="12" sm="12" md="12">
           <CCard>
@@ -121,6 +127,7 @@ const MeuSindicato = () => {
                 </div>
               </div>
             </CCardBody>
+            <GoogleMaps coordinatesth={coordinatesth} />
           </CCard>
         </CCol>
       </CRow>

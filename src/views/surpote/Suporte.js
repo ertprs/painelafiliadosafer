@@ -51,64 +51,89 @@ const Suporte = () => {
   const [openSuport, setopenSuport] = useState(false);
   const [large, setLarge] = useState(false);
   const [suporte, setsuporte] = useState(null);
+  const [search, setSearch] = useState("");
+
+  const handleChangeInputSearch = (event) => {
+    setSearch(event.target.value);
+  };
 
   return (
     <>
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader
-              style={{
-                flexDirection: "row",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <div>
-                <h3>Suporte</h3>
-                <span>
-                  Tem uma dúvida? Conta pra gente e acompanha aqui o resultado.
-                </span>
-              </div>
-              <div>
-                <CButton
-                  block
-                  color="primary"
-                  onClick={() => setopenSuport(!openSuport)}
+            <CCardHeader>
+              <CRow>
+                <CCol sm="12" md="12" lg="4" xl="4">
+                  <h3>Suporte</h3>
+                  <span>
+                    Tem uma dúvida? Conta pra gente e acompanha aqui o
+                    resultado.
+                  </span>
+                </CCol>
+                <CCol
+                  sm="12"
+                  md="12"
+                  lg="2"
+                  xl="2"
+                  className="d-flex mt-3 justify-content-center"
                 >
-                  ABRIR CHAMADO
-                </CButton>
-              </div>
-              <div>
-                <CFormGroup row>
-                  <CInputGroup>
-                    <CInputGroupPrepend>
-                      <CButton type="button" color="primary">
-                        <CIcon name="cil-magnifying-glass" /> Procurar
-                      </CButton>
-                    </CInputGroupPrepend>
-                    <CInput
-                      id="input1-group2"
-                      name="input1-group2"
-                      placeholder="Nome de suporte"
-                    />
+                  <CFormGroup>
+                    <CInputGroup className="align-items-center">
+                      <CInputGroupPrepend>
+                        <CButton
+                          className="d-flex align-items-center"
+                          type="button"
+                          color="primary"
+                          onClick={() => setopenSuport(!openSuport)}
+                        >
+                          ABRIR CHAMADO
+                        </CButton>
+                      </CInputGroupPrepend>
+                    </CInputGroup>
+                  </CFormGroup>
+                </CCol>
+                <CCol
+                  sm="12"
+                  md="12"
+                  lg="6"
+                  xl="6"
+                  className="d-flex flex-wrap align-items-center justify-content-end"
+                >
+                  <CFormGroup className="m-3">
+                    <CInputGroup className="align-items-center">
+                      <CInput
+                        value={search}
+                        onChange={handleChangeInputSearch}
+                        name="search"
+                        placeholder="Nome do Chamado"
+                      />
+                      <CInputGroupPrepend>
+                        <CButton
+                          className="align-items-center"
+                          type="button"
+                          color="primary"
+                        >
+                          Procurar {""}
+                          <CIcon name="cil-magnifying-glass" />
+                        </CButton>
+                      </CInputGroupPrepend>
+                    </CInputGroup>
+                  </CFormGroup>
+                  <CInputGroup className="m-3 w-25">
+                    <CDropdown>
+                      <CDropdownToggle caret color="primary">
+                        Filtrar{" "}
+                      </CDropdownToggle>
+                      <CDropdownMenu>
+                        <CDropdownItem>Concluído</CDropdownItem>
+                        <CDropdownItem>Aberto</CDropdownItem>
+                        <CDropdownItem>Em andamento</CDropdownItem>
+                      </CDropdownMenu>
+                    </CDropdown>
                   </CInputGroup>
-                </CFormGroup>
-              </div>
-              <div>
-                <CInputGroup>
-                  <CDropdown className="input-group-prepend">
-                    <CDropdownToggle caret color="primary">
-                      Filtrar
-                    </CDropdownToggle>
-                    <CDropdownMenu>
-                      <CDropdownItem>Concluído</CDropdownItem>
-                      <CDropdownItem>Aberto</CDropdownItem>
-                      <CDropdownItem>Em andamento</CDropdownItem>
-                    </CDropdownMenu>
-                  </CDropdown>
-                </CInputGroup>
-              </div>
+                </CCol>
+              </CRow>
             </CCardHeader>
             <CCardBody>
               <CDataTable

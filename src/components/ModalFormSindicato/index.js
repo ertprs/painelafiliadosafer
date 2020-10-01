@@ -1,5 +1,5 @@
 import React from "react";
-
+import { mask, unMask } from "remask";
 import { useDispatch } from "react-redux";
 
 import {
@@ -22,11 +22,13 @@ import {
   PhoneOutlined,
   MarkunreadMailboxOutlined,
   EventOutlined,
-  RoomOutlined, AlternateEmailOutlined
+  RoomOutlined,
+  AlternateEmailOutlined,
 } from "@material-ui/icons";
 
 import styles from "../../constants/styles";
 import { editSyndicate } from "../../redux/actions/syndicate";
+import SearchGoogleMaps from "../SearchGoogleMaps";
 
 const ModalFormSindicato = ({ show, setShow, input, setInput }) => {
   const dispatch = useDispatch();
@@ -38,8 +40,13 @@ const ModalFormSindicato = ({ show, setShow, input, setInput }) => {
   };
 
   const handleChangeInput = (event) => {
-    const { name, value } = event.target;
-    setInput({ ...input, [name]: value });
+    const { name, value, type } = event.target;
+
+    if (type === "tel") {
+      setInput({ ...input, [name]: mask(unMask(value), ["(99) 99999-9999"]) });
+    } else {
+      setInput({ ...input, [name]: value });
+    }
   };
 
   return (
@@ -120,15 +127,7 @@ const ModalFormSindicato = ({ show, setShow, input, setInput }) => {
                   <RoomOutlined style={styles.icon} />
                 </CInputGroupText>
               </CInputGroupPrepend>
-              <CInput
-                type="text"
-                name="address"
-                title="Endereço"
-                placeholder="Endereço"
-                value={input.address}
-                onChange={handleChangeInput}
-                required
-              />
+              <SearchGoogleMaps input={input} setInput={setInput} />
             </CInputGroup>
 
             <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">

@@ -23,7 +23,8 @@ import {
 
 import CIcon from "@coreui/icons-react";
 
-const FormularioCadastroAfiliadoPf = ({input, handleChangeInput}) => {
+const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
+
   return (
     <>
       <CInputGroup className="mb-3 col-xl-12 col-sm-12 col-lg-12">
@@ -49,10 +50,12 @@ const FormularioCadastroAfiliadoPf = ({input, handleChangeInput}) => {
         </CInputGroupPrepend>
         <CInput
           type="text"
-          name="birthData"
+          name="birthDate"
           placeholder="Data de Nascimento"
-          value={input.birthData}
+          value={input.birthDate}
           onChange={handleChangeInput}
+          onFocus={(event) => (event.currentTarget.type = "date")}
+          onBlur={(event) => (event.currentTarget.type = "text")}
           required
         />
       </CInputGroup>
@@ -159,6 +162,8 @@ const FormularioCadastroAfiliadoPf = ({input, handleChangeInput}) => {
           placeholder="Data de Emissão"
           value={input.emissionDate}
           onChange={handleChangeInput}
+          onFocus={(event) => (event.currentTarget.type = "date")}
+          onBlur={(event) => (event.currentTarget.type = "text")}
           required
         />
       </CInputGroup>
@@ -170,9 +175,9 @@ const FormularioCadastroAfiliadoPf = ({input, handleChangeInput}) => {
         </CInputGroupPrepend>
         <CInput
           type="text"
-          name="voterRegistration"
+          name="voterTitle"
           placeholder="Título de Eleitor"
-          value={input.voterRegistration}
+          value={input.voterTitle}
           onChange={handleChangeInput}
           required
         />
@@ -241,9 +246,9 @@ const FormularioCadastroAfiliadoPf = ({input, handleChangeInput}) => {
         </CInputGroupPrepend>
         <CInput
           type="text"
-          name="address"
+          name="cep"
           placeholder="CEP"
-          value={input.CEP}
+          value={input.cep}
           onChange={handleChangeInput}
           required
         />
@@ -312,7 +317,7 @@ const FormularioCadastroAfiliadoPf = ({input, handleChangeInput}) => {
           </CInputGroupText>
         </CInputGroupPrepend>
         <CInput
-          type="text"
+          type="tel"
           name="phone"
           placeholder="Telefone"
           value={input.phone}
