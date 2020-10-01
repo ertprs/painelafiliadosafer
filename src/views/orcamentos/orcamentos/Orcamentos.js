@@ -170,74 +170,78 @@ const Orcamentos = () => {
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader
-              style={{
-                flexDirection: "row",
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "space-between",
-              }}
-            >
-              <div>
-                <h3>Meus Orçamentos</h3>
-                <span>Confira aqui seus Orçamentos com a CONAFER BRASIL</span>
-              </div>
-              <div className="mr-3 ml-3">
-                <CFormGroup row>
-                  <CInputGroup className="align-items-center">
-                    <CInput
-                      id="input1-group2"
-                      value={search}
-                      onChange={handleChangeInputSearch}
-                      name="input1-group2"
-                      placeholder="Nome do Orçamento"
-                    />
-                    <CInputGroupPrepend>
-                      <CButton
-                        className="align-items-center"
-                        type="button"
-                        color="primary"
-                      >
-                        Procurar {""}
-                        <CIcon name="cil-magnifying-glass" />
-                      </CButton>
-                    </CInputGroupPrepend>
+            <CCardHeader>
+              <CRow>
+                <CCol sm="12" md="12" lg="4" xl="4">
+                  <h3>Orçamentos</h3>
+                  <span>Confira aqui seus orçamentos com a CONAFER BRASIL</span>
+                </CCol>
+                <CCol
+                  sm="12"
+                  md="12"
+                  lg="2"
+                  xl="2"
+                  className="d-flex mt-3 justify-content-center"
+                >
+                  <CFormGroup>
+                    <CInputGroup className="align-items-center">
+                      <CInputGroupPrepend>
+                        <CButton
+                          className="align-items-center"
+                          type="button"
+                          color="primary"
+                          onClick={() => setModalFileOpen(!modalFileOpen)}
+                        >
+                          <AddCircleOutlineOutlined
+                            style={{ fontSize: "1.1rem" }}
+                          />{" "}
+                          Adicionar Orçamento
+                        </CButton>
+                      </CInputGroupPrepend>
+                    </CInputGroup>
+                  </CFormGroup>
+                </CCol>
+                <CCol
+                  sm="12"
+                  md="12"
+                  lg="6"
+                  xl="6"
+                  className="d-flex flex-wrap align-items-center justify-content-end"
+                >
+                  <CFormGroup className="m-3">
+                    <CInputGroup className="align-items-center">
+                      <CInput
+                        value={search}
+                        onChange={handleChangeInputSearch}
+                        name="search"
+                        placeholder="Nome do Orçamento"
+                      />
+                      <CInputGroupPrepend>
+                        <CButton
+                          className="align-items-center"
+                          type="button"
+                          color="primary"
+                        >
+                          Procurar {""}
+                          <CIcon name="cil-magnifying-glass" />
+                        </CButton>
+                      </CInputGroupPrepend>
+                    </CInputGroup>
+                  </CFormGroup>
+                  <CInputGroup className="m-3 w-25">
+                    <CDropdown>
+                      <CDropdownToggle caret color="primary">
+                        Filtrar{" "}
+                      </CDropdownToggle>
+                      <CDropdownMenu>
+                        <CDropdownItem>Assinados</CDropdownItem>
+                        <CDropdownItem>Rejeitados</CDropdownItem>
+                        <CDropdownItem>Pendentes</CDropdownItem>
+                      </CDropdownMenu>
+                    </CDropdown>
                   </CInputGroup>
-                </CFormGroup>
-              </div>
-              <div className="mr-3 ml-3">
-                <CFormGroup row>
-                  <CInputGroup className="align-items-center">
-                    <CInputGroupPrepend>
-                      <CButton
-                        className="align-items-center"
-                        type="button"
-                        color="primary"
-                        onClick={() => setModalFileOpen(!modalFileOpen)}
-                      >
-                        <AddCircleOutlineOutlined
-                          style={{ fontSize: "1.1rem" }}
-                        />{" "}
-                        Adicionar Orçamento
-                      </CButton>
-                    </CInputGroupPrepend>
-                  </CInputGroup>
-                </CFormGroup>
-              </div>
-              <div>
-                <CInputGroup>
-                  <CDropdown className="input-group-prepend">
-                    <CDropdownToggle caret color="primary">
-                      Filtrar
-                    </CDropdownToggle>
-                    <CDropdownMenu>
-                      <CDropdownItem>Assinados</CDropdownItem>
-                      <CDropdownItem>Rejeitados</CDropdownItem>
-                      <CDropdownItem>Pendentes</CDropdownItem>
-                    </CDropdownMenu>
-                  </CDropdown>
-                </CInputGroup>
-              </div>
+                </CCol>
+              </CRow>
             </CCardHeader>
             <CCardBody>
               <CDataTable

@@ -27,9 +27,7 @@ import { registration } from "../../../redux/actions/simplifiedRegistration";
 const SimplifiedRegistration = () => {
   const dispatch = useDispatch();
 
-  const { success, error } = useSelector(
-    (state) => state.SimplifiedRegistrationReducer
-  );
+  const { success, error } = useSelector((state) => state.MessagesReducer);
 
   const [input, setInput] = useState({
     name: "",

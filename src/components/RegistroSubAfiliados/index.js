@@ -33,13 +33,10 @@ import FotosGeometria from "./components/FotosGeometria";
 const RegistroSubAfiliados = ({ title }) => {
   const dispatch = useDispatch();
 
-  const [stepIndex, setStepIndex] = useState();
-
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setStepIndex(activeStep);
   };
 
   const [inputBeneficiaryIdentity, setInputBeneficiaryIdentity] = useState({
@@ -304,6 +301,7 @@ const RegistroSubAfiliados = ({ title }) => {
 
   const setHouseNumber = (houseNumber) => {
     house = houseNumber;
+
   };
 
   function getStepContent(stepIndex) {
@@ -413,7 +411,7 @@ const RegistroSubAfiliados = ({ title }) => {
 
     handleNext();
 
-    switch (stepIndex) {
+    switch (activeStep) {
       case 0:
         dispatch(setBeneficiaryIdentity(inputBeneficiaryIdentity));
         break;
@@ -448,9 +446,10 @@ const RegistroSubAfiliados = ({ title }) => {
         <CCard>
           <CCardBody className="p-sm-2 p-lg-5 p-lx-5">
             <h1 className="text-center">{title}</h1>
-            <CForm onSubmit={handleSubmitForm}>
+            <CForm>
               <HorizontalLabelPositionBelowStepper
-                setStepIndex={setStepIndex}
+                handleSubmitForm={handleSubmitForm}
+                
                 steps={steps}
                 activeStep={activeStep}
                 setActiveStep={setActiveStep}

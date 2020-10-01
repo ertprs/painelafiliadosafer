@@ -25,7 +25,7 @@ const RegisterReducer = (state = initialState, action) => {
       state.houses[action.payload.houseNumber - 1].push(
         action.payload.resident
       );
-      return state;
+      return {...state};
     case "SET_FAMILY_UNIT_IDENTIFICATION":
       return {
         ...state,

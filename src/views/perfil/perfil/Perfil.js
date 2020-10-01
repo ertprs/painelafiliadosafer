@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+
+import { mask, unMask } from "remask";
+
 import {
   CCard,
   CCardBody,
@@ -28,7 +31,7 @@ import {
   AccountBalanceOutlined,
   PeopleOutline,
   NaturePeopleOutlined,
-  AccountCircleOutlined
+  AccountCircleOutlined,
 } from "@material-ui/icons";
 
 import CIcon from "@coreui/icons-react";
@@ -45,7 +48,7 @@ const Perfil = () => {
   const [input, setInput] = useState({
     photo: undefined,
     name: "",
-    birthData: "",
+    birthDate: "",
     maritalStatus: "",
     genre: "",
     nacionality: "",
@@ -53,13 +56,13 @@ const Perfil = () => {
     rg: "",
     emittingOrgan: "",
     emissionDate: "",
-    voterRegistration: "",
+    voterTitle: "",
     electoralZone: "",
     section: "",
     familyGroup: "",
     address: "",
-    CEP: undefined,
-    city: undefined,
+    cep: "",
+    city: "",
     state: undefined,
     phone: "",
     email: "",
@@ -68,21 +71,38 @@ const Perfil = () => {
     agree: false,
   });
 
+  const [fileName, setFileName] = useState("");
+
   useEffect(() => {
     setInput(PerfilData);
   }, []);
 
   const handleChangeInput = (event) => {
-    const { name, value } = event.target;
+    const { name, value, type } = event.target;
+
+    if (type === "tel") {
+      setInput({
+        ...input,
+        [name]: mask(unMask(value), ["(99) 99999-9999"]),
+      });
+    } else {
     setInput({ ...input, [name]: value });
+    }
+  };
+
+  const handleChangeInputFile = (event) => {
+    const name = event.target.name;
+    const value = event.target.files[0];
+    setInput({ ...input, [name]: value });
+    setFileName(value ? value.name : "");
   };
 
   const toggle = () => {
     setOpenEditProfile(!openEditProfile);
   };
 
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
+  const handleSubmitForm = (event) => {
+    event.preventDefault();
   };
 
   return (
@@ -140,7 +160,7 @@ const Perfil = () => {
                 <div className="mb-3 col-xl-4 col-sm-12 col-lg-4">
                   <Event style={styles.icon} />
                   <strong> Data de Emissão: </strong>
-                  {PerfilData.dateOfIssue}
+                  {PerfilData.emissionDate}
                 </div>
                 <div className="mb-3 col-xl-4 col-sm-12 col-lg-4">
                   <CreditCardOutlined style={styles.icon} />
@@ -209,38 +229,47 @@ const Perfil = () => {
         <CModalHeader closeButton>
           <CModalTitle>Editar Perfil</CModalTitle>
         </CModalHeader>
-        <CModalBody>
-          <CForm className="row">
+        <CForm onSubmit={handleSubmitForm}>
+          <CModalBody className="row">
+            {fileName && (
+              <div className="mb-3 col-xl-12 col-sm-12 col-lg-12">
+                <img
+                  src={fileName ? URL.createObjectURL(input.photo) : ""}
+                  alt=""
+                  style={{ height: "250px" }}
+                />
+              </div>
+            )}
             <CInputGroup className="mb-3 col-xl-9 col-sm-12 col-lg-9">
               <CInputGroupPrepend>
                 <CInputGroupText>
                   <AccountCircleOutlined style={styles.icon} />
                 </CInputGroupText>
               </CInputGroupPrepend>
-              <CLabel col md="3" htmlFor="photo">
-                Escolha uma foto de perfil
+              <CLabel className="btn bg-light ml-1 mb-0">
+                {fileName ? fileName : "Escolha uma foto de perfil"}
+                <CInput
+                  style={{ display: "none" }}
+                  type="file"
+                  name="photo"
+                  onChange={handleChangeInputFile}
+                />
               </CLabel>
-              <CInput
-                type="file"
-                name="photo"
-                onChange={handleChangeInput}
-                required
-              />
             </CInputGroup>
             <FormularioCadastroAfiliadoPf
               input={input}
               handleChangeInput={handleChangeInput}
             />
-          </CForm>
-        </CModalBody>
-        <CModalFooter>
-          <CButton onClick={handleSubmitForm} color="primary">
-            Salvar
-          </CButton>
-          <CButton color="secondary" onClick={toggle}>
-            Cancelar
-          </CButton>
-        </CModalFooter>
+          </CModalBody>
+          <CModalFooter>
+            <CButton type="submit" color="primary">
+              Salvar
+            </CButton>
+            <CButton color="secondary" onClick={toggle}>
+              Cancelar
+            </CButton>
+          </CModalFooter>
+        </CForm>
       </CModal>
     </>
   );

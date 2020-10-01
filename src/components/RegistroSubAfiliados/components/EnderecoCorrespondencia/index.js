@@ -1,5 +1,5 @@
 import React from "react";
-
+import { mask, unMask } from "remask";
 import {
   CInput,
   CInputGroup,
@@ -8,15 +8,27 @@ import {
   CSelect,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import { HomeOutlined, LocationCityOutlined, PhoneOutlined, RoomOutlined } from "@material-ui/icons";
+import {
+  HomeOutlined,
+  LocationCityOutlined,
+  PhoneOutlined,
+  RoomOutlined,
+} from "@material-ui/icons";
 
 import styles from "./styles";
 
 const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
-
   const handleChangeInput = (event) => {
-    const { name, value } = event.target;
-    setInputAddress({ ...inputAddress, [name]: value });
+    const { name, value, type } = event.target;
+
+    if (type === "tel") {
+      setInputAddress({
+        ...inputAddress,
+        [name]: mask(unMask(value), ["(99) 99999-9999"]),
+      });
+    } else {
+      setInputAddress({ ...inputAddress, [name]: value });
+    }
   };
 
   return (
@@ -39,9 +51,7 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
       </CInputGroup>
       <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
         <CInputGroupPrepend>
-          <CInputGroupText>
-            ¹²³
-          </CInputGroupText>
+          <CInputGroupText>¹²³</CInputGroupText>
         </CInputGroupPrepend>
         <CInput
           type="text"
@@ -142,9 +152,7 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
       </CInputGroup>
       <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
-          <CInputGroupText>
-            @
-          </CInputGroupText>
+          <CInputGroupText>@</CInputGroupText>
         </CInputGroupPrepend>
         <CInput
           type="email"
@@ -163,8 +171,8 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
           </CInputGroupText>
         </CInputGroupPrepend>
         <CInput
-          type="text"
-          name="rb"
+          type="tel"
+          name="tel1"
           title="Telefone 1"
           placeholder="Telefone 1"
           value={inputAddress.tel1}
@@ -179,7 +187,7 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
           </CInputGroupText>
         </CInputGroupPrepend>
         <CInput
-          type="text"
+          type="tel"
           name="tel2"
           title="Telefone 2"
           placeholder="Telefone 2"
@@ -199,7 +207,7 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
           name="county"
           title="Município"
           placeholder="Município"
-          value={inputAddress.tel2}
+          value={inputAddress.county}
           onChange={handleChangeInput}
           required
         />

@@ -32,7 +32,7 @@ import {
   WarningOutlined,
   CancelOutlined,
   CheckCircleOutlineOutlined,
-  AddCircleOutlineOutlined
+  AddCircleOutlineOutlined,
 } from "@material-ui/icons";
 
 import ModalFileSubmit from "../../../components/ModalFileSubmit";
@@ -63,10 +63,9 @@ const fields = [
   "status",
 ];
 
-
 const Propostas = () => {
   const [large, setLarge] = useState(false);
-  const [orcamento, setOrcamento] = useState([]);
+  const [proposta, setproposta] = useState([]);
   const [search, setSearch] = useState("");
   const [modalFileOpen, setModalFileOpen] = useState(false);
   const [file, setFile] = useState();
@@ -171,74 +170,78 @@ const Propostas = () => {
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader
-              style={{
-                flexDirection: "row",
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "space-between",
-              }}
-            >
-              <div>
-                <h3>Minhas Propostas</h3>
-                <span>Confira aqui seus Propostas com a CONAFER BRASIL</span>
-              </div>
-              <div className="mr-3 ml-3">
-                <CFormGroup row>
-                  <CInputGroup className="align-items-center">
-                    <CInput
-                      id="input1-group2"
-                      value={search}
-                      onChange={handleChangeInputSearch}
-                      name="input1-group2"
-                      placeholder="Nome do Orçamento"
-                    />
-                    <CInputGroupPrepend>
-                      <CButton
-                        className="align-items-center"
-                        type="button"
-                        color="primary"
-                      >
-                        Procurar {""}
-                        <CIcon name="cil-magnifying-glass" />
-                      </CButton>
-                    </CInputGroupPrepend>
+            <CCardHeader>
+              <CRow>
+                <CCol sm="12" md="12" lg="4" xl="4">
+                  <h3>Minhas Propostas</h3>
+                  <span>Confira aqui seus Propostas com a CONAFER BRASIL</span>
+                </CCol>
+                <CCol
+                  sm="12"
+                  md="12"
+                  lg="2"
+                  xl="2"
+                  className="d-flex mt-3 justify-content-center"
+                >
+                  <CFormGroup>
+                    <CInputGroup className="align-items-center">
+                      <CInputGroupPrepend>
+                        <CButton
+                          className="align-items-center"
+                          type="button"
+                          color="primary"
+                          onClick={() => setModalFileOpen(!modalFileOpen)}
+                        >
+                          <AddCircleOutlineOutlined
+                            style={{ fontSize: "1.1rem" }}
+                          />{" "}
+                          Adicionar Proposta
+                        </CButton>
+                      </CInputGroupPrepend>
+                    </CInputGroup>
+                  </CFormGroup>
+                </CCol>
+                <CCol
+                  sm="12"
+                  md="12"
+                  lg="6"
+                  xl="6"
+                  className="d-flex flex-wrap align-items-center justify-content-end"
+                >
+                  <CFormGroup className="m-3">
+                    <CInputGroup className="align-items-center">
+                      <CInput
+                        value={search}
+                        onChange={handleChangeInputSearch}
+                        name="search"
+                        placeholder="Nome da Proposta"
+                      />
+                      <CInputGroupPrepend>
+                        <CButton
+                          className="align-items-center"
+                          type="button"
+                          color="primary"
+                        >
+                          Procurar {""}
+                          <CIcon name="cil-magnifying-glass" />
+                        </CButton>
+                      </CInputGroupPrepend>
+                    </CInputGroup>
+                  </CFormGroup>
+                  <CInputGroup className="m-3 w-25">
+                    <CDropdown>
+                      <CDropdownToggle caret color="primary">
+                        Filtrar
+                      </CDropdownToggle>
+                      <CDropdownMenu>
+                        <CDropdownItem>Assinados</CDropdownItem>
+                        <CDropdownItem>Rejeitados</CDropdownItem>
+                        <CDropdownItem>Pendentes</CDropdownItem>
+                      </CDropdownMenu>
+                    </CDropdown>
                   </CInputGroup>
-                </CFormGroup>
-              </div>
-              <div className="mr-3 ml-3">
-                <CFormGroup row>
-                  <CInputGroup className="align-items-center">
-                    <CInputGroupPrepend>
-                      <CButton
-                        className="align-items-center"
-                        type="button"
-                        color="primary"
-                        onClick={() => setModalFileOpen(!modalFileOpen)}
-                      >
-                        <AddCircleOutlineOutlined
-                          style={{ fontSize: "1.1rem" }}
-                        />{" "}
-                        Adicionar Proposta
-                      </CButton>
-                    </CInputGroupPrepend>
-                  </CInputGroup>
-                </CFormGroup>
-              </div>
-              <div>
-                <CInputGroup>
-                  <CDropdown className="input-group-prepend">
-                    <CDropdownToggle caret color="primary">
-                      Filtrar
-                    </CDropdownToggle>
-                    <CDropdownMenu>
-                      <CDropdownItem>Assinados</CDropdownItem>
-                      <CDropdownItem>Rejeitados</CDropdownItem>
-                      <CDropdownItem>Pendentes</CDropdownItem>
-                    </CDropdownMenu>
-                  </CDropdown>
-                </CInputGroup>
-              </div>
+                </CCol>
+              </CRow>
             </CCardHeader>
             <CCardBody>
               <CDataTable
@@ -253,7 +256,7 @@ const Propostas = () => {
                 clickableRows
                 onRowClick={(item) => {
                   setLarge(!large);
-                  setOrcamento(item);
+                  setproposta(item);
                 }}
                 scopedSlots={{
                   status: (item) => (
@@ -271,21 +274,20 @@ const Propostas = () => {
         <CModal show={large} onClose={() => setLarge(!large)} size="lg">
           <CModalHeader closeButton>
             <CModalTitle>
-              {orcamento && orcamento.orcamento} [
-              {orcamento && orcamento.status}]
+              {proposta && proposta.proposta} [{proposta && proposta.status}]
             </CModalTitle>
           </CModalHeader>
           <CModalBody>
             <div>
-              {orcamento && orcamento.descricao}
+              {proposta && proposta.descricao}
               <br></br>
               <p style={{ fontSize: 9 }}>
-                Criando em {orcamento && orcamento.data}
+                Criando em {proposta && proposta.data}
               </p>
             </div>
-            {orcamento &&
-              orcamento.comentatio &&
-              orcamento.comentatio.map((comentario) => (
+            {proposta &&
+              proposta.comentatio &&
+              proposta.comentatio.map((comentario) => (
                 <CAlert
                   color={
                     comentario.comentarioPai === null ? "secondary" : "success"
@@ -311,7 +313,7 @@ const Propostas = () => {
               ))}
           </CModalBody>
           <CModalFooter>
-            {orcamento && orcamento.status === "Pendente" && (
+            {proposta && proposta.status === "Pendente" && (
               <CButton color="primary" onClick={() => setLarge(!large)}>
                 Assinar
               </CButton>
@@ -320,9 +322,7 @@ const Propostas = () => {
               color="secondary"
               onClick={() =>
                 alert(
-                  "Baixar arquivo de orcamento ''" +
-                    orcamento.orcamento +
-                    ".pdf'?"
+                  "Baixar arquivo de proposta ''" + proposta.proposta + ".pdf'?"
                 )
               }
             >

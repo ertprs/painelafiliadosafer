@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { mask, unMask } from "remask";
+
 import {
   CCard,
   CCardBody,
@@ -21,7 +23,7 @@ const AffiliatePF = () => {
 
   const [input, setInput] = useState({
     name: "",
-    birthData: "",
+    birthDate: "",
     maritalStatus: "",
     genre: "",
     nacionality: "",
@@ -29,13 +31,13 @@ const AffiliatePF = () => {
     rg: "",
     emittingOrgan: "",
     emissionDate: "",
-    voterRegistration: "",
+    voterTitle: "",
     electoralZone: "",
     section: "",
     familyGroup: "",
     address: "",
-    CEP: undefined,
-    city: undefined,
+    cep: "",
+    city: "",
     state: undefined,
     phone: "",
     email: "",
@@ -45,8 +47,16 @@ const AffiliatePF = () => {
   });
 
   const handleChangeInput = (event) => {
-    const { name, value } = event.target;
+    const { name, value, type } = event.target;
+
+    if (type === "tel") {
+      setInput({
+        ...input,
+        [name]: mask(unMask(value), ["(99) 99999-9999"]),
+      });
+    } else {
     setInput({ ...input, [name]: value });
+    }
   };
 
   const handleChecked = () => {

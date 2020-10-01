@@ -9,7 +9,7 @@ const PerfilData = {
   cpf: "555.333.444-78",
   rg: "53618862",
   emittingOrgan: "SEDS",
-  dateOfIssue: "30/02/2020",
+  emissionDate: "30/02/2020",
   voterTitle: "444455555666887",
   electoralZone: "003",
   section: "045",

@@ -3,7 +3,7 @@ const initialState = {
   error: false
 }
 
-const SimplifiedRegistrationReducer = (state = initialState, action) => {
+const MessagesReducer = (state = initialState, action) => {
   switch(action.type) {
     case "SUCCESS":
       return {...state, success: action.payload.success};
@@ -14,4 +14,4 @@ const SimplifiedRegistrationReducer = (state = initialState, action) => {
   }
 }
 
-export default SimplifiedRegistrationReducer;
+export default MessagesReducer;

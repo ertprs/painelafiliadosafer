@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function HorizontalLabelPositionBelowStepper({
+  handleSubmitForm,
   steps,
   activeStep,
   setActiveStep,
@@ -78,7 +79,7 @@ function HorizontalLabelPositionBelowStepper({
                     Concluído
                   </Button>
                 ) : (
-                  <Button variant="contained" color="primary" type="submit">
+                  <Button variant="contained" onClick={handleSubmitForm} color="primary" type="submit">
                     Próximo
                   </Button>
                 )}
