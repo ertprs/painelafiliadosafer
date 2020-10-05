@@ -44,6 +44,11 @@ const ModalFormSindicato = ({ show, setShow, input, setInput }) => {
 
     if (type === "tel") {
       setInput({ ...input, [name]: mask(unMask(value), ["(99) 99999-9999"]) });
+    } else if (name === "cnpj") {
+      setInput({
+        ...input,
+        [name]: mask(unMask(value), ["99.999.999/9999-9"]),
+      });
     } else {
       setInput({ ...input, [name]: value });
     }

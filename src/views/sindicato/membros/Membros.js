@@ -304,7 +304,7 @@ const Membros = () => {
             <CCardHeader className="d-flex justify-content-between">
               Membros da SAFER
               <CButton color="primary" onClick={showForm}>
-                Adicionar novo membro
+                Adicionar
               </CButton>
             </CCardHeader>
             <CCardBody>

@@ -42,7 +42,7 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
 
   return (
     <div className="row">
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-settings" />
@@ -57,7 +57,7 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-location-pin" />
@@ -99,7 +99,7 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
           <option value="TO">Tocantins</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-location-pin" />
@@ -114,7 +114,7 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-home" />
@@ -129,7 +129,7 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>¹²³</CInputGroupText>
         </CInputGroupPrepend>
@@ -142,7 +142,7 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <DriveEtaOutlinedIcon style={{ fontSize: "1.1rem" }} />
@@ -157,7 +157,7 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <ExploreOutlinedIcon style={{ fontSize: "1.1rem" }} />
@@ -181,7 +181,7 @@ const LocalizacaoDoLote = ({ inputPlotLocation, setInputPlotLocation }) => {
         <CLabel className="btn bg-light ml-1 mb-0">
           {file
             ? `Arquivo Selecionado: ${file}`
-            : "Selecione o documento de geometria do lote"}
+            : "Documento de geometria do lote"}
           <CInput
             type="file"
             style={{ display: "none" }}

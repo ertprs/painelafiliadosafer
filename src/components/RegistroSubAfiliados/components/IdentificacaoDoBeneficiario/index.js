@@ -1,5 +1,5 @@
 import React from "react";
-import { conformToMask } from "react-text-mask";
+import { mask, unMask } from "remask";
 
 import CIcon from "@coreui/icons-react";
 
@@ -14,27 +14,6 @@ const IdentificacaoDoBeneficiario = ({
   inputBeneficiaryIdentity,
   setInputBeneficiaryIdentity,
 }) => {
-  
-  const mask = [
-    /[1-9]/,
-    /\d/,
-    /\d/,
-    ".",
-    /\d/,
-    /\d/,
-    /\d/,
-    ".",
-    /\d/,
-    /\d/,
-    /\d/,
-    "-",
-    /\d/,
-    /\d/,
-  ];
-
-  const conformedCPF = conformToMask(inputBeneficiaryIdentity.cpf, mask, {
-    guide: false,
-  });
 
   const handleChangeInput = (event) => {
     const { name, value } = event.target;
@@ -43,7 +22,7 @@ const IdentificacaoDoBeneficiario = ({
 
   return (
     <div className="row">
-      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-7">
+      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-user" />
@@ -59,7 +38,7 @@ const IdentificacaoDoBeneficiario = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>@</CInputGroupText>
         </CInputGroupPrepend>
@@ -73,7 +52,7 @@ const IdentificacaoDoBeneficiario = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-credit-card" />
@@ -82,14 +61,14 @@ const IdentificacaoDoBeneficiario = ({
         <CInput
           type="text"
           name="cpf"
-          value={conformedCPF.conformedValue}
+          value={mask(unMask(inputBeneficiaryIdentity.cpf), ["999.999.999-99"])}
           placeholder="CPF"
           onChange={handleChangeInput}
           title="CPF deve conter mais de 11 números."
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>¹²³</CInputGroupText>
         </CInputGroupPrepend>
@@ -103,7 +82,7 @@ const IdentificacaoDoBeneficiario = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>¹²³</CInputGroupText>
         </CInputGroupPrepend>
@@ -117,7 +96,7 @@ const IdentificacaoDoBeneficiario = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-location-pin" />
@@ -133,7 +112,7 @@ const IdentificacaoDoBeneficiario = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-check" />
@@ -149,7 +128,7 @@ const IdentificacaoDoBeneficiario = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-map" />

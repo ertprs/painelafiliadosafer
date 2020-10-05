@@ -8,7 +8,13 @@ import {
   CSelect,
 } from "@coreui/react";
 
-import { DateRangeOutlined, HomeOutlined, FlagOutlined, EventOutlined, AssignmentOutlined } from "@material-ui/icons";
+import {
+  DateRangeOutlined,
+  HomeOutlined,
+  FlagOutlined,
+  EventOutlined,
+  AssignmentOutlined,
+} from "@material-ui/icons";
 import CIcon from "@coreui/icons-react";
 
 import styles from "./styles";
@@ -53,7 +59,7 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           custom
           onChange={handleChangeInput}
           value={inputGeneralFamilyUnitInfo.state}
-          title="Estado de Origem de Responsável Pelo Lote"
+          title="Estado de Origem do Responsável"
           name="state"
           id="select"
         >
@@ -86,7 +92,7 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           <option value="TO">Tocantins</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-location-pin" />
@@ -96,13 +102,13 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           type="text"
           name="county"
           value={inputGeneralFamilyUnitInfo.county}
-          title="Muncípio de origem do responsável pelo lote"
-          placeholder="Muncípio de origem do responsável pelo lote"
+          title="Muncípio de Origem do Responsável pelo Lote"
+          placeholder="Muncípio de Origem do Responsável"
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <DateRangeOutlined style={styles.icon} />
@@ -118,7 +124,7 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
+      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <EventOutlined style={styles.icon} />
@@ -158,7 +164,7 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <FlagOutlined style={styles.icon} />
@@ -174,13 +180,13 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           required
         >
           <option value={undefined} hidden>
-            O beneficiário conhece o limite do lote?
+            O benef. conhece o limite do lote?
           </option>
           <option value={true}>Sim</option>
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <FlagOutlined style={styles.icon} />
@@ -190,19 +196,19 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           custom
           onChange={handleChangeInput}
           value={inputGeneralFamilyUnitInfo.landPlotBoundaries}
-          title="O lote tem marco que identifica os limites do lote?"
+          title="Lote tem marco que identifica os limites?"
           name="landPlotBoundaries"
           id="select"
           required
         >
           <option value={undefined} hidden>
-            O lote tem marco que identifica os limites do lote?
+            Lote tem marco que identifica os limites?
           </option>
           <option value={true}>Sim</option>
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <AssignmentOutlined style={styles.icon} />
@@ -218,7 +224,7 @@ const InfoGeraisUnidadeProducaoFamiliar = ({
           required
         >
           <option value={undefined} hidden>
-            O beneficiário tem o contrato/termo de concessão de uso?
+            Contrato/termo de concessão de uso?
           </option>
           <option value={true}>Sim</option>
           <option value={false}>Não</option>

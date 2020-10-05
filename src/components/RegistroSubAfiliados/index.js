@@ -3,7 +3,14 @@ import { useDispatch } from "react-redux";
 
 import FormContext from "./context";
 
-import { CCard, CCardBody, CForm, CRow } from "@coreui/react";
+import {
+  CCard,
+  CCardBody,
+  CCardHeader,
+  CCardTitle,
+  CForm,
+  CRow,
+} from "@coreui/react";
 
 import HorizontalLabelPositionBelowStepper from "../HorizontalLabelPositionBelowStepper";
 import IdentificacaoDoBeneficiario from "./components/IdentificacaoDoBeneficiario";
@@ -301,7 +308,6 @@ const RegistroSubAfiliados = ({ title }) => {
 
   const setHouseNumber = (houseNumber) => {
     house = houseNumber;
-
   };
 
   function getStepContent(stepIndex) {
@@ -444,12 +450,13 @@ const RegistroSubAfiliados = ({ title }) => {
     <FormContext.Provider value={{ setResident, setHouseNumber }}>
       <CRow>
         <CCard>
-          <CCardBody className="p-sm-2 p-lg-5 p-lx-5">
-            <h1 className="text-center">{title}</h1>
+          <CCardHeader>
+            <CCardTitle>{title}</CCardTitle>
+          </CCardHeader>
+          <CCardBody className="p-1">
             <CForm>
               <HorizontalLabelPositionBelowStepper
                 handleSubmitForm={handleSubmitForm}
-                
                 steps={steps}
                 activeStep={activeStep}
                 setActiveStep={setActiveStep}

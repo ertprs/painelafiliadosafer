@@ -260,8 +260,8 @@ const Suporte = () => {
                 </CCol>
                 <CCol xs="12" md="9">
                   <CTextarea
-                    name="textarea-input"
-                    id="textarea-input"
+                    title="Mensagem da dúvida"
+                    name="doubt"
                     rows="9"
                     placeholder="Mensagem da dúvida..."
                   />

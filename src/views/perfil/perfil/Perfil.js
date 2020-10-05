@@ -50,7 +50,7 @@ const Perfil = () => {
     name: "",
     birthDate: "",
     maritalStatus: "",
-    genre: "",
+    sex: "",
     nacionality: "",
     cpf: "",
     rg: "",
@@ -141,8 +141,8 @@ const Perfil = () => {
                 </div>
                 <div className="mb-3 col-xl-4 col-sm-12 col-lg-4">
                   <WcOutlined style={styles.icon} />
-                  <strong> Gênero: </strong>
-                  {PerfilData.genre}
+                  <strong> Sexo: </strong>
+                  {PerfilData.sex}
                 </div>
                 <div className="mb-3 col-xl-4 col-sm-12 col-lg-4">
                   <CreditCardOutlined style={styles.icon} />

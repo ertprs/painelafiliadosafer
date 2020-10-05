@@ -124,7 +124,7 @@ function Documentacao({ inputDocumentation, setInputDocumentation }) {
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <InsertDriveFileOutlined style={styles.icon} />
@@ -146,7 +146,7 @@ function Documentacao({ inputDocumentation, setInputDocumentation }) {
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <InsertDriveFileOutlined style={styles.icon} />

@@ -93,7 +93,7 @@ const Producao = ({ inputProduction, setInputProduction }) => {
         <h3>Áreas (ha)</h3>
         <hr />
       </div>
-      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
+      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>
             <HomeWorkOutlined style={styles.icon} />
@@ -109,7 +109,7 @@ const Producao = ({ inputProduction, setInputProduction }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
+      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>
             <SpaOutlined style={styles.icon} />
@@ -125,7 +125,7 @@ const Producao = ({ inputProduction, setInputProduction }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-3">
+      <CInputGroup className="mb-3 col-xl-3 col-sm-12 col-lg-4">
         <CInputGroupPrepend>
           <CInputGroupText>
             <NatureOutlined style={styles.icon} />
@@ -149,11 +149,11 @@ const Producao = ({ inputProduction, setInputProduction }) => {
         </CInputGroupPrepend>
         <CInput
           type="text"
-          name="cpf"
+          name="forest"
           value={inputProduction.forest}
           placeholder="Floresta"
           onChange={handleChangeInput}
-          title="Floresta."
+          title="Floresta"
           required
         />
       </CInputGroup>

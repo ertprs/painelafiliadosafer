@@ -303,7 +303,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             <option value={false}>Não</option>
           </CSelect>
         </CInputGroup>
-        <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-8">
           <CInputGroupPrepend>
             <CInputGroupText>
               <AttachMoneyOutlined style={{ fontSize: "1.1rem" }} />
@@ -322,7 +322,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             <option value={false}>Não</option>
           </CSelect>
         </CInputGroup>
-        <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+        <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-8">
           <CInputGroupPrepend>
             <CInputGroupText>
               <DateRangeOutlined style={{ fontSize: "1.1rem" }} />
@@ -497,7 +497,7 @@ const Moradores = ({setInputResident, residentNumber }) => {
             type="text"
             name="previousDiseases"
             title="Doenças que tem ou teve nos últimos 2 anos"
-            placeholder="Doenças que tem ou teve nos últimos 2 anos"
+            placeholder="Doenças que tem/teve nos últ. 2 anos"
             value={inputResidents.previousDiseases}
             onChange={handleChangeInput}
             required

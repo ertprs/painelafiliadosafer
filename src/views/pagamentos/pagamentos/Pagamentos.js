@@ -54,56 +54,67 @@ const fields = [
 const Pagamentos = () => {
   const [large, setLarge] = useState(false);
   const [contrato, setContrato] = useState(null);
+  const [search, setSearch] = useState("");
+
+  const handleChangeInputSearch = (event) => {
+    setSearch(event.target.value);
+  };
 
   return (
     <>
       <CRow>
         <CCol>
           <CCard>
-            <CCardHeader
-              style={{
-                flexDirection: "row",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
-            >
-              <div>
-                <h3>Mensalidades</h3>
-                <span>
-                  Confira aqui os status de suas mensalidades de afiliação a
-                  CONAFER
-                </span>
-              </div>
-              <div>
-                <CFormGroup row>
-                  <CInputGroup>
-                    <CInputGroupPrepend>
-                      <CButton type="button" color="primary">
-                        <CIcon name="cil-magnifying-glass" /> Procurar
-                      </CButton>
-                    </CInputGroupPrepend>
-                    <CInput
-                      id="input1-group2"
-                      name="input1-group2"
-                      placeholder="Mês referente"
-                    />
+            <CCardHeader>
+              <CRow>
+                <CCol sm="12" md="12" lg="4" xl="4">
+                  <h3>Mensalidades</h3>
+                  <span>
+                    Confira aqui os status de suas mensalidades de afiliação a
+                    CONAFER
+                  </span>
+                </CCol>
+                <CCol
+                  sm="12"
+                  md="12"
+                  lg="6"
+                  xl="6"
+                  className="d-flex flex-wrap align-items-center justify-content-end"
+                >
+                   <CFormGroup className="m-3">
+                    <CInputGroup className="align-items-center">
+                      <CInput
+                        value={search}
+                        onChange={handleChangeInputSearch}
+                        name="search"
+                        placeholder="Mês da mensalidade"
+                      />
+                      <CInputGroupPrepend>
+                        <CButton
+                          className="align-items-center"
+                          type="button"
+                          color="primary"
+                        >
+                          Procurar {""}
+                          <CIcon name="cil-magnifying-glass" />
+                        </CButton>
+                      </CInputGroupPrepend>
+                    </CInputGroup>
+                  </CFormGroup>
+                  <CInputGroup className="m-3 w-25">
+                    <CDropdown>
+                      <CDropdownToggle caret color="primary">
+                        Filtrar
+                      </CDropdownToggle>
+                      <CDropdownMenu>
+                        <CDropdownItem>Assinados</CDropdownItem>
+                        <CDropdownItem>Rejeitados</CDropdownItem>
+                        <CDropdownItem>Pendentes</CDropdownItem>
+                      </CDropdownMenu>
+                    </CDropdown>
                   </CInputGroup>
-                </CFormGroup>
-              </div>
-              <div>
-                <CInputGroup>
-                  <CDropdown className="input-group-prepend">
-                    <CDropdownToggle caret color="primary">
-                      Filtrar
-                    </CDropdownToggle>
-                    <CDropdownMenu>
-                      <CDropdownItem>Em Aberto</CDropdownItem>
-                      <CDropdownItem>Atrasado</CDropdownItem>
-                      <CDropdownItem>Pago</CDropdownItem>
-                    </CDropdownMenu>
-                  </CDropdown>
-                </CInputGroup>
-              </div>
+                </CCol>
+              </CRow>
             </CCardHeader>
             <CCardBody>
               <CDataTable

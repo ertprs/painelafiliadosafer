@@ -5,7 +5,7 @@ const PerfilData = {
   name: "José Ribeiro",
   birthDate: "21/02/1990",
   maritalStatus: "Casado",
-  genre: "Masculino",
+  sex: "Masculino",
   cpf: "555.333.444-78",
   rg: "53618862",
   emittingOrgan: "SEDS",

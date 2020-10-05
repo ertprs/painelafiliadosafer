@@ -1,4 +1,5 @@
 import React from "react";
+import { mask, unMask } from "remask";
 
 import {
   CInput,
@@ -23,7 +24,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
 
   return (
     <div className="row">
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>¹²³</CInputGroupText>
         </CInputGroupPrepend>
@@ -37,7 +38,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <AccessTime style={styles.icon} />
@@ -53,7 +54,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-credit-card" />
@@ -62,15 +63,14 @@ const IdentificacaoDaUnidadeFamiliar = ({
         <CInput
           type="text"
           name="cpf"
-          pattern="[0-9]{11}"
-          value={inputFamilyUnitId.cpf}
+          value={mask(unMask(inputFamilyUnitId.cpf), ["999.999.999-99"])}
           placeholder="CPF"
           onChange={handleChangeInput}
           title="CPF deve conter mais de 11 números."
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-credit-card" />
@@ -86,7 +86,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-credit-card" />
@@ -102,7 +102,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <GavelOutlined style={styles.icon} />
@@ -150,7 +150,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-credit-card" />
@@ -161,12 +161,12 @@ const IdentificacaoDaUnidadeFamiliar = ({
           name="spouseCPF"
           title="CPF do Cônjuge"
           placeholder="CPF do Cônjuge"
-          value={inputFamilyUnitId.spouseCPF}
+          value={mask(unMask(inputFamilyUnitId.spouseCPF), ["999.999.999-99"])}
           onChange={handleChangeInput}
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <RoomOutlined style={styles.icon} />
@@ -182,7 +182,7 @@ const IdentificacaoDaUnidadeFamiliar = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <RoomOutlined style={styles.icon} />

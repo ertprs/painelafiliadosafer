@@ -44,23 +44,24 @@ const DiagnosticoDeSistemasAgrarios = ({
 
   return (
     <div className="row">
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-12 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <AttachMoneyOutlined style={styles.icon} />
           </CInputGroupText>
         </CInputGroupPrepend>
-        <CInput
-          type="text"
-          name="name"
-          title="Qual é a renda extra lote (fora do lote) anual?"
-          placeholder="Qual é a renda extra lote (fora do lote) anual?"
-          value={inputDiagnosisOfAgriculturalSystems.extraIncome}
-          onChange={handleChangeInput}
-          required
-        />
+          <CInput
+            type="text"
+            name="name"
+            title="Qual é a renda extra lote (fora do lote) anual?"
+            placeholder="Qual é a renda extra lote fora do lote) anual?"
+            value={inputDiagnosisOfAgriculturalSystems.extraIncome}
+            onChange={handleChangeInput}
+            required
+          />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-7">
+      
+      <CInputGroup className="mb-3 col-xl-12 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <AttachMoneyOutlined style={styles.icon} />
@@ -70,20 +71,20 @@ const DiagnosticoDeSistemasAgrarios = ({
           custom
           onChange={handleChangeInput}
           value={inputDiagnosisOfAgriculturalSystems.assistance}
-          title="A família recebe algum tipo de aux. de programa social governamental?"
+          title="A família recebe algum tipo de aux. de programa social
+          governamental?"
           name="assistance"
           id="select"
           required
         >
           <option value={undefined} hidden>
-            A família recebe algum tipo de aux. de programa social
-            governamental?
+            A família recebe algum aux. de programa social governamental?
           </option>
           <option value={true}>Sim</option>
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <AccountBalanceOutlined style={styles.icon} />
@@ -105,7 +106,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <AttachMoneyOutlined style={styles.icon} />
@@ -128,7 +129,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <SmartphoneOutlined style={styles.icon} />
@@ -150,7 +151,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <DevicesOtherOutlined style={styles.icon} />
@@ -166,7 +167,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <DeleteOutlineOutlined style={styles.icon} />
@@ -182,7 +183,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <OpacityOutlined style={styles.icon} />
@@ -198,7 +199,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <DirectionsBusOutlined style={styles.icon} />
@@ -214,7 +215,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <GroupOutlined style={styles.icon} />
@@ -236,7 +237,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <GroupOutlined style={styles.icon} />
@@ -252,7 +253,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <AssignmentTurnedInOutlined style={styles.icon} />
@@ -276,7 +277,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <WhatshotOutlined style={styles.icon} />
@@ -298,7 +299,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <EventOutlined style={styles.icon} />
@@ -314,7 +315,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <OpacityOutlined style={styles.icon} />
@@ -336,7 +337,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <PowerOutlined style={styles.icon} />
@@ -374,7 +375,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <PowerOutlined style={styles.icon} />
@@ -398,7 +399,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <PowerOutlined style={styles.icon} />
@@ -420,7 +421,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-7">
+      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <PowerOutlined style={styles.icon} />
@@ -436,7 +437,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <PowerOutlined style={styles.icon} />
@@ -474,7 +475,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-5 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <OpacityOutlined style={styles.icon} />
@@ -496,7 +497,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-7">
+      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <NatureOutlined style={styles.icon} />
@@ -506,13 +507,13 @@ const DiagnosticoDeSistemasAgrarios = ({
           custom
           onChange={handleChangeInput}
           value={inputDiagnosisOfAgriculturalSystems.protectedByRiparianForest}
-          title="As fontes de água natural no lote são protegidas por mata ciliar?"
+          title="Fontes de água natural no lote são protegidas por mata ciliar?"
           name="protectedByRiparianForest"
           id="select"
           required
         >
           <option value={undefined} hidden>
-            As fontes de água natural no lote são protegidas por mata ciliar?
+            Fontes de água natural no lote são protegidas por mata ciliar?
           </option>
           <option value={true}>Sim</option>
           <option value={false}>Não</option>
@@ -527,8 +528,8 @@ const DiagnosticoDeSistemasAgrarios = ({
         <CInput
           type="number"
           name="distanceFromTheCatchment"
-          title="Qual a distância entre o local da captação da fonte de água natural para sua moradia e elementos contaminantes? (m)"
-          placeholder="Qual a distância entre o local da captação da fonte de água natural para sua moradia e elementos contaminantes? (m)"
+          title="Distância entre local da captação da fonte de água natural para moradia e elementos contaminantes? (m)"
+          placeholder="Distância entre local da captação da fonte de água natural para moradia e elementos contaminantes? (m)"
           value={inputDiagnosisOfAgriculturalSystems.distanceFromTheCatchment}
           onChange={handleChangeInput}
           required
@@ -556,7 +557,7 @@ const DiagnosticoDeSistemasAgrarios = ({
           <option value={false}>Não</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-7">
+      <CInputGroup className="mb-3 col-xl-7 col-sm-12 col-lg-12">
         <CInputGroupPrepend>
           <CInputGroupText>
             <GrainOutlined style={styles.icon} />

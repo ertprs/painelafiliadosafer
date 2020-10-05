@@ -9,6 +9,7 @@ import {
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 import {
+  AlternateEmailOutlined,
   HomeOutlined,
   LocationCityOutlined,
   PhoneOutlined,
@@ -63,7 +64,23 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
+        <CInputGroupPrepend>
+          <CInputGroupText>
+            <RoomOutlined style={styles.icon} />
+          </CInputGroupText>
+        </CInputGroupPrepend>
+        <CInput
+          type="county"
+          name="county"
+          title="Município"
+          placeholder="Município"
+          value={inputAddress.county}
+          onChange={handleChangeInput}
+          required
+        />
+      </CInputGroup>
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <LocationCityOutlined style={styles.icon} />
@@ -79,7 +96,7 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>¹²³</CInputGroupText>
         </CInputGroupPrepend>
@@ -93,7 +110,7 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <CIcon name="cil-location-pin" />
@@ -136,7 +153,7 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
           <option value="TO">Tocantins</option>
         </CSelect>
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-5">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>¹²³</CInputGroupText>
         </CInputGroupPrepend>
@@ -150,9 +167,11 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
-          <CInputGroupText>@</CInputGroupText>
+          <CInputGroupText>
+            <AlternateEmailOutlined style={styles.icon} />
+          </CInputGroupText>
         </CInputGroupPrepend>
         <CInput
           type="email"
@@ -164,7 +183,7 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-4">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <PhoneOutlined style={styles.icon} />
@@ -180,7 +199,7 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
           required
         />
       </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
+      <CInputGroup className="mb-3 col-xl-4 col-sm-12 col-lg-6">
         <CInputGroupPrepend>
           <CInputGroupText>
             <PhoneOutlined style={styles.icon} />
@@ -192,22 +211,6 @@ const EnderecoCorrespondencia = ({ inputAddress, setInputAddress }) => {
           title="Telefone 2"
           placeholder="Telefone 2"
           value={inputAddress.tel2}
-          onChange={handleChangeInput}
-          required
-        />
-      </CInputGroup>
-      <CInputGroup className="mb-3 col-xl-6 col-sm-12 col-lg-6">
-        <CInputGroupPrepend>
-          <CInputGroupText>
-            <RoomOutlined style={styles.icon} />
-          </CInputGroupText>
-        </CInputGroupPrepend>
-        <CInput
-          type="county"
-          name="county"
-          title="Município"
-          placeholder="Município"
-          value={inputAddress.county}
           onChange={handleChangeInput}
           required
         />

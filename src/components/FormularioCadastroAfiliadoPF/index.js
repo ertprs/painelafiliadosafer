@@ -1,4 +1,5 @@
 import React from "react";
+import { mask, unMask } from "remask";
 
 import styles from "./styles";
 
@@ -37,6 +38,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
           type="text"
           name="name"
           placeholder="Nome"
+          title="Nome"
           value={input.name}
           onChange={handleChangeInput}
           required
@@ -51,6 +53,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="birthDate"
+          title="Data de Nascimento"
           placeholder="Data de Nascimento"
           value={input.birthDate}
           onChange={handleChangeInput}
@@ -69,6 +72,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
           custom
           onChange={handleChangeInput}
           value={input.maritalStatus}
+          title="Estado Civil"
           name="maritalStatus"
           id="select"
           required
@@ -92,13 +96,14 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CSelect
           custom
           onChange={handleChangeInput}
-          value={input.genre}
-          name="genre"
+          value={input.sex}
+          name="sex"
+          title="Sexo"
           id="select"
           required
         >
           <option value={undefined} hidden>
-            Gênero
+            Sexo
           </option>
           <option value="Masculino">Masculino</option>
           <option value="Feminino">Feminino</option>
@@ -114,8 +119,9 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="cpf"
+          title="CPF"
           placeholder="CPF"
-          value={input.cpf}
+          value={mask(unMask(input.cpf), ["999.999.999-99"])}
           onChange={handleChangeInput}
           required
         />
@@ -129,6 +135,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="RG"
+          title="RG"
           placeholder="RG"
           value={input.rg}
           onChange={handleChangeInput}
@@ -144,6 +151,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="emittingOrgan"
+          title="Órgão Emissor"
           placeholder="Órgão Emissor"
           value={input.emittingOrgan}
           onChange={handleChangeInput}
@@ -159,6 +167,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="emissionDate"
+          title="Data de Emissão"
           placeholder="Data de Emissão"
           value={input.emissionDate}
           onChange={handleChangeInput}
@@ -176,6 +185,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="voterTitle"
+          title="Título de Eleitor"
           placeholder="Título de Eleitor"
           value={input.voterTitle}
           onChange={handleChangeInput}
@@ -189,6 +199,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="electoralZone"
+          title="Zona Eleitoral"
           placeholder="Zona Eleitoral"
           value={input.electoralZone}
           onChange={handleChangeInput}
@@ -202,6 +213,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="section"
+          title="Seção"
           placeholder="Seção"
           value={input.section}
           onChange={handleChangeInput}
@@ -217,6 +229,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="familyGroup"
+          title="Está com grupo ou família? Se sim, quantos são?"
           placeholder="Está com grupo ou família? Se sim, quantos são?"
           value={input.familyGroup}
           onChange={handleChangeInput}
@@ -232,6 +245,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="address"
+          title="Endereço"
           placeholder="Endereço"
           value={input.address}
           onChange={handleChangeInput}
@@ -247,6 +261,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="cep"
+          title="CEP"
           placeholder="CEP"
           value={input.cep}
           onChange={handleChangeInput}
@@ -262,6 +277,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="city"
+          title="city"
           placeholder="Cidade"
           value={input.city}
           onChange={handleChangeInput}
@@ -278,6 +294,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
           custom
           onChange={handleChangeInput}
           value={input.state}
+          title="Estado"
           name="state"
           id="select"
         >
@@ -319,8 +336,9 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="tel"
           name="phone"
+          title="Telefone"
           placeholder="Telefone"
-          value={input.phone}
+          value={mask(unMask(input.phone), ["(99) 99999-9999"])}
           onChange={handleChangeInput}
           required
         />
@@ -332,7 +350,8 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
         <CInput
           type="text"
           name="email"
-          placeholder="Endereço de E-mail"
+          title="Email"
+          placeholder="E-mail"
           value={input.email}
           onChange={handleChangeInput}
           required
@@ -349,6 +368,7 @@ const FormularioCadastroAfiliadoPf = ({ input, handleChangeInput }) => {
           onChange={handleChangeInput}
           value={input.entityGroup}
           name="entityGroup"
+          title="Grupo da sua Entidade: (se houver)"
           id="select"
           required
         >
